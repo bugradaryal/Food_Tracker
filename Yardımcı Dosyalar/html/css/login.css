@@ -1,0 +1,43 @@
+    body{
+        background-image: url(../images/arkaplan.jpg);
+        background-position: center center;
+        background-attachment: fixed;
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 100%;
+    }
+    .navbar-toggler-icon {
+        background-image: url('https://mdbcdn.b-cdn.net/img/svg/hamburger6.svg?color=000');
+        text-align:center;
+    }
+
+
+.topnav a {
+  float: right;
+  color: rgb(179, 179, 179);
+  text-align: center;
+  padding: 1vw 2vh;
+  text-decoration: none;
+  font-size: 3vh;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+.title{
+    float: left;
+    font-size: 8vh;
+    color:white
+}
+.title-konum{
+    margin-top: 30vh;
+    margin-left: 15vw;
+    position:absolute;
+}
