@@ -24,6 +24,7 @@ namespace Entities
         public int lif_gr { get; set; }
         public int kollestrol_gr { get; set; }
 
-        public My_Food My_Food { get; set; }  //bir ilişki
+        //ref
+        public My_Food My_Food { get; set; }
     }
 }

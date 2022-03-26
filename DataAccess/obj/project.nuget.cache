@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "U3dl4AVhkmXcwy8Q8SI/CHpFPJAvnSIlp4Ys0c2OSpaSTyo0TzOJqbMqA+YJexJM2xcOb0jm/mQk+Cht1bZIeQ==",
+  "dgSpecHash": "v1uurg7Jc2TJp+RaR5nX9OL8Oo5jLiYeLkkipnLvY+9ZgR+k0/QmCUN0IWvkvKQ5WC71yDCdNckFiTdEmtg4Ig==",
   "success": true,
   "projectFilePath": "C:\\Users\\bugra\\Desktop\\Yemek_Takip\\DataAccess\\DataAccess.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\bugra\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\bugra\\.nuget\\packages\\microsoft.aspnetcore.metadata\\5.0.5\\microsoft.aspnetcore.metadata.5.0.5.nupkg.sha512",
     "C:\\Users\\bugra\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\bugra\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",
     "C:\\Users\\bugra\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.0.1\\microsoft.data.sqlclient.sni.runtime.2.0.1.nupkg.sha512",

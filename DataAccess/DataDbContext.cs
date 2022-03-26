@@ -1,11 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Entities;
-
+using DataAccess.SeedData;
+using System;
 
 namespace DataAccess
 {
     public class DataDbContext:DbContext
     {
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
@@ -16,50 +18,66 @@ namespace DataAccess
         public DbSet<Fridge> Fridges { get; set; }
         public DbSet<My_Food> My_Foods { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<User_article> User_articles { get; set; }
+
+
 
         //fluent api
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //////////////////User
-            //id
             modelBuilder.Entity<User>().HasKey(x => x.id);
             modelBuilder.Entity<User>().Property(x => x.id).ValueGeneratedOnAdd();
-            //ad
             modelBuilder.Entity<User>().Property(x => x.Ad).HasColumnType("varchar(30)").IsRequired();
-            //Soyad
             modelBuilder.Entity<User>().Property(x => x.Soyad).HasColumnType("varchar(30)").IsRequired();
-            //Eposta
             modelBuilder.Entity<User>().Property(x => x.Eposta).HasColumnType("varchar(30)").IsRequired();
-            modelBuilder.Entity<User>().HasIndex(u => u.Eposta).IsUnique();
-            //Sifre
+            modelBuilder.Entity<User>().HasIndex(x => x.Eposta).IsUnique();
             modelBuilder.Entity<User>().Property(x => x.Sifre).HasColumnType("varchar(30)").IsRequired();
-            //referanslar
-            modelBuilder.Entity<User>().Property(x => x.Sifre).HasColumnType("varchar(30)").IsRequired();
-            /////////////////////Food
-            //id
-            modelBuilder.Entity<Food>().HasKey(x => x.id);
-            modelBuilder.Entity<Food>().Property(x => x.id).ValueGeneratedOnAdd();
-            //yemek_ismi
-            modelBuilder.Entity<Food>().Property(x => x.yemek_ismi).HasColumnType("varchar(40)").IsRequired();
+
             /////////////////////Fridges
-            //id
             modelBuilder.Entity<Fridge>().HasKey(x => x.id);
-            modelBuilder.Entity<Fridge>().Property(x => x.id).ValueGeneratedNever();
-            //buzdolabı_id
-            modelBuilder.Entity<Fridge>().Property(x => x.buzdolabı_id).ValueGeneratedOnAdd();
-            modelBuilder.Entity<Fridge>().HasIndex(u => u.buzdolabı_id).IsUnique();
+            modelBuilder.Entity<Fridge>().Property(x => x.id).ValueGeneratedOnAdd();
+            modelBuilder.Entity<Fridge>().Property(x => x.user_id).IsRequired();
+
             /////////////////////My_Foods
-            //id
             modelBuilder.Entity<My_Food>().HasKey(x => x.id);
             modelBuilder.Entity<My_Food>().Property(x => x.id).ValueGeneratedOnAdd();
+            modelBuilder.Entity<My_Food>().Property(x => x.Fridges_id).IsRequired();
 
-            /*************************************************** REFERANSLAR */
+            /////////////////////Foods
+            modelBuilder.Entity<Food>().HasKey(x => x.id);
+            modelBuilder.Entity<Food>().Property(x => x.id).ValueGeneratedOnAdd();
+            modelBuilder.Entity<Food>().Property(x => x.yemek_ismi).HasColumnType("varchar(40)").IsRequired();
+            modelBuilder.Entity<Food>().Property(x => x.protein_yüzde).HasDefaultValue(0);
+            modelBuilder.Entity<Food>().Property(x => x.yağ_yüzde).HasDefaultValue(0);
+            modelBuilder.Entity<Food>().Property(x => x.karbonhidrat_yüzde).HasDefaultValue(0);
+            modelBuilder.Entity<Food>().Property(x => x.kalori).HasDefaultValue(0);
+            modelBuilder.Entity<Food>().Property(x => x.protein_gr).HasDefaultValue(0);
+            modelBuilder.Entity<Food>().Property(x => x.yağ_gr).HasDefaultValue(0);
+            modelBuilder.Entity<Food>().Property(x => x.karbonhidrat_gr).HasDefaultValue(0);
+            modelBuilder.Entity<Food>().Property(x => x.sodyum_gr).HasDefaultValue(0);
+            modelBuilder.Entity<Food>().Property(x => x.kalsiyum_gr).HasDefaultValue(0);
+            modelBuilder.Entity<Food>().Property(x => x.lif_gr).HasDefaultValue(0);
+            modelBuilder.Entity<Food>().Property(x => x.kollestrol_gr).HasDefaultValue(0);
 
-            modelBuilder.Entity<Fridge>().HasOne(x => x.User).WithMany(y => y.Fridge).HasForeignKey(y => y.id).OnDelete(DeleteBehavior.Cascade);
+            /////////////////////User_article
+            modelBuilder.Entity<User_article>().HasKey(x => x.id);
+            modelBuilder.Entity<User_article>().Property(x => x.id).ValueGeneratedOnAdd();
+            modelBuilder.Entity<User_article>().Property(x => x.user_id).IsRequired();
+            modelBuilder.Entity<User_article>().Property(x => x.title).HasColumnType("varchar(20)").IsRequired();
+            modelBuilder.Entity<User_article>().Property(x => x.date).HasColumnType("varchar(30)").HasDefaultValue(DateTime.Now.ToString("dd / MM / yyyy"));
+            modelBuilder.Entity<User_article>().Property(x => x.title).HasColumnType("varchar(500)").IsRequired();  //max length 500
 
-            modelBuilder.Entity<My_Food>().HasOne(x => x.Fridge).WithMany(y => y.My_Food).HasForeignKey(y => y.id);
+            //add to database a food items
+            modelBuilder.ApplyConfiguration(new Insert_Foods());
 
-            modelBuilder.Entity<Food>().HasOne(x => x.My_Food).WithOne(y => y.Food).HasForeignKey<My_Food>(x => x.yemek_no);
+
+            // referances 
+
+            modelBuilder.Entity<Fridge>().HasOne<User>(s => s.User).WithMany(g => g.Fridge).HasForeignKey(s => s.user_id).OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<User_article>().HasOne<User>(s => s.User).WithMany(g => g.User_article).HasForeignKey(s => s.user_id).OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<My_Food>().HasOne<Fridge>(s => s.Fridge).WithMany(g => g.My_Food).HasForeignKey(s => s.Fridges_id).OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<My_Food>().HasOne<Food>(s => s.Food).WithOne(g => g.My_Food).HasForeignKey<My_Food>(s => s.Foods_id).OnDelete(DeleteBehavior.Restrict); ;
         }
     }
 }

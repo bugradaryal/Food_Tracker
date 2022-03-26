@@ -13,6 +13,9 @@ namespace Entities
         public string Soyad { get; set; }
         public string Eposta { get; set; }
         public string Sifre { get; set; }
-        public ICollection<Fridge> Fridge { get; set; } //bir-çok ilişki
+
+        //ref
+        public ICollection<Fridge> Fridge { get; set; }
+        public ICollection<User_article> User_article { get; set; }
     }
 }
