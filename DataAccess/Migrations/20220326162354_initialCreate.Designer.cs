@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(DataDbContext))]
-    [Migration("20220312144559_initialCreate")]
+    [Migration("20220326162354_initialCreate")]
     partial class initialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,40 +28,62 @@ namespace DataAccess.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("kalori")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0);
 
                     b.Property<int>("kalsiyum_gr")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0);
 
                     b.Property<int>("karbonhidrat_gr")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0);
 
                     b.Property<int>("karbonhidrat_yüzde")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0);
 
                     b.Property<int>("kollestrol_gr")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0);
 
                     b.Property<int>("lif_gr")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0);
 
                     b.Property<int>("potasyum_gr")
                         .HasColumnType("int");
 
                     b.Property<int>("protein_gr")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0);
 
                     b.Property<int>("protein_yüzde")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0);
 
                     b.Property<int>("sodyum_gr")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0);
 
                     b.Property<int>("yağ_gr")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0);
 
                     b.Property<int>("yağ_yüzde")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0);
 
                     b.Property<string>("yemek_ismi")
                         .IsRequired()
@@ -75,17 +97,16 @@ namespace DataAccess.Migrations
             modelBuilder.Entity("Entities.Fridge", b =>
                 {
                     b.Property<int>("id")
-                        .HasColumnType("int");
-
-                    b.Property<int>("buzdolabı_id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("user_id")
+                        .HasColumnType("int");
+
                     b.HasKey("id");
 
-                    b.HasIndex("buzdolabı_id")
-                        .IsUnique();
+                    b.HasIndex("user_id");
 
                     b.ToTable("Fridges");
                 });
@@ -94,15 +115,21 @@ namespace DataAccess.Migrations
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Foods_id")
                         .HasColumnType("int");
 
-                    b.Property<int>("yemek_no")
+                    b.Property<int>("Fridges_id")
                         .HasColumnType("int");
 
                     b.HasKey("id");
 
-                    b.HasIndex("yemek_no")
+                    b.HasIndex("Foods_id")
                         .IsUnique();
+
+                    b.HasIndex("Fridges_id");
 
                     b.ToTable("My_Foods");
                 });
@@ -138,11 +165,40 @@ namespace DataAccess.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("Entities.User_article", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("date")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("varchar(30)")
+                        .HasDefaultValue("26 . 03 . 2022");
+
+                    b.Property<string>("text")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("title")
+                        .IsRequired()
+                        .HasColumnType("varchar(500)");
+
+                    b.Property<int>("user_id")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("user_id");
+
+                    b.ToTable("User_articles");
+                });
+
             modelBuilder.Entity("Entities.Fridge", b =>
                 {
                     b.HasOne("Entities.User", "User")
                         .WithMany("Fridge")
-                        .HasForeignKey("id")
+                        .HasForeignKey("user_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -151,21 +207,32 @@ namespace DataAccess.Migrations
 
             modelBuilder.Entity("Entities.My_Food", b =>
                 {
-                    b.HasOne("Entities.Fridge", "Fridge")
-                        .WithMany("My_Food")
-                        .HasForeignKey("id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Entities.Food", "Food")
                         .WithOne("My_Food")
-                        .HasForeignKey("Entities.My_Food", "yemek_no")
+                        .HasForeignKey("Entities.My_Food", "Foods_id")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Entities.Fridge", "Fridge")
+                        .WithMany("My_Food")
+                        .HasForeignKey("Fridges_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Food");
 
                     b.Navigation("Fridge");
+                });
+
+            modelBuilder.Entity("Entities.User_article", b =>
+                {
+                    b.HasOne("Entities.User", "User")
+                        .WithMany("User_article")
+                        .HasForeignKey("user_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Entities.Food", b =>
@@ -181,6 +248,8 @@ namespace DataAccess.Migrations
             modelBuilder.Entity("Entities.User", b =>
                 {
                     b.Navigation("Fridge");
+
+                    b.Navigation("User_article");
                 });
 #pragma warning restore 612, 618
         }
