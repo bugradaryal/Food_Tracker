@@ -16,3 +16,4 @@ delete from My_Foods;
 
 
 insert into Users(Ad,Soyad,Eposta,Sifre) values ('Buðra','Daryal','bugradaryal@hotmail.com','123asd')
+insert into Users(Ad,Soyad,Eposta,Sifre) values ('asdasd','vujvujvuj','123123@hotmail.com','123asd')
