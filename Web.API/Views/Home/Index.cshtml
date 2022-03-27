@@ -1,11 +1,14 @@
-﻿@model List<User>
+﻿
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = ViewBag.CurrentView;
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
 }
 
-<div class="text-center">
-    @foreach(var x in Model)
-     {
-        <p>@x.Ad</p><br />
-     }
+<head>
+    <link rel="stylesheet" href="~/css/index.css" type="text/css">
+</head>
+
+<div class="title-konum">
+    <b class="title">Sanal Buz Dolabına<br>Hoşgeldiniz!!!</b>
 </div>
+

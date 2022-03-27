@@ -1,0 +1,8 @@
+﻿body {
+    background-image: url(../images/Contact.jpg);
+    background-position: center center;
+    background-attachment: fixed;
+    background-size:cover;
+    background-repeat: no-repeat;
+    height: 100%;
+}

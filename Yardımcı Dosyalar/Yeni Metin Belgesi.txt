@@ -1,5 +1,0 @@
-bussiness katmanı üzerinde doğrulama işlemleri yapabiliyoruz mesela id ile user çek ama id 0 dan küçükse eğer yoksa
-
-throw ne exception("hata mesajı")
-
-

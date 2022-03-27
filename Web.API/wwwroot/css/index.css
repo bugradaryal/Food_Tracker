@@ -1,0 +1,19 @@
+﻿body {
+    background-image: url(../images/arkaplan.jpg);
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+}
+.title {
+    float: left;
+    font-size: 8vh;
+    color: white
+}
+
+.title-konum {
+    margin-top: 30vh;
+    margin-left: 15vw;
+    position: absolute;
+}

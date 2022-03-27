@@ -1,0 +1,21 @@
+﻿body {
+    background-image: url(../images/about.png);
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+}
+.title{
+    margin-top:8em;
+    color:wheat
+}
+.text{
+    margin-top:2em;
+    color:white;
+}
+.centeredtext {
+    margin-left: 6em;
+    margin-right: 6em;
+    margin-top:10em;
+}

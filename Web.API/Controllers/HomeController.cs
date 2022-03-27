@@ -19,11 +19,27 @@ namespace Web.API.Controllers
         {
             _userService = new UserManager();
         }
-        public ActionResult Index()
+        public IActionResult Index() //homepage
         {
-            List<User> users = _userService.GetAllUsers();
-
-            return View("Index",users);
+            ViewBag.CurrentView = "AnaSayfa";
+            return View();
         }
+        public IActionResult About()
+        {
+            ViewBag.CurrentView = "About";
+            return View();
+        }
+        public IActionResult ContactUs()
+        {
+            ViewBag.CurrentView = "ContactUs";
+            return View();
+        }
+        public IActionResult Login()
+        {
+            ViewBag.CurrentView = "Login";
+            return View();
+        }
+
+
     }
 }

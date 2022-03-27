@@ -1,0 +1,45 @@
+    body{
+        height: 100%;
+    }
+    html{
+        margin-bottom:90px;
+    }
+    .navbar-toggler-icon {
+        background-image: url('https://mdbcdn.b-cdn.net/img/svg/hamburger6.svg?color=000');
+        text-align:center;
+    }
+
+
+.topnav a {
+  float: right;
+  color: rgb(179, 179, 179);
+  text-align: center;
+  padding: 1vw 2vh;
+  text-decoration: none;
+  font-size: 3vh;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+.headerline {
+    border: 1px solid black;
+    border-radius: 7px;
+}
+
+.renderbody {
+    display:block;
+    float:left;
+}
+
+.bodysss {
+    background-color:white;
+    width: 100%;
+    border-radius: 0px 0px 5px 5px;
+}

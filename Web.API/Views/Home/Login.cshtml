@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewData["Title"] = ViewBag.CurrentView;
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/Login.css" type="text/css">
+</head>
+
+
+<div style="width:100%">
+    <div class="centeredtext">
+        <h1 class="title"><b>Giriş Yap</b></h1>
+        <form>
+            <p class="inputtext">Eposta Adresiniz:</p>
+            <input class="logins" type="email" placeholder="Eposta Adresinizi Giriniz..." name="eposta" required>
+            <p class="inputtext">Şifresiniz Giriniz:</p>
+            <input class="logins" type="password" placeholder="Şifrenizi Giriniz..." name="eposta" required>
+            <p class="inputtext">Şifre Tekrarı:</p>
+            <input class="logins" type="password" placeholder="Şifre Tekrarını Giriniz..." name="eposta" required>
+        </form>
+        <div>
+            <span class="psw">Şifreni <a href="#">unuttun mu?</a></span><br />
+            <span class="psw">Hesabın Yok mu? <a href="#">Hesap Oluştur.</a></span>
+        </div>
+    </div>
+</div>
