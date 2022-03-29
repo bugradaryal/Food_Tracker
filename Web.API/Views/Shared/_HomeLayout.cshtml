@@ -29,9 +29,9 @@
                 </div>
             }
             <div class="topnav">
-                <a href="@Url.Action("About", "Home")"><b>Hakkımızda</b></a>
-                <a href="@Url.Action("ContactUs", "Home")"><b>Bize Ulaşın</b></a>
-                <a href="@Url.Action("Login", "Home")"><b>Giriş</b></a>
+                <a asp-action="About" asp-controller="Home" asp-area=""><b>Hakkımızda</b></a>
+                <a asp-action="ContactUs" asp-controller="Home" asp-area=""><b>Bize Ulaşın</b></a>
+                <a asp-action="Login" asp-controller="Home"><b>Giriş</b></a>
             </div>
             if (ViewBag.CurrentView != "AnaSayfa")
             {

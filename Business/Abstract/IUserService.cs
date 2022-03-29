@@ -10,5 +10,6 @@ namespace Business.Abstract
         User CreateUser(User User);
         User UpdateUser(User User);
         void DeleteUser(int id);
+        User GetUserByEmail(string eposta);
     }
 }

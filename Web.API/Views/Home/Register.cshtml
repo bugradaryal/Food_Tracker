@@ -1,0 +1,41 @@
+﻿@model Entities.User;
+
+@{
+    ViewData["Title"] = ViewBag.CurrentView;
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/register.css" type="text/css">
+    <script src="~/js/disablespacekey.js"></script>
+</head>
+
+
+<div style="width:100%">
+    <div class="centeredtext">
+        <h1 class="title"><b>Üye Ol</b></h1>
+        <form class="uyeolmaislemleri" asp-action="Register_User" asp-controller="Home" asp-area="" method="post">
+            <div>
+                <p class="inputtext">Eposta Adresiniz:</p>
+                <input class="registers" type="email" placeholder="Eposta Adresinizi Giriniz..." asp-for="Eposta" required maxlength="30" onkeydown="keyDown(event)">
+
+                <p class="inputtext">Adınızı Giriniz:</p>
+                <input class="registers" type="text" placeholder="Adınızı Giriniz..." asp-for="Ad" required maxlength="30" minlength="1" onkeydown="keyDown(event)">
+
+                <p class="inputtext">Soyadınızı Giriniz:</p>
+                <input class="registers" type="text" placeholder="Soyadınızı Giriniz..." asp-for="Soyad" required maxlength="30" minlength="1" onkeydown="keyDown(event)">
+
+                <p class="inputtext">Şifresiniz Giriniz:</p>
+                <input class="registers" type="text" placeholder="Şifrenizi Giriniz..." asp-for="Sifre" required maxlength="30" minlength="4" onkeydown="keyDown(event)">
+            </div>
+            <div>
+                <button type="submit" id="uyeolbuton" class="btn btn-secondary">Üye Ol</button>
+                <b style="color:red; margin-left:1em;">@ViewBag.error</b>
+            </div>
+        </form>
+        <div>
+            <span class="psw">Hesabın Var mı? <a asp-action="Login" asp-controller="Home" asp-area="">Giriş Yap.</a></span>
+        </div>
+    </div>
+</div>
+

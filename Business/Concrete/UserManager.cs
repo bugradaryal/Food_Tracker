@@ -39,5 +39,9 @@ namespace Business.Concrete
         {
             return _userRepository.UpdateUser(User);
         }
+        public User GetUserByEmail(string eposta)
+        {
+            return _userRepository.GetUserByEmail(eposta);
+        }
     }
 }

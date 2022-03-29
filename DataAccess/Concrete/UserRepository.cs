@@ -51,5 +51,19 @@ namespace DataAccess.Concrete
                 return User;
             }
         }
+        public User GetUserByEmail(string eposta)
+        {
+            using (var DbContext = new DataDbContext())
+            {
+                if(DbContext.Users.Any(x=>x.Eposta == eposta) == true)
+                {
+                    return DbContext.Users.FirstOrDefault(x => x.Eposta == eposta);
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
     }
 }

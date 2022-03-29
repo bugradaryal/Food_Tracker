@@ -1,0 +1,32 @@
+﻿@model Entities.User;
+@{
+    ViewData["Title"] = "Verification";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+
+<link rel="stylesheet" href="~/css/Verification.css" type="text/css">
+<script src="~/js/disablespacekey.js"></script>
+
+<div style="width:100%">
+    <div class="centeredtext">
+        <h1 class="title"><b>Verification</b></h1>
+        <form class="dogrulamaislemleri" method="post" action="Verification">
+            <div>
+                <p class="inputtext">Doğrulama Kodu:</p>
+                <input class="dogrulama" type="text" placeholder="Doğrulama Kodunu Giriniz." name="verifi" required maxlength="5" minlength="5" onkeydown="keyDown(event)">
+                <input type="hidden" name="ad" value="@Model.Ad" />
+                <input type="hidden" name="soyad" value="@Model.Soyad" />
+                <input type="hidden" name="sifre" value="@Model.Sifre" />
+                <input type="hidden" name="eposta" value="@Model.Eposta" />
+            </div>
+            <div>
+                <button type="submit" id="dogrulamabuton" class="btn btn-secondary">Doğrula</button>
+                <b style="color:red; margin-left:1em;">@ViewBag.error</b>
+            </div>
+        </form>
+        <div>
+            <b class="ekbilgi">Not:</b><p style="color: white;">Lütfen spam kutunuzu da kontrol etmeyi unutmayınız.</p>
+        </div>
+    </div>
+</div>

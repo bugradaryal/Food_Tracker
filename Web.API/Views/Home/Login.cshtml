@@ -1,4 +1,4 @@
-﻿
+﻿@model Entities.User
 @{
     ViewData["Title"] = ViewBag.CurrentView;
     Layout = "~/Views/Shared/_HomeLayout.cshtml";
@@ -6,23 +6,28 @@
 
 <head>
     <link rel="stylesheet" href="~/css/Login.css" type="text/css">
+    <script src="~/js/disablespacekey.js"></script>
 </head>
 
 
 <div style="width:100%">
     <div class="centeredtext">
         <h1 class="title"><b>Giriş Yap</b></h1>
-        <form>
-            <p class="inputtext">Eposta Adresiniz:</p>
-            <input class="logins" type="email" placeholder="Eposta Adresinizi Giriniz..." name="eposta" required>
-            <p class="inputtext">Şifresiniz Giriniz:</p>
-            <input class="logins" type="password" placeholder="Şifrenizi Giriniz..." name="eposta" required>
-            <p class="inputtext">Şifre Tekrarı:</p>
-            <input class="logins" type="password" placeholder="Şifre Tekrarını Giriniz..." name="eposta" required>
+        <form class="girisislemleri" asp-action="Login_User" asp-controller="Home" asp-area="" method="post">
+            <div>
+                <p class="inputtext">Eposta Adresiniz:</p>
+                <input class="logins" type="email" placeholder="Eposta Adresinizi Giriniz..." asp-for="Eposta" required maxlength="30" onkeydown="keyDown(event)">
+                <p class="inputtext">Şifresiniz Giriniz:</p>
+                <input class="logins" type="password" placeholder="Şifrenizi Giriniz..." asp-for="Sifre" required maxlength="30" minlength="4" onkeydown="keyDown(event)">
+            </div>
+            <div>
+                <button type="submit" id="girisbuton" class="btn btn-secondary">Giriş</button>
+                <b style="color:red; margin-left:1em;">@ViewBag.error</b>
+            </div>
         </form>
         <div>
-            <span class="psw">Şifreni <a href="#">unuttun mu?</a></span><br />
-            <span class="psw">Hesabın Yok mu? <a href="#">Hesap Oluştur.</a></span>
+            <span class="psw">Şifreni <a asp-action="" asp-controller="" asp-area="">unuttun mu?</a></span><br />
+            <span class="psw">Hesabın Yok mu? <a asp-action="Register" asp-controller="Home" asp-area="">Hesap Oluştur.</a></span>
         </div>
     </div>
 </div>
