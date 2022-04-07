@@ -15,8 +15,30 @@ namespace Web.API.Controllers
             ViewBag.error = string.Empty;
         }
 
+        [HttpPost]
+        public IActionResult MainScreen(int id)
+        {
+            User User = _userService.GetUserById(id);
+            return View("MainScreen", User);
+        }
 
 
+        public IActionResult About()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult About(int id2)
+        {
+            User User = _userService.GetUserById(id2);
+            return View(User);
+        }
+
+        public IActionResult ContactUs()
+        {
+            return View();
+        }
 
     }
 }

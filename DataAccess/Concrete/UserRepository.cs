@@ -65,5 +65,16 @@ namespace DataAccess.Concrete
                 }
             }
         }
+        public bool UserAny(string eposta)
+        {
+            using (var DbContext = new DataDbContext())
+            {
+                if (DbContext.Users.Any(x => x.Eposta == eposta) == true)
+                    return true;
+                else
+                    return false;
+            }
+        }
+
     }
 }

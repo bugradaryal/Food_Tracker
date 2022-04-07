@@ -6,6 +6,8 @@ using Business.Concrete;
 using MimeKit;
 using MailKit.Net.Smtp;
 using MailKit.Security;
+using Microsoft.AspNetCore.Http;
+using System.Web;
 
 namespace Web.API.Controllers
 {
@@ -17,6 +19,7 @@ namespace Web.API.Controllers
             _userService = new UserManager();
             ViewBag.error = string.Empty;
         }
+
 
         public IActionResult Index() //homepage
         {
@@ -51,6 +54,8 @@ namespace Web.API.Controllers
                     {
                         ViewBag.CurrentView = "MainScreen";
                         User mainuser = _userService.GetUserById(User.id); //verileri tam çekiyoruz ve yolluyoruz
+
+                        HttpContext.Session.SetInt32("UserId", mainuser.id);
                         return View("../Main/MainScreen", mainuser);
                     }
                     else
@@ -76,7 +81,7 @@ namespace Web.API.Controllers
 
         #region üye olma işlemleri
 
-        public int random_fonksiyon()
+        public int Random_fonksiyon()
         {
             Random random = new Random();
             int rand_sayı = random.Next(10000, 99999); //doğrulama codu (5 haneli)
@@ -90,45 +95,54 @@ namespace Web.API.Controllers
             {
                 ViewBag.CurrentView = "Verification";
 
-                int random_sayı_tut = random_fonksiyon();
-
-                var message = new MimeMessage();
-                var builder = new BodyBuilder();
-
-                builder.HtmlBody = string.Format
-                    (
-                        @"<b>Doğrulama Kodunuz: </b> " + random_sayı_tut +
-                        @"<p>Bizi Tercih Ettiğiniz İçin teşekkür ederiz. <br/></p>"
-                    );
-
-                message.From.Add(MailboxAddress.Parse("bugraverify@gmail.com"));
-                message.To.Add(MailboxAddress.Parse(UserView.Eposta.ToString()));
-                message.Subject = "Doğrulama Kodu.";
-                message.Body = builder.ToMessageBody();
-
-                using (var client = new SmtpClient())
+                if(_userService.UserAny(UserView.Eposta) == false)
                 {
-                    client.ServerCertificateValidationCallback = (s, c, h, e) => true;
-                    client.Connect("smtp.gmail.com", 465, SecureSocketOptions.SslOnConnect);
-                    client.Authenticate("bugraverify@gmail.com", "31082000B");
 
-                    client.Send(message);
-                    client.Disconnect(true);
+                    int random_sayı_tut = Random_fonksiyon();
+
+                    var message = new MimeMessage();
+                    var builder = new BodyBuilder
+                    {
+                        HtmlBody = string.Format
+                        (
+                            @"<b>Doğrulama Kodunuz: </b> " + random_sayı_tut +
+                            @"<p>Bizi Tercih Ettiğiniz İçin teşekkür ederiz. <br/></p>"
+                        )
+                    };
+
+                    message.From.Add(MailboxAddress.Parse("bugraverify@gmail.com"));
+                    message.To.Add(MailboxAddress.Parse(UserView.Eposta.ToString()));
+                    message.Subject = "Doğrulama Kodu.";
+                    message.Body = builder.ToMessageBody();
+
+                    using (var client = new SmtpClient())
+                    {
+                        client.ServerCertificateValidationCallback = (s, c, h, e) => true;
+                        client.Connect("smtp.gmail.com", 465, SecureSocketOptions.SslOnConnect);
+                        client.Authenticate("bugraverify@gmail.com", "31082000B");
+
+                        client.Send(message);
+                        client.Disconnect(true);
+                    }
+
+                    TempData["verifycode"] = random_sayı_tut;
+
+
+                    return View("Verification", UserView);
                 }
-
-                TempData["verifycode"] = random_sayı_tut;
-
-
-                return View("Verification", UserView);
+                else
+                {
+                    ViewBag.error = "Eposta adresi kullanılmış!";
+                    return View("Register");
+                }
             }
             catch (Exception ht) { return Content("Http Get 404 Error!!! Code: " + ht.ToString().Substring(0, 600)); }
         }
 
-        string verifycode;
-
         [HttpPost]
         public IActionResult Verification(string verifi, string ad, string soyad, string sifre, string eposta)
         {
+            string verifycode;
             try
             {
                 if(TempData["verifycode"]  != null)
@@ -150,8 +164,6 @@ namespace Web.API.Controllers
             }
             catch (Exception ht) { return Content("Http Get 404 Error!!! Code: " + ht.ToString().Substring(0, 600)); }
         }
-
-
         #endregion
     }
 }

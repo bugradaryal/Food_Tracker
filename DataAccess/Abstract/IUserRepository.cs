@@ -11,5 +11,7 @@ namespace DataAccess.Abstract
         User UpdateUser(User User);
         void DeleteUser(int id);
         User GetUserByEmail(string eposta);
+
+        public bool UserAny(string eposta);
     }
 }

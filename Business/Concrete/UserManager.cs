@@ -43,5 +43,9 @@ namespace Business.Concrete
         {
             return _userRepository.GetUserByEmail(eposta);
         }
+        public bool UserAny(string eposta)
+        {
+            return _userRepository.UserAny(eposta);
+        }
     }
 }
