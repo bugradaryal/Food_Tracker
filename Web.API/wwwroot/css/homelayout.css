@@ -20,14 +20,14 @@
 }
 
 .topnav a:hover {
-  background-color: #ddd;
+  background-color: white;
   color: black;
 }
 
-.topnav a.active {
-  background-color: #04AA6D;
-  color: white;
-}
+    .topnav a:focus {
+        background-color: lightgray;
+        color: black;
+    }
 .headerline {
     border: 1px solid black;
     border-radius: 7px;
@@ -39,7 +39,11 @@
 }
 
 .bodysss {
-    background-color:white;
+    background-color:lightslategray;
     width: 100%;
     border-radius: 0px 0px 5px 5px;
+}
+
+.topnav a{
+    color:white;
 }

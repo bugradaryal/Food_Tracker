@@ -19,8 +19,6 @@ namespace Web.API.Controllers
             _userService = new UserManager();
             ViewBag.error = string.Empty;
         }
-
-
         public IActionResult Index() //homepage
         {
             ViewBag.CurrentView = "AnaSayfa";
@@ -36,7 +34,10 @@ namespace Web.API.Controllers
             ViewBag.CurrentView = "ContactUs";
             return View();
         }
-        public ActionResult Login()
+
+        #region giriş işlemleri
+
+        public IActionResult Login()
         {
             ViewBag.CurrentView = "Login";
             return View();
@@ -44,10 +45,10 @@ namespace Web.API.Controllers
         [HttpPost]
         public IActionResult Login_User(User UserView)
         {
+            ViewBag.CurrentView = "Login";
             try
             {
                 User User = _userService.GetUserByEmail(UserView.Eposta);
-                ViewBag.CurrentView = "Login";
                 if(User != null)
                 {
                     if (User.Sifre == UserView.Sifre)
@@ -77,7 +78,7 @@ namespace Web.API.Controllers
         {
             return View();
         }
-
+        #endregion
 
         #region üye olma işlemleri
 
@@ -106,7 +107,7 @@ namespace Web.API.Controllers
                         HtmlBody = string.Format
                         (
                             @"<b>Doğrulama Kodunuz: </b> " + random_sayı_tut +
-                            @"<p>Bizi Tercih Ettiğiniz İçin teşekkür ederiz. <br/></p>"
+                            @"<p>Bizi Tercih Ettiğiniz İçin teşekkür ederiz. </p>"
                         )
                     };
 
@@ -160,6 +161,64 @@ namespace Web.API.Controllers
                     ViewBag.error = "Doğrulama Kodu Yanlış!";
                     TempData["verifycode"] = verifycode;
                     return View(UserView);
+                }
+            }
+            catch (Exception ht) { return Content("Http Get 404 Error!!! Code: " + ht.ToString().Substring(0, 600)); }
+        }
+        #endregion
+
+        #region şifre hatırlatma epostası işlemleri
+        public IActionResult ForgotPass()
+        {
+            ViewBag.CurrentView = "ForgotPassword";
+            return View();
+        }
+
+
+        public IActionResult ForgotPass_form(string eposta)
+        {
+            ViewBag.CurrentView = "ForgotPassword";
+            try
+            {
+                User User = _userService.GetUserByEmail(eposta);
+                if(User != null)
+                {
+                    var message = new MimeMessage();
+                    var builder = new BodyBuilder
+                    {
+                        HtmlBody = string.Format
+                        (
+                            @"<b>Eposta Adresiniz: </b> " + User.Eposta +
+
+                            @"<br/><b>Şifreniz: </b> " + User.Sifre +
+
+                            @"<p>Şifrenizi değiştirmek istiyorsanız. Giriş yaptıktan sonra 'Profile (Profilim)' sayfasından bilgilerinizi güncelleyebilirsiniz. <br/></p>" +
+
+                             @"<p>Bizi Tercih Ettiğiniz İçin teşekkür ederiz.</p>"
+                        )
+                    };
+
+                    message.From.Add(MailboxAddress.Parse("bugraverify@gmail.com"));
+                    message.To.Add(MailboxAddress.Parse(User.Eposta));
+                    message.Subject = "Şifre hatırlatma Bilgileri.";
+                    message.Body = builder.ToMessageBody();
+
+                    using (var client = new SmtpClient())
+                    {
+                        client.ServerCertificateValidationCallback = (s, c, h, e) => true;
+                        client.Connect("smtp.gmail.com", 465, SecureSocketOptions.SslOnConnect);
+                        client.Authenticate("bugraverify@gmail.com", "31082000B");
+
+                        client.Send(message);
+                        client.Disconnect(true);
+                    }
+                    ViewBag.CurrentView = "ForgotPasswordSend";
+                    return View("ForgotPassSend", "<p style='margin-left:1em;'><b style='color:white'>Şifre hatırlatma epostası gönderilmiştir.</b><br/><b style='color: yellow;'>  Lütfen spam kutunuzu kontrol etmeyi unutmayınız..</b></p>");
+                }
+                else
+                {
+                    ViewBag.error = "Böyle bir hesap bulunamadı.";
+                    return View("ForgotPass");
                 }
             }
             catch (Exception ht) { return Content("Http Get 404 Error!!! Code: " + ht.ToString().Substring(0, 600)); }

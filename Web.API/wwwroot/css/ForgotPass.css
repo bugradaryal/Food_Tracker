@@ -1,0 +1,53 @@
+﻿body {
+    height: 100%;
+    width: 100%;
+    display: block;
+    float: none;
+    background-image: url(../images/login.png);
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.centeredtext {
+    margin-left: 6em;
+    margin-right: 6em;
+    margin-top: 7em;
+}
+
+.passwords {
+    width: 30vw;
+    margin-bottom: 1em;
+    border-radius: 20px 20px 20px 20px;
+    padding-left: 1em;
+}
+
+.title {
+    margin-bottom: 2em;
+    color: white;
+}
+
+.psw {
+    margin-top: 2em;
+    margin-left: 2em;
+    color: white;
+}
+
+.inputtext {
+    color: white;
+    font-size: 17px;
+    margin-left: 2em;
+}
+
+.sifreislemleri {
+    display: flex;
+    flex-direction: column;
+}
+
+#passwordbutton {
+    margin-left: 1.6em;
+    margin-top: 1em;
+    width: 8vw;
+    margin-bottom: 1.5em;
+}

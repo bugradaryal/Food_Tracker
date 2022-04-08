@@ -1,0 +1,22 @@
+﻿@model string;
+
+@{
+    ViewData["Title"] = ViewBag.CurrentView;
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/ForgotPass.css" type="text/css">
+    <script src="~/js/disablespacekey.js"></script>
+</head>
+
+
+<div style="width:100%">
+    <div class="centeredtext">
+        <h1 class="title"><b>İşlem Tamamlandı</b></h1>
+        @Html.Raw(Model);
+        <form asp-action="Login" asp-controller="Home" asp-area="" method="post">
+            <button type="submit" id="passwordbutton" class="btn btn-secondary">Giriş Sayfası</button>
+        </form>
+    </div>
+</div>

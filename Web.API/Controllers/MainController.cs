@@ -22,22 +22,18 @@ namespace Web.API.Controllers
             return View("MainScreen", User);
         }
 
-
-        public IActionResult About()
-        {
-            return View();
-        }
-
         [HttpPost]
-        public IActionResult About(int id2)
+        public IActionResult About(int id)
         {
-            User User = _userService.GetUserById(id2);
+            User User = _userService.GetUserById(id);
             return View(User);
         }
 
-        public IActionResult ContactUs()
+        [HttpPost]
+        public IActionResult ContactUs(int id)
         {
-            return View();
+            User User = _userService.GetUserById(id);
+            return View(User);
         }
 
     }

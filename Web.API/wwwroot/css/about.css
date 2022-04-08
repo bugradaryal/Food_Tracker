@@ -1,5 +1,5 @@
 ﻿body {
-    background-image: url(../images/about.png);
+    background-image: url(../images/about.jpg);
     background-position: center center;
     background-attachment: fixed;
     background-size: cover;
@@ -8,7 +8,7 @@
 }
 .title{
     margin-top:6em;
-    color:wheat
+    color:white
 }
 .text{
     margin-top:2em;

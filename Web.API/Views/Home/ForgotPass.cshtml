@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = ViewBag.CurrentView;
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/ForgotPass.css" type="text/css">
+    <script src="~/js/disablespacekey.js"></script>
+</head>
+
+
+<div style="width:100%">
+    <div class="centeredtext">
+        <h1 class="title"><b>Şifre Hatırlatma Epostası Gönder</b></h1>
+        <form class="sifreislemleri" action="ForgotPass_form" controller="Home" area="" method="post">
+            <div>
+                <p class="inputtext">Eposta Adresiniz:</p>
+                <input class="passwords" type="email" placeholder="Eposta Adresinizi Giriniz..." name="eposta" required maxlength="30" onkeydown="keyDown(event)">
+            </div>
+            <div>
+                <button type="submit" id="passwordbutton" class="btn btn-secondary">Gönder</button>
+                <b style="color:red; margin-left:1em;">@ViewBag.error</b>
+            </div>
+        </form>
+    </div>
+</div>

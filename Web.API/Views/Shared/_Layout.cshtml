@@ -23,25 +23,25 @@
     <div class="l-navbar" id="nav-bar">
         <nav class="nav">
             <div>
-                <form id="mainscreen" asp-action="MainScreen" asp-controller="Main" method="post">
+                <form id="mainscreen" asp-action="MainScreen" asp-controller="Main" asp-route-id="@Model.id" asp-area="" method="post">
                     <a href="#" onclick="document.getElementById('mainscreen').submit()" style="border-bottom: 2px solid white; border-bottom-left-radius:10px;">
-                        <span class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">Menü</span> </span>
-                        <input type="hidden" name="id" value="@Model.id"/>
+                        <span class="nav_logo active"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">Menü</span> </span>
                     </a>
                 </form>
 
                 <div class="nav_list">
-                    <a href="#" class="nav_link active"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Buzdolabım</span> </a>
+                    <a href="#" class="nav_link"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Buzdolabım</span> </a>
                     <a href="#" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">Porfilim</span> </a>
                     <a href="#" class="nav_link"> <i class='bx bx-message-square-detail nav_icon'></i> <span class="nav_name">Makaleler</span> </a>
                     <a href="#" class="nav_link"> <i class='bx bx-bookmark nav_icon'></i> <span class="nav_name">Yemekler</span> </a>
 
-                    <form id="aboutscreen" asp-action="About" asp-controller="Main" method="post">
-                        <a onclick="document.getElementById('aboutscreen').submit()" asp-action="About" asp-controller="Main" asp-area="" class="nav_link"> <i class='bx bx-folder nav_icon'></i> <span class="nav_name">Biz Kimiz</span> </a>
-                        <input type="hidden" name="id2" value="@Model.id" />
+                    <form id="aboutscreen" asp-action="About" asp-controller="Main" asp-route-id="@Model.id" asp-area="" method="post">
+                        <a href="#" onclick="document.getElementById('aboutscreen').submit()" class="nav_link"> <i class='bx bx-folder nav_icon'></i> <span class="nav_name">Biz Kimiz</span> </a>
                     </form>
 
-                    <a asp-action="ContactUs" asp-controller="Main" asp-area="" class="nav_link"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Bize Ulaşın</span> </a>
+                    <form id="contactscreen" asp-action="ContactUs" asp-controller="Main" asp-route-id="@Model.id" asp-area="" method="post">
+                        <a href="#" onclick="document.getElementById('contactscreen').submit()" class="nav_link"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Bize Ulaşın</span> </a>
+                    </form>
                 </div>
             </div> <a asp-action="Index" asp-controller="Home" asp-area="" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">Çıkış Yap</span> </a>
         </nav>
