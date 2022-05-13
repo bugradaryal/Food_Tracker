@@ -1,0 +1,91 @@
+﻿@model ViewModels
+
+@{
+    ViewData["Title"] = ViewBag.CurrentView;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <link rel="stylesheet" href="~/css/fridge.css">
+</head>
+
+
+<div class="bodydiv">
+    <div class="flexible">
+            <div class="image">
+                 <img src="~/images/fridge.png">
+           </div>
+            <div class="content">
+                <div>
+                            <b class="başlık">@Model.name</b>
+
+                            @if(Model.My_Foods != null)
+                            {
+                                /*
+                                foreach(var x in Model.My_Foods)
+                                {
+                                    <p>@x.Food.yemek_ismi</p><br />
+                                }
+                                */
+                            }
+                </div>
+            </div>
+    </div>
+        <b style="margin-left:2vw">@ViewBag.error</b>
+    <div class="button">
+
+        <form asp-action="Fridge_Select" asp-controller="Main" asp-area="">
+            <select asp-for=id class="form-select" aria-label="Buzdolaplarım."
+                    asp-items="@(new SelectList(Model.Fridge, nameof(Fridge.id), nameof(Fridge.name)))">
+            </select>
+            <input type="hidden" asp-for=User.id value=@Model.User.id/>
+            <button type="submit" id="işlem_buton" class="btn btn-danger">Seç</button>
+        </form>
+
+        <form asp-action="Fridge_Delete" asp-controller="Main" asp-area="">
+            <input type="hidden" asp-for="id" value=@Model.id/>
+            <input type="hidden" asp-for="User.id" value=@Model.User.id/>
+            <button type="submit" id="işlem_buton" class="btn btn-secondary">Sil</button>
+        </form>
+
+        <form asp-action="Fridge_Create" asp-controller="Main" asp-area="">
+            <input type="hidden" asp-for="User.id" value=@Model.User.id/>
+            <button type="submit" id="işlem_buton" class="btn btn-secondary">Oluştur</button>
+        </form>
+
+            <button type="button" id="butonum" class="btn btn-secondary">Yeniden Adlandır</button>
+
+            <div id="modalım" class="benimodalım">
+
+              <div class="modalımın-contenti">
+                <span class="close">&times;</span>
+                <form asp-action="Fridge_Rename" asp-controller="Main" asp-area="">
+                    <div>
+                        <input type="text" asp-for="name" class="rename" />
+                        <input type="hidden" asp-for="id" value=@Model.id/>
+                        <input type="hidden" asp-for="User.id" value=@Model.User.id/>
+                    </div>
+                    <div>
+                        <button type="submit" id="işlem_buton" class="btn btn-warning">Yeniden Adlandır</button>
+                    </div>
+                </form>
+              </div>
+            </div>
+    </div>
+</div>
+
+            <script>
+                var modalım = document.getElementById("modalım");
+                var butonum = document.getElementById("butonum");
+                var spanım = document.getElementsByClassName("close")[0];
+                butonum.onclick = function () {
+                    modalım.style.display = "block";
+                }
+                spanım.onclick = function () {
+                    modalım.style.display = "none";
+                }
+                window.onclick = function (event) {
+                    if (event.target == modal) {
+                        modalım.style.display = "none";
+                    }
+                }
+            </script>

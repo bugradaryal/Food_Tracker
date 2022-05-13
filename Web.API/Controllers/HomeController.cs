@@ -8,6 +8,7 @@ using MailKit.Net.Smtp;
 using MailKit.Security;
 using Microsoft.AspNetCore.Http;
 using System.Web;
+using Web.API.Models;
 
 namespace Web.API.Controllers
 {
@@ -55,9 +56,9 @@ namespace Web.API.Controllers
                     {
                         ViewBag.CurrentView = "MainScreen";
                         User mainuser = _userService.GetUserById(User.id); //verileri tam çekiyoruz ve yolluyoruz
-
-                        HttpContext.Session.SetInt32("UserId", mainuser.id);
-                        return View("../Main/MainScreen", mainuser);
+                        ViewModels vm = new ViewModels();
+                        vm.User = mainuser;
+                        return View("../Main/MainScreen", vm);
                     }
                     else
                     {

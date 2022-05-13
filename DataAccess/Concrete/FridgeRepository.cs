@@ -27,11 +27,18 @@ namespace DataAccess.Concrete
             }
         }
 
-        public List<Fridge> GetAllFridges()
+        public List<Fridge> GetAllFridgesByUserId(int id)
         {
             using (var DbContext = new DataDbContext())
             {
-                return DbContext.Fridges.ToList();
+                return DbContext.Fridges.Where(x => x.user_id == id).ToList();
+            }
+        }
+        public Fridge GetFirstFridgeByUserId(int id)
+        {
+            using (var DbContext = new DataDbContext())
+            {
+                return DbContext.Fridges.FirstOrDefault(x => x.user_id == id);
             }
         }
 
@@ -48,6 +55,7 @@ namespace DataAccess.Concrete
             using (var DbContext = new DataDbContext())
             {
                 DbContext.Fridges.Update(Fridge);
+                DbContext.SaveChanges();
                 return Fridge;
             }
         }

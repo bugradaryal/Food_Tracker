@@ -5,7 +5,7 @@ namespace Business.Abstract
 {
     public interface IMy_FoodService
     {
-        List<My_Food> GetAllMy_Foods();
+        List<My_Food> GetAllMy_Foods(int id);
         My_Food GetMy_FoodById(int id);
         My_Food CreateMy_Food(My_Food My_Food);
         My_Food UpdateMy_Food(My_Food My_Food);

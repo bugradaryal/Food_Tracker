@@ -27,11 +27,11 @@ namespace DataAccess.Concrete
             }
         }
 
-        public List<My_Food> GetAllMy_Foods()
+        public List<My_Food> GetAllMy_Foods(int id)
         {
             using (var DbContext = new DataDbContext())
             {
-                return DbContext.My_Foods.ToList();
+                return DbContext.My_Foods.Where(x=>x.Fridges_id == id).ToList();
             }
         }
 

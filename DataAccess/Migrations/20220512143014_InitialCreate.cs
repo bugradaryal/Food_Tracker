@@ -2,7 +2,7 @@
 
 namespace DataAccess.Migrations
 {
-    public partial class initialCreate : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -53,7 +53,8 @@ namespace DataAccess.Migrations
                 {
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    user_id = table.Column<int>(type: "int", nullable: false)
+                    user_id = table.Column<int>(type: "int", nullable: false),
+                    name = table.Column<string>(type: "varchar(15)", nullable: true, defaultValue: "Buzdolabım")
                 },
                 constraints: table =>
                 {
@@ -74,7 +75,7 @@ namespace DataAccess.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     user_id = table.Column<int>(type: "int", nullable: false),
                     title = table.Column<string>(type: "varchar(500)", nullable: false),
-                    date = table.Column<string>(type: "varchar(30)", nullable: true, defaultValue: "26 . 03 . 2022"),
+                    date = table.Column<string>(type: "varchar(30)", nullable: true, defaultValue: "12 . 05 . 2022"),
                     text = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>

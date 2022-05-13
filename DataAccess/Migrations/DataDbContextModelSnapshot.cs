@@ -99,6 +99,11 @@ namespace DataAccess.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("name")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("varchar(15)")
+                        .HasDefaultValue("Buzdolabım");
+
                     b.Property<int>("user_id")
                         .HasColumnType("int");
 
@@ -173,7 +178,7 @@ namespace DataAccess.Migrations
                     b.Property<string>("date")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("varchar(30)")
-                        .HasDefaultValue("26 . 03 . 2022");
+                        .HasDefaultValue("12 . 05 . 2022");
 
                     b.Property<string>("text")
                         .HasColumnType("nvarchar(max)");

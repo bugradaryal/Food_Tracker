@@ -1,4 +1,4 @@
-﻿@model Entities.User;
+﻿@model ViewModels
 
 @{
     ViewData["Title"] = ViewBag.CurrentView;
@@ -20,6 +20,6 @@
                 <li><span>Deneme4</span></li>
             </ul>
         </div>
-        <p>@Model.Eposta.ToString()</p>
+        <p>@Model.User.Eposta.ToString()</p>
     </div>
 </body>

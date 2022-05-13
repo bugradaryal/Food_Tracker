@@ -64,8 +64,6 @@ C:\Users\bugra\Desktop\Yemek_Takip\Web.API\obj\Debug\netcoreapp3.1\Web.API.MvcAp
 C:\Users\bugra\Desktop\Yemek_Takip\Web.API\obj\Debug\netcoreapp3.1\Web.API.RazorAssemblyInfo.cache
 C:\Users\bugra\Desktop\Yemek_Takip\Web.API\obj\Debug\netcoreapp3.1\Web.API.RazorAssemblyInfo.cs
 C:\Users\bugra\Desktop\Yemek_Takip\Web.API\obj\Debug\netcoreapp3.1\staticwebassets\Web.API.StaticWebAssets.Manifest.cache
-C:\Users\bugra\Desktop\Yemek_Takip\Web.API\obj\Debug\netcoreapp3.1\staticwebassets\Web.API.StaticWebAssets.xml
-C:\Users\bugra\Desktop\Yemek_Takip\Web.API\obj\Debug\netcoreapp3.1\scopedcss\bundle\Web.API.styles.css
 C:\Users\bugra\Desktop\Yemek_Takip\Web.API\obj\Debug\netcoreapp3.1\Web.API.TagHelpers.input.cache
 C:\Users\bugra\Desktop\Yemek_Takip\Web.API\obj\Debug\netcoreapp3.1\Web.API.TagHelpers.output.cache
 C:\Users\bugra\Desktop\Yemek_Takip\Web.API\obj\Debug\netcoreapp3.1\Web.API.RazorCoreGenerate.cache
@@ -168,3 +166,4 @@ C:\Users\bugra\Desktop\Yemek_Takip\Web.API\obj\Debug\netcoreapp3.1\Razor\Views\M
 C:\Users\bugra\Desktop\Yemek_Takip\Web.API\obj\Debug\netcoreapp3.1\Razor\Views\Main\About.cshtml.g.cs
 C:\Users\bugra\Desktop\Yemek_Takip\Web.API\obj\Debug\netcoreapp3.1\Razor\Views\Home\ForgotPass.cshtml.g.cs
 C:\Users\bugra\Desktop\Yemek_Takip\Web.API\obj\Debug\netcoreapp3.1\Razor\Views\Home\ForgotPassSend.cshtml.g.cs
+C:\Users\bugra\Desktop\Yemek_Takip\Web.API\obj\Debug\netcoreapp3.1\Razor\Views\Main\Fridge.cshtml.g.cs

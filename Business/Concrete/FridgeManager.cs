@@ -26,9 +26,14 @@ namespace Business.Concrete
             _FridgeRepository.DeleteFridge(id);
         }
 
-        public List<Fridge> GetAllFridges()
+        public List<Fridge> GetAllFridgesByUserId(int id)
         {
-            return _FridgeRepository.GetAllFridges();
+            return _FridgeRepository.GetAllFridgesByUserId(id);
+        }
+
+        public Fridge GetFirstFridgeByUserId(int id)
+        {
+            return _FridgeRepository.GetFirstFridgeByUserId(id);
         }
 
         public Fridge GetFridgeById(int id)

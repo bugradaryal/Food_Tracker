@@ -38,6 +38,7 @@ namespace DataAccess
             modelBuilder.Entity<Fridge>().HasKey(x => x.id);
             modelBuilder.Entity<Fridge>().Property(x => x.id).ValueGeneratedOnAdd();
             modelBuilder.Entity<Fridge>().Property(x => x.user_id).IsRequired();
+            modelBuilder.Entity<Fridge>().Property(x => x.name).HasColumnType("varchar(15)").HasDefaultValue("Buzdolabım");
 
             /////////////////////My_Foods
             modelBuilder.Entity<My_Food>().HasKey(x => x.id);
@@ -56,6 +57,7 @@ namespace DataAccess
             modelBuilder.Entity<Food>().Property(x => x.yağ_gr).HasDefaultValue(0);
             modelBuilder.Entity<Food>().Property(x => x.karbonhidrat_gr).HasDefaultValue(0);
             modelBuilder.Entity<Food>().Property(x => x.sodyum_gr).HasDefaultValue(0);
+            modelBuilder.Entity<Food>().Property(x => x.potasyum_gr).HasDefaultValue(0);
             modelBuilder.Entity<Food>().Property(x => x.kalsiyum_gr).HasDefaultValue(0);
             modelBuilder.Entity<Food>().Property(x => x.lif_gr).HasDefaultValue(0);
             modelBuilder.Entity<Food>().Property(x => x.kollestrol_gr).HasDefaultValue(0);

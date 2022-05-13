@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(DataDbContext))]
-    [Migration("20220326162354_initialCreate")]
-    partial class initialCreate
+    [Migration("20220512143014_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -101,6 +101,11 @@ namespace DataAccess.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("name")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("varchar(15)")
+                        .HasDefaultValue("Buzdolabım");
+
                     b.Property<int>("user_id")
                         .HasColumnType("int");
 
@@ -175,7 +180,7 @@ namespace DataAccess.Migrations
                     b.Property<string>("date")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("varchar(30)")
-                        .HasDefaultValue("26 . 03 . 2022");
+                        .HasDefaultValue("12 . 05 . 2022");
 
                     b.Property<string>("text")
                         .HasColumnType("nvarchar(max)");

@@ -8,6 +8,7 @@ namespace Entities
     {
         public int id { get; set; }
         public int user_id { get; set; }
+        public string name { get; set; }
 
         //ref
         public User User { get; set; }
