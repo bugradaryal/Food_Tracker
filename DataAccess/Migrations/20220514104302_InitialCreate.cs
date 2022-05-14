@@ -21,7 +21,7 @@ namespace DataAccess.Migrations
                     yağ_gr = table.Column<int>(type: "int", nullable: false, defaultValue: 0),
                     karbonhidrat_gr = table.Column<int>(type: "int", nullable: false, defaultValue: 0),
                     sodyum_gr = table.Column<int>(type: "int", nullable: false, defaultValue: 0),
-                    potasyum_gr = table.Column<int>(type: "int", nullable: false),
+                    potasyum_gr = table.Column<int>(type: "int", nullable: false, defaultValue: 0),
                     kalsiyum_gr = table.Column<int>(type: "int", nullable: false, defaultValue: 0),
                     lif_gr = table.Column<int>(type: "int", nullable: false, defaultValue: 0),
                     kollestrol_gr = table.Column<int>(type: "int", nullable: false, defaultValue: 0)
@@ -40,7 +40,8 @@ namespace DataAccess.Migrations
                     Ad = table.Column<string>(type: "varchar(30)", nullable: false),
                     Soyad = table.Column<string>(type: "varchar(30)", nullable: false),
                     Eposta = table.Column<string>(type: "varchar(30)", nullable: false),
-                    Sifre = table.Column<string>(type: "varchar(30)", nullable: false)
+                    Sifre = table.Column<string>(type: "varchar(30)", nullable: false),
+                    Cinsiyet = table.Column<string>(type: "varchar(15)", nullable: true, defaultValue: "Belirtmemiş")
                 },
                 constraints: table =>
                 {
@@ -68,6 +69,26 @@ namespace DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Notification",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    user_id = table.Column<int>(type: "int", nullable: false),
+                    tercih = table.Column<string>(type: "varchar(10)", nullable: true, defaultValue: "None")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Notification", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_Notification_Users_user_id",
+                        column: x => x.user_id,
+                        principalTable: "Users",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "User_articles",
                 columns: table => new
                 {
@@ -75,7 +96,7 @@ namespace DataAccess.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     user_id = table.Column<int>(type: "int", nullable: false),
                     title = table.Column<string>(type: "varchar(500)", nullable: false),
-                    date = table.Column<string>(type: "varchar(30)", nullable: true, defaultValue: "12 . 05 . 2022"),
+                    date = table.Column<string>(type: "varchar(30)", nullable: true, defaultValue: "14 . 05 . 2022"),
                     text = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -132,6 +153,12 @@ namespace DataAccess.Migrations
                 column: "Fridges_id");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Notification_user_id",
+                table: "Notification",
+                column: "user_id",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_User_articles_user_id",
                 table: "User_articles",
                 column: "user_id");
@@ -147,6 +174,9 @@ namespace DataAccess.Migrations
         {
             migrationBuilder.DropTable(
                 name: "My_Foods");
+
+            migrationBuilder.DropTable(
+                name: "Notification");
 
             migrationBuilder.DropTable(
                 name: "User_articles");

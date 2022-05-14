@@ -142,7 +142,7 @@ namespace Web.API.Controllers
         }
 
         [HttpPost]
-        public IActionResult Verification(string verifi, string ad, string soyad, string sifre, string eposta)
+        public IActionResult Verification(string verifi, string ad, string soyad, string sifre, string eposta, string Cinsiyet)
         {
             string verifycode;
             try
@@ -151,7 +151,7 @@ namespace Web.API.Controllers
                     verifycode = TempData["verifycode"].ToString();
                 else
                     return Content("Http Get 404 Error!!! - Tempdata verification error");
-                User UserView = new User { Ad = ad, Soyad = soyad, Eposta = eposta, Sifre = sifre };
+                User UserView = new User { Ad = ad, Soyad = soyad, Eposta = eposta, Sifre = sifre, Cinsiyet= Cinsiyet };
                 if (verifycode == verifi)
                 {
                     _userService.CreateUser(UserView);

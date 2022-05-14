@@ -1,0 +1,87 @@
+﻿@model ViewModels
+
+@{
+    ViewData["Title"] = ViewBag.CurrentView;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/account.css">
+    <script src="~/js/account.js" type="text/javascript"></script>
+</head>
+
+
+<div class="bodydiv">
+    <div class="inner">
+        <div class="flexx">
+            <b>Ad:</b>
+            <input class="account" type="text" disabled placeholder="@Model.User.Ad" />
+            <b>Soyad:</b>
+            <input class="account" type="text" disabled placeholder="@Model.User.Soyad" />
+            <b>Cinsiyet:</b>
+            <input class="account" type="text" placeholder="@Model.User.Cinsiyet" disabled/>
+            <b>Espota:</b>
+            <input class="account" type="text" disabled placeholder="@Model.User.Eposta" />
+            <b>Şifre:</b>
+            <input class="account" type="text" disabled placeholder="@Model.User.Sifre"/>
+            <b>Telefon Numarası:</b>
+            <input class="account" type="text" disabled placeholder=""/>
+            <b style="color:red;">@ViewBag.error</b>
+        </div>
+        <div class="button">
+            <form asp-action="Account_Edit" asp-controller="Main" asp-area="" method="post">
+                <input type="hidden" asp-for="@Model.User.id" value="@Model.User.id"/>
+                <button type="submit" class="btn btn-secondary">Düzenle</button>
+            </form>
+            <button type="button" id="butonum" class="btn btn-danger">Hesabı Sil</button>
+        </div>
+    </div>
+    <div class="image">
+        @{
+            string image = "Belirtilmemis.jpg";
+            if (Model.User.Cinsiyet == "Erkek")
+            {
+                image = "Erkek.jpg";
+            }
+            else if (Model.User.Cinsiyet == "Kadın")
+            {
+                image = "Kadın.jpg";
+            }
+        }
+        <img src="~/images/@image">
+    </div>
+</div>
+
+            <div id="modalım" class="benimodalım">
+
+              <div class="modalımın-contenti">
+                <span class="close">&times;</span>
+                <form asp-action="Account_Delete" asp-controller="Main" asp-area="" method="post">
+                    <div>
+                        <h2><b>Hesabı Silmek İstediğine Eminmisin? Bu işlemin geri dönüşü yoktur!!!</b></h2>
+                        <input type="hidden" asp-for="@Model.User.id" value="@Model.User.id"/>
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-danger">Hesabı Sil</button>
+                    </div>
+                </form>
+              </div>
+            </div>
+
+
+            <script>
+                var modalım = document.getElementById("modalım");
+                var butonum = document.getElementById("butonum");
+                var spanım = document.getElementsByClassName("close")[0];
+                butonum.onclick = function () {
+                    modalım.style.display = "block";
+                }
+                spanım.onclick = function () {
+                    modalım.style.display = "none";
+                }
+                window.onclick = function (event) {
+                    if (event.target == modal) {
+                        modalım.style.display = "none";
+                    }
+                }
+            </script>

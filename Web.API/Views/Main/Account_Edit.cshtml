@@ -1,0 +1,78 @@
+﻿@model ViewModels
+
+@{
+    ViewData["Title"] = ViewBag.CurrentView;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/account.css">
+    <script src="~/js/disablespacekey.js" type="text/javascript"></script>
+</head>
+
+
+
+<div class="bodydiv">
+    <form class="inner" asp-action="Account_Edit_Post" asp-controller="Main" asp-area="" method="post">
+        <div class="flexx">
+            <b>Ad:</b>
+            <input class="account" type="text" placeholder="@Model.User.Ad" asp-for="@Model.User.Ad" maxlength="30" minlength="1" onkeydown="keyDown(event)"/>
+            <b>Soyad:</b>
+            <input class="account" type="text" placeholder="@Model.User.Soyad" asp-for="@Model.User.Soyad" maxlength="30" minlength="1" onkeydown="keyDown(event)"/>
+            <b>Cinsiyet:</b>
+              <select class="selecttab" asp-for="@Model.User.Cinsiyet">
+                <option value="@Model.User.Cinsiyet" selected="selected">@Model.User.Cinsiyet</option>
+                @{
+                    if(Model.User.Cinsiyet != "Erkek")
+                    {
+                        <option value="Erkek">Erkek</option>
+                    }
+                    if(Model.User.Cinsiyet != "Kadın")
+                    {
+                        <option value="Kadın">Kadın</option>
+                    }
+                    if(Model.User.Cinsiyet != "Belirtmemiş")
+                    {
+                        <option value="Belirtmemiş">Belirtmemiş</option>
+                    }
+                }
+              </select>
+            <b>Espota: (Değiştirilemez)</b>
+            <input class="account" type="text" placeholder="@Model.User.Eposta" disabled/>
+            <b>Şifre:</b>
+            <input class="account" type="text" placeholder="@Model.User.Sifre" asp-for="@Model.User.Sifre" maxlength="30" minlength="4" onkeydown="keyDown(event)"/>
+            <b>Telefon Numarası:</b>
+            <input class="account" type="text" placeholder=""/>
+        </div>
+        <div class="button">
+            <input type="hidden" asp-for="@Model.User.id" value="@Model.User.id"/>
+            <input type="hidden" asp-for="@Model.User.Eposta" value="@Model.User.Eposta"/>
+            <button type="submit" class="btn btn-secondary">Düzenle</button>
+            <button type="button" id="formsub" class="btn btn-secondary">İşlem İptal</button>
+        </div>
+    </form>
+    <form id="formid" asp-action="Account" asp-controller="Main" asp-area="" method="post">
+            <input type="hidden" asp-for="@Model.User.id" value="@Model.User.id"/>
+    </form>
+    <div class="image">
+        @{
+            string image = "Belirtilmemis.jpg";
+            if (Model.User.Cinsiyet == "Erkek")
+            {
+                image = "Erkek.jpg";
+            }
+            else if (Model.User.Cinsiyet == "Kadın")
+            {
+                image = "Kadın.jpg";
+            }
+        }
+        <img src="~/images/@image">
+    </div>
+</div>
+
+<script>
+    var form = document.getElementById("formid");
+    document.getElementById("formsub").addEventListener("click", function () {
+  form.submit();
+});
+</script>

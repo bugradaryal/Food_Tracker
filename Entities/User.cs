@@ -13,9 +13,11 @@ namespace Entities
         public string Soyad { get; set; }
         public string Eposta { get; set; }
         public string Sifre { get; set; }
+        public string Cinsiyet { get; set; }
 
         //ref
         public ICollection<Fridge> Fridge { get; set; }
         public ICollection<User_article> User_article { get; set; }
+        public Notification Notification { get; set; }
     }
 }

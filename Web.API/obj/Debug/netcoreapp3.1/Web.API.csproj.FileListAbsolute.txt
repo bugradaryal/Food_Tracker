@@ -167,3 +167,5 @@ C:\Users\bugra\Desktop\Yemek_Takip\Web.API\obj\Debug\netcoreapp3.1\Razor\Views\M
 C:\Users\bugra\Desktop\Yemek_Takip\Web.API\obj\Debug\netcoreapp3.1\Razor\Views\Home\ForgotPass.cshtml.g.cs
 C:\Users\bugra\Desktop\Yemek_Takip\Web.API\obj\Debug\netcoreapp3.1\Razor\Views\Home\ForgotPassSend.cshtml.g.cs
 C:\Users\bugra\Desktop\Yemek_Takip\Web.API\obj\Debug\netcoreapp3.1\Razor\Views\Main\Fridge.cshtml.g.cs
+C:\Users\bugra\Desktop\Yemek_Takip\Web.API\obj\Debug\netcoreapp3.1\Razor\Views\Main\Account.cshtml.g.cs
+C:\Users\bugra\Desktop\Yemek_Takip\Web.API\obj\Debug\netcoreapp3.1\Razor\Views\Main\Account_Edit.cshtml.g.cs

@@ -45,6 +45,14 @@ namespace Web.API.Controllers
         }
 
         [HttpPost]
+        public IActionResult Account(ViewModels vm)
+        {
+            ViewBag.CurrentView = "ContactUs";
+            vm.User = _userService.GetUserById(vm.User.id);
+            return View(vm);
+        }
+
+        [HttpPost]
         public IActionResult Fridge(ViewModels vm)
         {
             try
@@ -174,6 +182,54 @@ namespace Web.API.Controllers
 
                 ViewBag.error = "\"" + old_name+ "\" Adlı buzdolabı \"" + vm.name.ToString() + "\" Olarak Yeniden Adlandırıldı..";
                 return View("Fridge", vm);
+            }
+            catch (Exception error)
+            {
+                return Content("Buzdolabı oluşturma işlemi yapılırken bir hata ile karşılaşıldı...\n\n Hata:  " + error.ToString());
+            }
+        }
+        [HttpPost]
+        public IActionResult Account_Delete(ViewModels vm)
+        {
+            try
+            {
+                ViewBag.CurrentView = "Account Delete";
+                _userService.DeleteUser(vm.User.id);
+                ViewBag.error = "Kullanıcı hesabı silindi.";
+                return View("../Home/Login");
+            }
+            catch(Exception error)
+            {
+                return Content("Hesap silinirken bir hata ile karşılaşıldı...\n\n Hata:  " + error.ToString());
+            }
+        }
+
+
+
+
+        [HttpPost]
+        public IActionResult Account_Edit(ViewModels vm)
+        {
+            try
+            {
+                ViewBag.CurrentView = "Account Edit";
+                vm.User = _userService.GetUserById(vm.User.id);
+                return View(vm);
+            }
+            catch (Exception error)
+            {
+                return Content("Buzdolabı oluşturma işlemi yapılırken bir hata ile karşılaşıldı...\n\n Hata:  " + error.ToString());
+            }
+        }
+        [HttpPost]
+        public IActionResult Account_Edit_Post(ViewModels vm)
+        {
+            try
+            {
+                ViewBag.CurrentView = "Account Edit";
+                _userService.UpdateUser(vm.User);
+                ViewBag.error = "Hesap bilgileri güncellendi.";
+                return View("Account",vm);
             }
             catch (Exception error)
             {

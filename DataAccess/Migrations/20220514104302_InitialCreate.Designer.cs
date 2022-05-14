@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(DataDbContext))]
-    [Migration("20220512143014_InitialCreate")]
+    [Migration("20220514104302_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -58,7 +58,9 @@ namespace DataAccess.Migrations
                         .HasDefaultValue(0);
 
                     b.Property<int>("potasyum_gr")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0);
 
                     b.Property<int>("protein_gr")
                         .ValueGeneratedOnAdd()
@@ -139,6 +141,29 @@ namespace DataAccess.Migrations
                     b.ToTable("My_Foods");
                 });
 
+            modelBuilder.Entity("Entities.Notification", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("tercih")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("varchar(10)")
+                        .HasDefaultValue("None");
+
+                    b.Property<int>("user_id")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("user_id")
+                        .IsUnique();
+
+                    b.ToTable("Notification");
+                });
+
             modelBuilder.Entity("Entities.User", b =>
                 {
                     b.Property<int>("id")
@@ -149,6 +174,11 @@ namespace DataAccess.Migrations
                     b.Property<string>("Ad")
                         .IsRequired()
                         .HasColumnType("varchar(30)");
+
+                    b.Property<string>("Cinsiyet")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("varchar(15)")
+                        .HasDefaultValue("Belirtmemiş");
 
                     b.Property<string>("Eposta")
                         .IsRequired()
@@ -180,7 +210,7 @@ namespace DataAccess.Migrations
                     b.Property<string>("date")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("varchar(30)")
-                        .HasDefaultValue("12 . 05 . 2022");
+                        .HasDefaultValue("14 . 05 . 2022");
 
                     b.Property<string>("text")
                         .HasColumnType("nvarchar(max)");
@@ -229,6 +259,17 @@ namespace DataAccess.Migrations
                     b.Navigation("Fridge");
                 });
 
+            modelBuilder.Entity("Entities.Notification", b =>
+                {
+                    b.HasOne("Entities.User", "User")
+                        .WithOne("Notification")
+                        .HasForeignKey("Entities.Notification", "user_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Entities.User_article", b =>
                 {
                     b.HasOne("Entities.User", "User")
@@ -253,6 +294,8 @@ namespace DataAccess.Migrations
             modelBuilder.Entity("Entities.User", b =>
                 {
                     b.Navigation("Fridge");
+
+                    b.Navigation("Notification");
 
                     b.Navigation("User_article");
                 });

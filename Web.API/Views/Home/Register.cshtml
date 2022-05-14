@@ -25,6 +25,13 @@
                 <p class="inputtext">Soyadınızı Giriniz:</p>
                 <input class="registers" type="text" placeholder="Soyadınızı Giriniz..." asp-for="Soyad" required maxlength="30" minlength="1" onkeydown="keyDown(event)">
 
+                <p class="inputtext">Cinsiyetinizi Seçiniz:</p>
+                <select class="registers" asp-for="Cinsiyet">
+                  <option value="Erkek">Erkek</option>
+                  <option value="Kadın">Kadın</option>
+                  <option value="Belirtmemiş" selected="selected">Belirtmemiş</option>
+                 </select>
+
                 <p class="inputtext">Şifresiniz Giriniz:</p>
                 <input class="registers" type="text" placeholder="Şifrenizi Giriniz..." asp-for="Sifre" required maxlength="30" minlength="4" onkeydown="keyDown(event)">
             </div>
