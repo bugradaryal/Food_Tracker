@@ -250,10 +250,19 @@ namespace Web.API.Controllers
             try
             {
                 ViewBag.CurrentView = "Account Edit";
-                _userService.UpdateUser(vm.User);
-                ViewBag.error = "Hesap bilgileri güncellendi.";
                 vm.Notification = _notificationService.GetUsersNotifications(vm.User.id);
-                return View("Account",vm);
+                if(vm.Notification.tercih_sms == true)
+                {
+                    if (vm.User.Telefon == string.Empty || vm.User.Telefon == null)
+                    {
+                        vm.User.Telefon = _userService.GetUserById(vm.User.id).Telefon;
+                        ViewBag.error = "Sms bildirim özelliği açıkken telefon numarası silinemez! ";
+                    }
+                }
+
+                _userService.UpdateUser(vm.User);
+                ViewBag.error += "Hesap bilgileri güncellendi.";
+                return View("Account", vm);
             }
             catch (Exception error)
             {
