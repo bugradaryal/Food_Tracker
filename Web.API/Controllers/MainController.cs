@@ -12,11 +12,13 @@ namespace Web.API.Controllers
         private IUserService _userService;
         private IFridgeService _fridgeService;
         private IMy_FoodService _my_FoodService;
+        private INotificationService _notificationService;
         public MainController()
         {
             _userService = new UserManager();
             _fridgeService = new FridgeManager();
             _my_FoodService = new My_FoodManager();
+            _notificationService = new NotificationManager();
             ViewBag.error = string.Empty;
         }
 
@@ -38,14 +40,6 @@ namespace Web.API.Controllers
 
         [HttpPost]
         public IActionResult ContactUs(ViewModels vm)
-        {
-            ViewBag.CurrentView = "ContactUs";
-            vm.User = _userService.GetUserById(vm.User.id);
-            return View(vm);
-        }
-
-        [HttpPost]
-        public IActionResult Account(ViewModels vm)
         {
             ViewBag.CurrentView = "ContactUs";
             vm.User = _userService.GetUserById(vm.User.id);
@@ -188,6 +182,33 @@ namespace Web.API.Controllers
                 return Content("Buzdolabı oluşturma işlemi yapılırken bir hata ile karşılaşıldı...\n\n Hata:  " + error.ToString());
             }
         }
+
+
+
+        [HttpPost]
+        public IActionResult Account(ViewModels vm)
+        {
+            try
+            {
+                ViewBag.CurrentView = "Account";
+                vm.User = _userService.GetUserById(vm.User.id);
+                if (_notificationService.GetUsersNotifications(vm.User.id) == null)
+                {
+                    vm.Notification = _notificationService.CreateNotification(new Notification { user_id = vm.User.id });
+                }
+                else
+                {
+                    vm.Notification = _notificationService.GetUsersNotifications(vm.User.id);
+                }
+                return View(vm);
+            }
+            catch (Exception error)
+            {
+                return Content("Hesaba giriş yapılırken hata ile karşılaşıldı...\n\n Hata:  " + error.ToString());
+            }
+        }
+
+
         [HttpPost]
         public IActionResult Account_Delete(ViewModels vm)
         {
@@ -214,11 +235,13 @@ namespace Web.API.Controllers
             {
                 ViewBag.CurrentView = "Account Edit";
                 vm.User = _userService.GetUserById(vm.User.id);
+                vm.Notification = _notificationService.GetUsersNotifications(vm.User.id);
+
                 return View(vm);
             }
             catch (Exception error)
             {
-                return Content("Buzdolabı oluşturma işlemi yapılırken bir hata ile karşılaşıldı...\n\n Hata:  " + error.ToString());
+                return Content("Hesap düzenleme sayfası açılırken hata ile karşılaşıldı...\n\n Hata:  " + error.ToString());
             }
         }
         [HttpPost]
@@ -229,11 +252,42 @@ namespace Web.API.Controllers
                 ViewBag.CurrentView = "Account Edit";
                 _userService.UpdateUser(vm.User);
                 ViewBag.error = "Hesap bilgileri güncellendi.";
+                vm.Notification = _notificationService.GetUsersNotifications(vm.User.id);
                 return View("Account",vm);
             }
             catch (Exception error)
             {
-                return Content("Buzdolabı oluşturma işlemi yapılırken bir hata ile karşılaşıldı...\n\n Hata:  " + error.ToString());
+                return Content("Hesap düzenleme işlemi kaydedilirken bir hata ile karşılaşıldı...\n\n Hata:  " + error.ToString());
+            }
+        }
+
+
+        [HttpPost]
+        public IActionResult Notification(ViewModels vm)
+        {
+            try
+            {
+                ViewData.Clear();
+                ViewBag.CurrentView = "Notification Edit";
+                vm.User = _userService.GetUserById(vm.User.id);
+                if(vm.Notification.tercih_sms == true)
+                {
+                    if (vm.User.Telefon == null || vm.User.Telefon == string.Empty)
+                    {
+                        vm.Notification.tercih_sms = false;
+
+                        ViewBag.error = "Sms için telefon numaranızı tanımlayınız. ";
+                    }
+                }
+
+                ViewBag.error += "Bildirim Güncelleme İşlemi Tamamlandı.";
+                vm.Notification.user_id = vm.User.id;
+                _notificationService.UpdateNotification(vm.Notification);
+                return View("Account", vm);
+            }
+            catch (Exception error)
+            {
+                return Content("Bildirim işlemi gerçekleştirilirken bir hata ile karşılaşıldı...\n\n Hata:  " + error.ToString());
             }
         }
     }

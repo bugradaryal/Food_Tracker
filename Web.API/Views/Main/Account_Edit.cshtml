@@ -42,7 +42,7 @@
             <b>Şifre:</b>
             <input class="account" type="text" placeholder="@Model.User.Sifre" asp-for="@Model.User.Sifre" maxlength="30" minlength="4" onkeydown="keyDown(event)"/>
             <b>Telefon Numarası:</b>
-            <input class="account" type="text" placeholder=""/>
+            <input class="account" type="text" placeholder="@Model.User.Telefon" asp-for="@Model.User.Telefon" maxlength="10" minlength="10" onkeydown="keyDown(event)"/>
         </div>
         <div class="button">
             <input type="hidden" asp-for="@Model.User.id" value="@Model.User.id"/>
@@ -55,18 +55,54 @@
             <input type="hidden" asp-for="@Model.User.id" value="@Model.User.id"/>
     </form>
     <div class="image">
-        @{
-            string image = "Belirtilmemis.jpg";
-            if (Model.User.Cinsiyet == "Erkek")
-            {
-                image = "Erkek.jpg";
-            }
-            else if (Model.User.Cinsiyet == "Kadın")
-            {
-                image = "Kadın.jpg";
-            }
-        }
-        <img src="~/images/@image">
+        <div>
+            @{
+                string image = "Belirtilmemis.jpg";
+                if (Model.User.Cinsiyet == "Erkek")
+                {
+                    image = "Erkek.jpg";
+                }
+                else if (Model.User.Cinsiyet == "Kadın")
+                {
+                    image = "Kadın.jpg";
+                }
+             }
+            <img src="~/images/@image">
+        </div>
+            <div class="leftimagecontent">
+                <form asp-action="Notification" asp-controller="Main" asp-area="" method="post">
+                    <h3><b>Bildirim Ayarları:</b></h3>  
+                    @{
+                        if(Model.Notification.tercih_uygulama == true)
+                        {
+                            <p><input asp-for="Notification.tercih_uygulama" type="checkbox" checked="checked"/> Uygulama Bildirimi</p>
+                        }
+                        else
+                        {
+                             <p><input asp-for="Notification.tercih_uygulama" type="checkbox"/> Uygulama Bildirimi</p>
+                        }
+                        if(Model.Notification.tercih_eposta == true)
+                        {
+                            <p><input asp-for="Notification.tercih_eposta" type="checkbox" checked="checked"/> Eposta Bildirimi</p>
+                        }
+                        else
+                        {
+                             <p><input asp-for="Notification.tercih_eposta" type="checkbox"/> Eposta Bildirimi</p>
+                        }
+                        if(Model.Notification.tercih_sms == true)
+                        {
+                            <p><input asp-for="Notification.tercih_sms" type="checkbox" checked="checked"/> Sms Bildirimi</p>
+                        }
+                        else
+                        {
+                             <p><input asp-for="Notification.tercih_sms" type="checkbox"/> Sms Bildirimi</p>
+                        }
+                    }
+                    <input type="hidden" asp-for="User.id" value="@Model.User.id" />
+                    <input type="hidden" asp-for="Notification.id" value="@Model.Notification.id"/>
+                    <button type="submit" class="btn btn-secondary">Kaydet</button>
+                </form>
+            </div>
     </div>
 </div>
 

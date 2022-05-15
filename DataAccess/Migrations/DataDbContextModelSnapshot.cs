@@ -146,10 +146,20 @@ namespace DataAccess.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("tercih")
+                    b.Property<bool>("tercih_eposta")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("varchar(10)")
-                        .HasDefaultValue("None");
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<bool>("tercih_sms")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<bool>("tercih_uygulama")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
 
                     b.Property<int>("user_id")
                         .HasColumnType("int");
@@ -190,6 +200,9 @@ namespace DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(30)");
 
+                    b.Property<string>("Telefon")
+                        .HasColumnType("varchar(10)");
+
                     b.HasKey("id");
 
                     b.HasIndex("Eposta")
@@ -208,7 +221,7 @@ namespace DataAccess.Migrations
                     b.Property<string>("date")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("varchar(30)")
-                        .HasDefaultValue("14 . 05 . 2022");
+                        .HasDefaultValue("15 . 05 . 2022");
 
                     b.Property<string>("text")
                         .HasColumnType("nvarchar(max)");

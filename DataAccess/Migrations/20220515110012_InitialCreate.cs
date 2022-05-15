@@ -41,7 +41,8 @@ namespace DataAccess.Migrations
                     Soyad = table.Column<string>(type: "varchar(30)", nullable: false),
                     Eposta = table.Column<string>(type: "varchar(30)", nullable: false),
                     Sifre = table.Column<string>(type: "varchar(30)", nullable: false),
-                    Cinsiyet = table.Column<string>(type: "varchar(15)", nullable: true, defaultValue: "Belirtmemiş")
+                    Cinsiyet = table.Column<string>(type: "varchar(15)", nullable: true, defaultValue: "Belirtmemiş"),
+                    Telefon = table.Column<string>(type: "varchar(10)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -75,7 +76,9 @@ namespace DataAccess.Migrations
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     user_id = table.Column<int>(type: "int", nullable: false),
-                    tercih = table.Column<string>(type: "varchar(10)", nullable: true, defaultValue: "None")
+                    tercih_eposta = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
+                    tercih_uygulama = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
+                    tercih_sms = table.Column<bool>(type: "bit", nullable: false, defaultValue: false)
                 },
                 constraints: table =>
                 {
@@ -96,7 +99,7 @@ namespace DataAccess.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     user_id = table.Column<int>(type: "int", nullable: false),
                     title = table.Column<string>(type: "varchar(500)", nullable: false),
-                    date = table.Column<string>(type: "varchar(30)", nullable: true, defaultValue: "14 . 05 . 2022"),
+                    date = table.Column<string>(type: "varchar(30)", nullable: true, defaultValue: "15 . 05 . 2022"),
                     text = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>

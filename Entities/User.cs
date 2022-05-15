@@ -14,6 +14,7 @@ namespace Entities
         public string Eposta { get; set; }
         public string Sifre { get; set; }
         public string Cinsiyet { get; set; }
+        public string Telefon { get; set; }
 
         //ref
         public ICollection<Fridge> Fridge { get; set; }

@@ -25,7 +25,7 @@
             <b>Şifre:</b>
             <input class="account" type="text" disabled placeholder="@Model.User.Sifre"/>
             <b>Telefon Numarası:</b>
-            <input class="account" type="text" disabled placeholder=""/>
+            <input class="account" type="text" disabled placeholder="@Model.User.Telefon"/>
             <b style="color:red;">@ViewBag.error</b>
         </div>
         <div class="button">
@@ -37,18 +37,49 @@
         </div>
     </div>
     <div class="image">
-        @{
-            string image = "Belirtilmemis.jpg";
-            if (Model.User.Cinsiyet == "Erkek")
-            {
-                image = "Erkek.jpg";
+        <div>
+            @{
+                string image = "Belirtilmemis.jpg";
+                if (Model.User.Cinsiyet == "Erkek")
+                {
+                    image = "Erkek.jpg";
+                }
+                else if (Model.User.Cinsiyet == "Kadın")
+                {
+                    image = "Kadın.jpg";
+                }
+             }
+            <img src="~/images/@image">
+        </div>
+        <div class="leftimagecontent">
+            <h3><b>Bildirim Ayarları:</b></h3>
+               
+            @{
+                if(Model.Notification != null)
+                {
+                        if(Model.Notification.tercih_uygulama == true)
+                        {
+                            <p><input  type="checkbox" disabled checked/> Uygulama Bildirimi</p>
+                        }
+                        if(Model.Notification.tercih_eposta == true)
+                        {
+                            <p><input  type="checkbox" disabled checked/> Eposta Bildirimi</p>
+                        }
+                        if(Model.Notification.tercih_sms == true)
+                        {
+                        <p><input  type="checkbox" disabled checked/> Sms Bildirimi</p>
+                    }
+                    if(Model.Notification.tercih_sms == false && Model.Notification.tercih_eposta == false && Model.Notification.tercih_uygulama == false)
+                    {
+                        <b>Bildirim Seçeneği Seçilmemiş.</b>
+                    }
+                }
+                else
+                {
+                    <b>Bildirim Seçeneği Seçilmemiş.</b>
+                }
             }
-            else if (Model.User.Cinsiyet == "Kadın")
-            {
-                image = "Kadın.jpg";
-            }
-        }
-        <img src="~/images/@image">
+        </div>
     </div>
 </div>
 

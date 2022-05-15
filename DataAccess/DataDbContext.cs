@@ -19,6 +19,7 @@ namespace DataAccess
         public DbSet<My_Food> My_Foods { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<User_article> User_articles { get; set; }
+        public DbSet<Notification> Notification { get; set; }
 
 
 
@@ -34,6 +35,7 @@ namespace DataAccess
             modelBuilder.Entity<User>().HasIndex(x => x.Eposta).IsUnique();
             modelBuilder.Entity<User>().Property(x => x.Sifre).HasColumnType("varchar(30)").IsRequired();
             modelBuilder.Entity<User>().Property(x => x.Cinsiyet).HasColumnType("varchar(15)").HasDefaultValue("Belirtmemiş");
+            modelBuilder.Entity<User>().Property(x => x.Telefon).HasColumnType("varchar(10)");
 
             /////////////////////Fridges
             modelBuilder.Entity<Fridge>().HasKey(x => x.id);
@@ -76,7 +78,9 @@ namespace DataAccess
             modelBuilder.Entity<Notification>().HasKey(x => x.id);
             modelBuilder.Entity<Notification>().Property(x => x.id).ValueGeneratedOnAdd();
             modelBuilder.Entity<Notification>().Property(x => x.user_id).IsRequired();
-            modelBuilder.Entity<Notification>().Property(x => x.tercih).HasColumnType("varchar(10)").HasDefaultValue("None");
+            modelBuilder.Entity<Notification>().Property(x => x.tercih_eposta).HasDefaultValue("false");
+            modelBuilder.Entity<Notification>().Property(x => x.tercih_sms).HasDefaultValue("false");
+            modelBuilder.Entity<Notification>().Property(x => x.tercih_uygulama).HasDefaultValue("true");
 
             //add to database a food items
             modelBuilder.ApplyConfiguration(new Insert_Foods());
@@ -87,7 +91,7 @@ namespace DataAccess
             modelBuilder.Entity<Fridge>().HasOne<User>(s => s.User).WithMany(g => g.Fridge).HasForeignKey(s => s.user_id).OnDelete(DeleteBehavior.Cascade);
             modelBuilder.Entity<User_article>().HasOne<User>(s => s.User).WithMany(g => g.User_article).HasForeignKey(s => s.user_id).OnDelete(DeleteBehavior.Cascade);
             modelBuilder.Entity<My_Food>().HasOne<Fridge>(s => s.Fridge).WithMany(g => g.My_Food).HasForeignKey(s => s.Fridges_id).OnDelete(DeleteBehavior.Cascade);
-            modelBuilder.Entity<My_Food>().HasOne<Food>(s => s.Food).WithOne(g => g.My_Food).HasForeignKey<My_Food>(s => s.Foods_id).OnDelete(DeleteBehavior.Restrict); ;
+            modelBuilder.Entity<My_Food>().HasOne<Food>(s => s.Food).WithOne(g => g.My_Food).HasForeignKey<My_Food>(s => s.Foods_id).OnDelete(DeleteBehavior.Restrict); 
             modelBuilder.Entity<Notification>().HasOne<User>(s => s.User).WithOne(g => g.Notification).HasForeignKey<Notification>(s => s.user_id).OnDelete(DeleteBehavior.Cascade);
         }
     }

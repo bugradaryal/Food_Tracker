@@ -45,7 +45,7 @@
 .image {
     text-align: right;
     margin-right: 3vw;
-    margin-top: 2.5vw;
+
 }
 
     .image img {
@@ -122,4 +122,13 @@
     height: auto;
     width: 25vw;
     float: left;
+}
+
+.leftimagecontent{
+    float:left;
+    text-align:left;
+}
+.leftimagecontent h3{
+
+    margin-top:3vh;
 }
