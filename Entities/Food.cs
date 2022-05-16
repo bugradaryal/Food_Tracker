@@ -23,7 +23,7 @@ namespace Entities
         public int kalsiyum_gr { get; set; }
         public int lif_gr { get; set; }
         public int kollestrol_gr { get; set; }
-
+        public int gün_bozulma_tarihi { get; set; }
         //ref
         public My_Food My_Food { get; set; }
     }

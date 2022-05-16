@@ -9,6 +9,6 @@ namespace Business.Abstract
         My_Food GetMy_FoodById(int id);
         My_Food CreateMy_Food(My_Food My_Food);
         My_Food UpdateMy_Food(My_Food My_Food);
-        void DeleteMy_Food(int id);
+        void DeleteMy_Food(int id, int idf);
     }
 }

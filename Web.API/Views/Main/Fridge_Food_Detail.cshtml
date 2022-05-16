@@ -1,0 +1,74 @@
+﻿@model ViewModels
+
+@{
+    ViewData["Title"] = ViewBag.CurrentView;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <link rel="stylesheet" href="~/css/fridge_food_detail.css">
+</head>
+
+
+<div class="bodydiv">
+     <div class="content">
+                <div>
+                    @foreach(var x in Model.Food)
+                    {
+                            <b class="başlık">@x.yemek_ismi</b>
+                                <table> 
+                                <tr>
+                                <th>Protein(%)</th> 
+                                <th>Protein(gr)</th> 
+                                <th>Yağ(%)</th> 
+                                <th>Yağ(gr)</th>
+                                <th>Karbonhidrat(%)</th>
+                                <th>Karbonhidrat(gr)</th>
+                                <th>Kalori</th>
+                                <th>Sodyum(gr)</th>
+                                <th>Potasyum(gr)</th>
+                                <th>Kalsiyum(gr)</th>
+                                <th>Lif(gr)</th>
+                                <th>Kollestrol(gr)</th>
+                                <th>Bozulma Süresi</th>
+
+                                </tr>
+                                    <tr> 
+                                    <td>@x.protein_yüzde</td> 
+                                    <td>@x.protein_gr</td> 
+                                    <td>@x.yağ_yüzde</td> 
+                                    <td>@x.yağ_gr</td> 
+                                    <td>@x.karbonhidrat_yüzde</td> 
+                                    <td>@x.karbonhidrat_gr</td> 
+                                    <td>@x.kalori</td> 
+                                    <td>@x.sodyum_gr</td> 
+                                    <td>@x.potasyum_gr</td>
+                                    <td>@x.kalsiyum_gr</td> 
+                                    <td>@x.lif_gr</td> 
+                                    <td>@x.kollestrol_gr</td> 
+                                    <td>@x.gün_bozulma_tarihi</td> 
+
+                                </tr> 
+                                </table> 
+                     }
+                </div>
+                <div>
+                     <b style="margin-left:2vw">@ViewBag.error</b>
+                </div>
+                <div class="flexbutton">
+                 <form asp-action="Fridge" asp-controller="main" asp-area="" method="post">
+                    <input type="hidden" asp-for=User.id value="@Model.User.id"/>
+                    <input type="hidden" asp-for=id value="@Model.id"/>
+                     <button type="submit" id="işlem_buton" class="btn btn-secondary">Buzdolabım</button>  
+                </form>
+                <!--
+                    <form class="secondbutton" asp-action="Food_Detail_Pdf" asp-controller="main" asp-area="" method="post">
+                    <input type="hidden" asp-for=User.id value="@Model.User.id"/>
+                    <input type="hidden" asp-for=id value="@Model.id"/>
+                     <button type="submit" id="işlem_buton" class="btn btn-secondary">Pdf</button>  
+                </form>
+                -->
+                </div>
+            </div>
+</div>
+
+        

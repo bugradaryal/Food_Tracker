@@ -169,3 +169,5 @@ C:\Users\bugra\Desktop\Yemek_Takip\Web.API\obj\Debug\netcoreapp3.1\Razor\Views\H
 C:\Users\bugra\Desktop\Yemek_Takip\Web.API\obj\Debug\netcoreapp3.1\Razor\Views\Main\Fridge.cshtml.g.cs
 C:\Users\bugra\Desktop\Yemek_Takip\Web.API\obj\Debug\netcoreapp3.1\Razor\Views\Main\Account.cshtml.g.cs
 C:\Users\bugra\Desktop\Yemek_Takip\Web.API\obj\Debug\netcoreapp3.1\Razor\Views\Main\Account_Edit.cshtml.g.cs
+C:\Users\bugra\Desktop\Yemek_Takip\Web.API\obj\Debug\netcoreapp3.1\Razor\Views\Main\Fridge_Food_Detail.cshtml.g.cs
+C:\Users\bugra\Desktop\Yemek_Takip\Web.API\obj\Debug\netcoreapp3.1\Razor\Views\Main\Foods.cshtml.g.cs

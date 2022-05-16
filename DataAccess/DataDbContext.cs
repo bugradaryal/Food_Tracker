@@ -64,6 +64,7 @@ namespace DataAccess
             modelBuilder.Entity<Food>().Property(x => x.kalsiyum_gr).HasDefaultValue(0);
             modelBuilder.Entity<Food>().Property(x => x.lif_gr).HasDefaultValue(0);
             modelBuilder.Entity<Food>().Property(x => x.kollestrol_gr).HasDefaultValue(0);
+            modelBuilder.Entity<Food>().Property(x => x.gün_bozulma_tarihi).HasDefaultValue(0);
 
             /////////////////////User_article
             modelBuilder.Entity<User_article>().HasKey(x => x.id);

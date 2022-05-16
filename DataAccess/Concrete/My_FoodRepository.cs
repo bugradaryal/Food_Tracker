@@ -17,12 +17,11 @@ namespace DataAccess.Concrete
             }
         }
 
-        public void DeleteMy_Food(int id)
+        public void DeleteMy_Food(int id, int idf)
         {
             using (var DbContext = new DataDbContext())
             {
-                var deletedMy_Food = GetMy_FoodById(id);
-                DbContext.My_Foods.Remove(deletedMy_Food);
+                DbContext.My_Foods.Remove(DbContext.My_Foods.Where(x => x.Fridges_id == id).ToList().Where(x => x.Foods_id == idf).FirstOrDefault());
                 DbContext.SaveChanges();
             }
         }

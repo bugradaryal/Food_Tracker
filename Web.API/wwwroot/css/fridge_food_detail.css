@@ -1,0 +1,67 @@
+﻿body {
+    height: 100%;
+    width: 100%;
+}
+
+.bodydiv {
+    background-color: #eeeeee;
+    position: absolute;
+    margin-top: 8vh;
+    width: 85%;
+    height: auto;
+    margin-left: 3%;
+    border: 2px #6d6d6d antiquewhite;
+    border-radius: 10px;
+}
+
+.başlık {
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    font-size: 24px;
+    margin-bottom: 3vh;
+    text-decoration: underline;
+}
+
+.content {
+    margin-top: 2vh;
+    display: inline-block;
+    padding: 3em;
+}
+
+#işlem_buton {
+    margin-top: 4vh;
+    height: auto;
+    width: 8vw;
+    font-size: 1vw;
+}
+
+
+table {
+    margin-top: 5vh;
+    border-collapse: collapse;
+    font-family: arial, sans-serif;
+    width: 100%;
+    font-size:0.8em;
+}
+
+    table td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 5px;
+    }
+
+    table th {
+        text-decoration: underline;
+        width: 10vw;
+    }
+
+    table tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+
+.secondbutton {
+    margin-left: 0.3vw;
+}
+
+.flexbutton{
+    display:flex;
+}

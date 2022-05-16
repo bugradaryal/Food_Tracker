@@ -18,15 +18,50 @@
                 <div>
                             <b class="başlık">@Model.name</b>
 
-                            @if(Model.My_Foods != null)
+                            @if(Model.Food != null && Model.Food.Count != 0)
                             {
-                                /*
-                                foreach(var x in Model.My_Foods)
+                                <table> 
+                                <tr>
+                                <th>İsim</th> 
+                                <th>Eklenme</th> 
+                                <th>Son tüketim</th> 
+                                <th>İşlemler</th>
+                                </tr>
+                                @foreach(var x in Model.Food)
                                 {
-                                    <p>@x.Food.yemek_ismi</p><br />
+                                <tr> 
+                                    <td>@x.yemek_ismi</td> 
+                                    <td>@x.My_Food.eklenme_tarihi</td> 
+                                @{
+                                    DateTime d1 = @x.My_Food.bozulma_tarihi;
+                                    DateTime d2 = @x.My_Food.eklenme_tarihi;
+                                    string renk = "black";
+                                    if((d1-d2).Days <=1){
+                                        renk = "darkred";
+                                    }
+                                    else if((d1-d2).Days <=5){
+                                        renk = "#8B8000";
+                                    }
+                                    <td style="color:@renk;">@x.My_Food.bozulma_tarihi</td> 
                                 }
-                                */
-                            }
+                                    <td class="flexform">
+                                        <form asp-action="Fridge_Food_Delete" asp-controller="Main" asp-area="" method="post">
+                                           <input type="hidden" asp-for="User.id" value="@Model.User.id"/>
+                                           <input type="hidden" asp-for="id" value="@Model.id"/>
+                                           <input type="hidden" asp-for="food_id" value="@x.id"/>
+                                           <button type="submit" class="btn btn-secondary">Sil</button>  
+                                        </form>     
+                                         <form class="secondbutton" asp-action="Fridge_Food_Detail" asp-controller="Main" asp-area="" method="post">
+                                           <input type="hidden" asp-for="User.id" value="@Model.User.id"/>
+                                           <input type="hidden" asp-for="id" value="@Model.id"/>
+                                           <input type="hidden" asp-for="food_id" value="@x.id"/>
+                                           <button type="submit" class="btn btn-secondary">Detaylar</button>  
+                                        </form>      
+                                    </td> 
+                                </tr> 
+                                }
+                                </table> 
+                              }
                 </div>
             </div>
     </div>

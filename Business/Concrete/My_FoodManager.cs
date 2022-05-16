@@ -21,9 +21,9 @@ namespace Business.Concrete
             return _My_FoodRepository.CreateMy_Food(My_Food);
         }
 
-        public void DeleteMy_Food(int id)
+        public void DeleteMy_Food(int id, int idf)
         {
-            _My_FoodRepository.DeleteMy_Food(id);
+            _My_FoodRepository.DeleteMy_Food(id, idf);
         }
 
         public List<My_Food> GetAllMy_Foods(int id)

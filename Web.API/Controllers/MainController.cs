@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using Entities;
 using Web.API.Models;
+using System.Collections.Generic;
+using System.IO;
 
 namespace Web.API.Controllers
 {
@@ -13,12 +15,14 @@ namespace Web.API.Controllers
         private IFridgeService _fridgeService;
         private IMy_FoodService _my_FoodService;
         private INotificationService _notificationService;
+        private IFoodService _foodService;
         public MainController()
         {
             _userService = new UserManager();
             _fridgeService = new FridgeManager();
             _my_FoodService = new My_FoodManager();
             _notificationService = new NotificationManager();
+            _foodService = new FoodManager();
             ViewBag.error = string.Empty;
         }
 
@@ -55,21 +59,39 @@ namespace Web.API.Controllers
                 User user = _userService.GetUserById(vm.User.id);
                 if (_fridgeService.GetAllFridgesByUserId(user.id).Count == 0)
                 {
-                    _fridgeService.CreateFridge(new Entities.Fridge { user_id = user.id});
+                    _fridgeService.CreateFridge(new Entities.Fridge { user_id = user.id });
                     ViewBag.error = "Bir buzdolabın olmadığını farkettik ve senin için yeni bir tane oluşturduk.";
                 }
 
-                Fridge fr = _fridgeService.GetFirstFridgeByUserId(user.id);
+                Fridge fr;
+                if (vm.id == 0)
+                {
+                    fr = _fridgeService.GetFirstFridgeByUserId(user.id);
+                }
+                else
+                {
+                    fr = _fridgeService.GetFridgeById(vm.id);
+                }
 
                 vm.User = user;
-                vm.Fridge=  _fridgeService.GetAllFridgesByUserId(user.id);
+                vm.Fridge = _fridgeService.GetAllFridgesByUserId(user.id);
                 vm.id = fr.id;
                 vm.name = fr.name;
-                vm.My_Foods = _my_FoodService.GetAllMy_Foods(fr.id);
+                if (vm.Food == null)
+                {
+                    List<Food> food = new List<Food>();
+                    foreach (var x in _my_FoodService.GetAllMy_Foods(fr.id))
+                    {
+                        var y = _foodService.GetFoodById(x.Foods_id);
+                        y.My_Food = x;
+                        food.Add(y);
+                    }
+                    vm.Food = food;
+                }
 
                 return View(vm);
             }
-            catch(Exception error)
+            catch (Exception error)
             {
                 return Content("Buzdolabına giriş yapılırken bir hata ile karşılaşıldı...\n\n Hata:  " + error.ToString());
             }
@@ -91,9 +113,20 @@ namespace Web.API.Controllers
 
                 vm.id = fr.id;
                 vm.name = fr.name;
-                vm.My_Foods = _my_FoodService.GetAllMy_Foods(fr.id);
+                if (vm.Food == null)
+                {
+                    List<Food> food = new List<Food>();
+                    foreach (var x in _my_FoodService.GetAllMy_Foods(fr.id))
+                    {
+                        var y = _foodService.GetFoodById(x.Foods_id);
+                        y.My_Food = x;
+                        food.Add(y);
+                    }
+                    vm.Food = food;
+                }
+
                 ViewBag.error = "Buzdolabı değiştirildi.";
-                return View("Fridge",vm);
+                return View("Fridge", vm);
             }
             catch (Exception error)
             {
@@ -126,9 +159,19 @@ namespace Web.API.Controllers
                 vm.Fridge = _fridgeService.GetAllFridgesByUserId(user.id);
                 vm.id = fr.id;
                 vm.name = fr.name;
-                vm.My_Foods = _my_FoodService.GetAllMy_Foods(fr.id);
+                if (vm.Food == null)
+                {
+                    List<Food> food = new List<Food>();
+                    foreach (var x in _my_FoodService.GetAllMy_Foods(fr.id))
+                    {
+                        var y = _foodService.GetFoodById(x.Foods_id);
+                        y.My_Food = x;
+                        food.Add(y);
+                    }
+                    vm.Food = food;
+                }
 
-                return View("Fridge",vm);
+                return View("Fridge", vm);
             }
             catch (Exception error)
             {
@@ -152,7 +195,7 @@ namespace Web.API.Controllers
                 ViewBag.error = "Yeni Buzdolabı Oluşturuldu..";
                 return View("Fridge", vm);
             }
-            catch(Exception error)
+            catch (Exception error)
             {
                 return Content("Buzdolabı oluşturma işlemi yapılırken bir hata ile karşılaşıldı...\n\n Hata:  " + error.ToString());
             }
@@ -165,16 +208,26 @@ namespace Web.API.Controllers
             {
                 ViewBag.CurrentView = "Fridge";
                 User user = _userService.GetUserById(vm.User.id);
-                
+
                 vm.User = user;
                 string old_name = _fridgeService.GetFridgeById(vm.id).name;
-                _fridgeService.UpdateFridge(new Fridge { id = vm.id, name = vm.name, user_id = user.id});
+                _fridgeService.UpdateFridge(new Fridge { id = vm.id, name = vm.name, user_id = user.id });
                 vm.Fridge = _fridgeService.GetAllFridgesByUserId(user.id);
 
-                vm.My_Foods = _my_FoodService.GetAllMy_Foods(vm.id);
+                if (vm.Food == null)
+                {
+                    List<Food> food = new List<Food>();
+                    foreach (var x in _my_FoodService.GetAllMy_Foods(vm.id))
+                    {
+                        var y = _foodService.GetFoodById(x.Foods_id);
+                        y.My_Food = x;
+                        food.Add(y);
+                    }
+                    vm.Food = food;
+                }
 
 
-                ViewBag.error = "\"" + old_name+ "\" Adlı buzdolabı \"" + vm.name.ToString() + "\" Olarak Yeniden Adlandırıldı..";
+                ViewBag.error = "\"" + old_name + "\" Adlı buzdolabı \"" + vm.name.ToString() + "\" Olarak Yeniden Adlandırıldı..";
                 return View("Fridge", vm);
             }
             catch (Exception error)
@@ -219,7 +272,7 @@ namespace Web.API.Controllers
                 ViewBag.error = "Kullanıcı hesabı silindi.";
                 return View("../Home/Login");
             }
-            catch(Exception error)
+            catch (Exception error)
             {
                 return Content("Hesap silinirken bir hata ile karşılaşıldı...\n\n Hata:  " + error.ToString());
             }
@@ -251,7 +304,7 @@ namespace Web.API.Controllers
             {
                 ViewBag.CurrentView = "Account Edit";
                 vm.Notification = _notificationService.GetUsersNotifications(vm.User.id);
-                if(vm.Notification.tercih_sms == true)
+                if (vm.Notification.tercih_sms == true)
                 {
                     if (vm.User.Telefon == string.Empty || vm.User.Telefon == null)
                     {
@@ -279,7 +332,7 @@ namespace Web.API.Controllers
                 ViewData.Clear();
                 ViewBag.CurrentView = "Notification Edit";
                 vm.User = _userService.GetUserById(vm.User.id);
-                if(vm.Notification.tercih_sms == true)
+                if (vm.Notification.tercih_sms == true)
                 {
                     if (vm.User.Telefon == null || vm.User.Telefon == string.Empty)
                     {
@@ -299,5 +352,119 @@ namespace Web.API.Controllers
                 return Content("Bildirim işlemi gerçekleştirilirken bir hata ile karşılaşıldı...\n\n Hata:  " + error.ToString());
             }
         }
+
+        [HttpPost]
+        public IActionResult Fridge_Food_Delete(ViewModels vm)
+        {
+            try
+            {
+                ViewBag.CurrentView = "Delete Food on Fridge";
+
+                _my_FoodService.DeleteMy_Food(vm.id, vm.food_id);
+                vm.User = _userService.GetUserById(vm.User.id);
+                vm.Fridge = _fridgeService.GetAllFridgesByUserId(vm.User.id);
+                vm.name = _fridgeService.GetFridgeById(vm.id).name;
+
+                List<Food> food = new List<Food>();
+                foreach (var x in _my_FoodService.GetAllMy_Foods(vm.id))
+                {
+                    var y = _foodService.GetFoodById(x.Foods_id);
+                    food.Add(y);
+                }
+                vm.Food = food;
+                ViewBag.error += "Yemek silme işlemi tamamlandı.";
+                return View("Fridge", vm);
+            }
+            catch (Exception error)
+            {
+                return Content("Yemek Silme İşlemi yapılırken bir hata ile karşılaşıldı...\n\n Hata:  " + error.ToString());
+            }
+        }
+        [HttpPost]
+        public IActionResult Fridge_Food_Detail(ViewModels vm)
+        {
+            try
+            {
+                ViewBag.CurrentView = "Food details on Fridge";
+
+                vm.User = _userService.GetUserById(vm.User.id);
+                vm.Fridge = _fridgeService.GetAllFridgesByUserId(vm.User.id);
+                vm.name = _fridgeService.GetFridgeById(vm.id).name;
+
+                if(vm.Food == null)
+                {
+                    List<Food> food = new List<Food>();
+                    foreach (var x in _my_FoodService.GetAllMy_Foods(vm.id))
+                    {
+                        var y = _foodService.GetFoodById(x.Foods_id);
+                        food.Add(y);
+                    }
+                    vm.Food = food;
+                }
+                return View(vm);
+            }
+            catch (Exception error)
+            {
+                return Content("Yemek detaylarına ulaşılırken bir hata ile karşılaşıldı...\n\n Hata:  " + error.ToString());
+            }
+        }
+
+
+        [HttpPost]
+        public IActionResult Food_Detail_Pdf(ViewModels vm)
+        {
+            try
+            {
+                ViewBag.CurrentView = "Food details on Fridge";
+
+                vm.User = _userService.GetUserById(vm.User.id);
+                vm.Fridge = _fridgeService.GetAllFridgesByUserId(vm.User.id);
+                vm.name = _fridgeService.GetFridgeById(vm.id).name;
+
+                if (vm.Food == null)
+                {
+                    List<Food> food = new List<Food>();
+                    foreach (var x in _my_FoodService.GetAllMy_Foods(vm.id))
+                    {
+                        var y = _foodService.GetFoodById(x.Foods_id);
+                        food.Add(y);
+                    }
+                    vm.Food = food;
+                }
+
+                return View(vm);
+            }
+            catch (Exception error)
+            {
+                return Content("Yemek detay pdf dosyası indirilirken bir hata ile karşılaşıldı.. \n\n Hata:  " + error.ToString());
+            }
+        }
+
+
+
+        [HttpPost]
+        public IActionResult Foods(ViewModels vm)
+        {
+            try
+            {
+                ViewBag.CurrentView = "Foods";
+
+                User user = _userService.GetUserById(vm.User.id);
+
+                vm.User = user;
+                vm.Fridge = _fridgeService.GetAllFridgesByUserId(user.id);
+                vm.Food = _foodService.GetAllFoods();
+               
+
+                return View(vm);
+            }
+            catch (Exception error)
+            {
+                return Content("Yemekler sayfası açılırken bir hata ile karşılaşıldı.. \n\n Hata:  " + error.ToString());
+            }
+        }
+
+
+
     }
 }

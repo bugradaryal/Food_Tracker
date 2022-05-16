@@ -42,7 +42,13 @@
                     </form>
 
                     <a href="#" class="nav_link"> <i class='bx bx-message-square-detail nav_icon'></i> <span class="nav_name">Makaleler</span> </a>
-                    <a href="#" class="nav_link"> <i class='bx bx-bookmark nav_icon'></i> <span class="nav_name">Yemekler</span> </a>
+
+
+                    <form id="Foodsscreen" asp-action="Foods" asp-controller="Main" asp-area="" method="post">
+                        <input type="hidden" asp-for="@Model.User.id" value="@Model.User.id" />
+                        <a href="#" onclick="document.getElementById('Foodsscreen').submit()" class="nav_link"> <i class='bx bx-bookmark nav_icon'></i> <span class="nav_name">Yemekler</span> </a>
+                    </form>
+
 
                     <form id="aboutscreen" asp-action="About" asp-controller="Main" asp-area="" method="post">
                         <input type="hidden" asp-for="@Model.User.id" value="@Model.User.id" />

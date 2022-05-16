@@ -43,6 +43,7 @@
 
 .content {
     margin-top: 4vh;
+    display: inline-block;
 }
 .button form {
     display: inline;
@@ -111,3 +112,29 @@
     float: left;
 }
 
+table {
+    margin-top: 2vh;
+    border-collapse: collapse;
+    font-family: arial, sans-serif;
+    width: 100%;
+}
+    table td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 5px;
+    }
+    table th{
+        text-decoration:underline;
+        width:10vw;
+    }
+    table tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+
+.flexform {
+    display:flex;
+}
+
+.secondbutton{
+    margin-left:0.3vw;
+}
