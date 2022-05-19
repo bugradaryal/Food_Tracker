@@ -17,6 +17,5 @@ delete from My_Foods;
 delete from Notification;
 
 insert into Users(Ad,Soyad,Eposta,Sifre) values ('Buğra','Daryal','oyuasx@gmail.com','123asd')
-insert into My_Foods(Fridges_id,Foods_id) values (6,16)
-
-insert into Foods(yemek_ismi,potasyum_gr) values ('Elma',2)
+insert into My_Foods(Fridges_id,Foods_id,bozulma_tarihi,eklenme_tarihi) values (1,1,'11.11.1111','11.11.1111')
+insert into Foods(yemek_ismi,protein_yüzde) values ('Erik',7)

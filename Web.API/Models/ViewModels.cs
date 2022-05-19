@@ -10,10 +10,13 @@ namespace Web.API.Models
 
         public Notification Notification { get; set; }
 
+        public IList<My_Food> My_Food { get; set; }
+
         public IList<Food> Food { get; set; }
 
-        public int id { get; set; }
-        public int food_id { get; set; }
+        public int Fridge_id { get; set; }
+        public int Myfood_id { get; set; }
+        public int Food_id { get; set; }
         public string name { get; set; }
     }
 }

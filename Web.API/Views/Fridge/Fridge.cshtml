@@ -18,7 +18,7 @@
                 <div>
                             <b class="başlık">@Model.name</b>
 
-                            @if(Model.Food != null && Model.Food.Count != 0)
+                            @if(Model.My_Food != null && Model.My_Food.Count != 0)
                             {
                                 <table> 
                                 <tr>
@@ -27,14 +27,14 @@
                                 <th>Son tüketim</th> 
                                 <th>İşlemler</th>
                                 </tr>
-                                @foreach(var x in Model.Food)
+                                @foreach(var x in Model.My_Food)
                                 {
                                 <tr> 
-                                    <td>@x.yemek_ismi</td> 
-                                    <td>@x.My_Food.eklenme_tarihi</td> 
+                                    <td>@x.Food.yemek_ismi</td> 
+                                    <td>@x.eklenme_tarihi.ToString("dd/MM/yyyy")</td> 
                                 @{
-                                    DateTime d1 = @x.My_Food.bozulma_tarihi;
-                                    DateTime d2 = @x.My_Food.eklenme_tarihi;
+                                    DateTime d1 = @x.bozulma_tarihi;
+                                    DateTime d2 = @x.eklenme_tarihi;
                                     string renk = "black";
                                     if((d1-d2).Days <=1){
                                         renk = "darkred";
@@ -42,19 +42,19 @@
                                     else if((d1-d2).Days <=5){
                                         renk = "#8B8000";
                                     }
-                                    <td style="color:@renk;">@x.My_Food.bozulma_tarihi</td> 
+                                    <td style="color:@renk;">@x.bozulma_tarihi.ToString("dd/MM/yyyy")</td> 
                                 }
                                     <td class="flexform">
-                                        <form asp-action="Fridge_Food_Delete" asp-controller="Main" asp-area="" method="post">
+                                        <form asp-action="Fridge_Food_Delete" asp-controller="Fridge" asp-area="" method="post">
                                            <input type="hidden" asp-for="User.id" value="@Model.User.id"/>
-                                           <input type="hidden" asp-for="id" value="@Model.id"/>
-                                           <input type="hidden" asp-for="food_id" value="@x.id"/>
+                                           <input type="hidden" asp-for="Fridge_id" value="@Model.Fridge_id"/>
+                                           <input type="hidden" asp-for="Myfood_id" value="@x.id"/>
                                            <button type="submit" class="btn btn-secondary">Sil</button>  
                                         </form>     
-                                         <form class="secondbutton" asp-action="Fridge_Food_Detail" asp-controller="Main" asp-area="" method="post">
+                                         <form class="secondbutton" asp-action="Fridge_Food_Detail" asp-controller="Fridge" asp-area="" method="post">
                                            <input type="hidden" asp-for="User.id" value="@Model.User.id"/>
-                                           <input type="hidden" asp-for="id" value="@Model.id"/>
-                                           <input type="hidden" asp-for="food_id" value="@x.id"/>
+                                           <input type="hidden" asp-for="Fridge_id" value="@Model.Fridge_id"/>
+                                           <input type="hidden" asp-for="Myfood_id" value="@x.id"/>
                                            <button type="submit" class="btn btn-secondary">Detaylar</button>  
                                         </form>      
                                     </td> 
@@ -68,21 +68,21 @@
         <b style="margin-left:2vw">@ViewBag.error</b>
     <div class="button">
 
-        <form asp-action="Fridge_Select" asp-controller="Main" asp-area="">
-            <select asp-for=id class="form-select" aria-label="Buzdolaplarım."
+        <form asp-action="Fridge_Select" asp-controller="Fridge" asp-area="">
+            <select asp-for=Fridge_id class="form-select" aria-label="Buzdolaplarım."
                     asp-items="@(new SelectList(Model.Fridge, nameof(Fridge.id), nameof(Fridge.name)))">
             </select>
             <input type="hidden" asp-for=User.id value=@Model.User.id/>
             <button type="submit" id="işlem_buton" class="btn btn-danger">Seç</button>
         </form>
 
-        <form asp-action="Fridge_Delete" asp-controller="Main" asp-area="">
-            <input type="hidden" asp-for="id" value=@Model.id/>
+        <form asp-action="Fridge_Delete" asp-controller="Fridge" asp-area="">
+            <input type="hidden" asp-for="Fridge_id" value=@Model.Fridge_id/>
             <input type="hidden" asp-for="User.id" value=@Model.User.id/>
             <button type="submit" id="işlem_buton" class="btn btn-secondary">Sil</button>
         </form>
 
-        <form asp-action="Fridge_Create" asp-controller="Main" asp-area="">
+        <form asp-action="Fridge_Create" asp-controller="Fridge" asp-area="">
             <input type="hidden" asp-for="User.id" value=@Model.User.id/>
             <button type="submit" id="işlem_buton" class="btn btn-secondary">Oluştur</button>
         </form>
@@ -93,10 +93,10 @@
 
               <div class="modalımın-contenti">
                 <span class="close">&times;</span>
-                <form asp-action="Fridge_Rename" asp-controller="Main" asp-area="">
+                <form asp-action="Fridge_Rename" asp-controller="Fridge" asp-area="">
                     <div>
                         <input type="text" asp-for="name" class="rename" />
-                        <input type="hidden" asp-for="id" value=@Model.id/>
+                        <input type="hidden" asp-for="Fridge_id" value=@Model.Fridge_id/>
                         <input type="hidden" asp-for="User.id" value=@Model.User.id/>
                     </div>
                     <div>
@@ -119,7 +119,7 @@
                     modalım.style.display = "none";
                 }
                 window.onclick = function (event) {
-                    if (event.target == modal) {
+                    if (event.target == modalım) {
                         modalım.style.display = "none";
                     }
                 }

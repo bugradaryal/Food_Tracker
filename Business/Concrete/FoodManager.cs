@@ -40,5 +40,13 @@ namespace Business.Concrete
         {
             return _FoodRepository.UpdateFood(Food);
         }
+        public List<Food> SearchByname(string name)
+        {
+            return _FoodRepository.SearchByname(name);
+        }
+        public List<Food> Filter(List<Food> food, string islem)
+        {
+            return _FoodRepository.Filter(food, islem);
+        }
     }
 }

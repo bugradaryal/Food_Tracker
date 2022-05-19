@@ -7,7 +7,7 @@
     background-color: #eeeeee;
     position: absolute;
     margin-top: 8vh;
-    width: 80%;
+    width: 88%;
     height: auto;
     margin-left: 3%;
     border: 2px #6d6d6d antiquewhite;
@@ -22,7 +22,6 @@
 }
 
 .content {
-    margin-top: 4vh;
     display: inline-block;
     padding:4em;
 }
@@ -36,31 +35,65 @@
 }
 
 table {
-    margin-top: 2vh;
-    border-collapse: collapse;
+    margin-top: 4vh;
+    border-collapse: separate !important;
+    border-spacing: 0;
     font-family: arial, sans-serif;
+    font-size: 0.8em;
+    height: 100%;
     width: 100%;
+    border-radius: 4px;
+    table-layout: inherit;
+    border: 2px solid #dddddd;
 }
 
     table td, th {
-        border: 1px solid #dddddd;
-        text-align: left;
-        padding: 5px;
+        border: 2px solid #dddddd;
+        text-align: center;
     }
 
-    table th {
-        text-decoration: underline;
-        width: 10vw;
-    }
-
-    table tr:nth-child(even) {
-        background-color: #dddddd;
-    }
-
-.flexform {
-    display: flex;
+th {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    width: 10%;
 }
+        th input {
+            font-weight: bold;
+            border: 0;
+            outline: 0;
+        }
+
+        th input:hover {
+            text-decoration: underline;
+        }
+        th input:focus {
+            color:dimgray;
+        }
+
+table tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+    table tr:nth-child(even) td {
+        border-right: 2px solid #d8d8d8;
+        border-left: 2px solid #d8d8d8;
+    }
+
+    .flexform {
+        display: flex;
+    }
 
 .secondbutton {
     margin-left: 0.3vw;
 }
+
+
+.search{
+    float:right;
+    display:flex;
+}
+
+.form-group{
+    display:flex;
+}
+

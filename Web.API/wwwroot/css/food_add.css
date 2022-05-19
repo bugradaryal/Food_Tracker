@@ -1,0 +1,66 @@
+﻿body {
+    height: 100%;
+    width: 100%;
+}
+
+.bodydiv {
+    background-color: #eeeeee;
+    position: relative;
+    margin-top: 8vh;
+    width: 50%;
+    height: auto;
+    margin-left: 3%;
+    border: 2px #6d6d6d antiquewhite;
+    border-radius: 10px;
+}
+
+.başlık {
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    font-size: 24px;
+    margin-bottom: 3vh;
+    text-decoration: underline;
+}
+
+.content {
+    margin-top: 4vh;
+    display: inline-block;
+    padding: 4em;
+}
+
+#addbutton {
+    margin-top: 2vh;
+    height: auto;
+    width: 6vw;
+    font-size: 1vw;
+}
+
+.fridgeselect {
+    margin-top: 1em;
+    margin-bottom: 0.2em;
+}
+
+.flexaddandinfo {
+    display: flex;
+    width: 100%;
+    height: auto;
+
+}
+
+.flexinfo {
+    margin-top: 2em;
+}
+
+.form-select-food {
+    height: auto;
+    width: 80%;
+    border-radius: 5px;
+}
+
+.image {
+    margin-top: 10vh;
+    margin-left: 9em;
+}
+    .image img {
+        height: 30em;
+        width: 30em;
+    }

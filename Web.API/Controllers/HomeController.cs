@@ -6,8 +6,6 @@ using Business.Concrete;
 using MimeKit;
 using MailKit.Net.Smtp;
 using MailKit.Security;
-using Microsoft.AspNetCore.Http;
-using System.Web;
 using Web.API.Models;
 
 namespace Web.API.Controllers

@@ -13,7 +13,7 @@
 
 
 <div class="bodydiv">
-    <form class="inner" asp-action="Account_Edit_Post" asp-controller="Main" asp-area="" method="post">
+    <form class="inner" asp-action="Account_Edit_Post" asp-controller="Account" asp-area="" method="post">
         <div class="flexx">
             <b>Ad:</b>
             <input class="account" type="text" placeholder="@Model.User.Ad" asp-for="@Model.User.Ad" maxlength="30" minlength="1" onkeydown="keyDown(event)"/>
@@ -51,7 +51,7 @@
             <button type="button" id="formsub" class="btn btn-secondary">İşlem İptal</button>
         </div>
     </form>
-    <form id="formid" asp-action="Account" asp-controller="Main" asp-area="" method="post">
+    <form id="formid" asp-action="Account" asp-controller="Account" asp-area="" method="post">
             <input type="hidden" asp-for="@Model.User.id" value="@Model.User.id"/>
     </form>
     <div class="image">
@@ -70,7 +70,7 @@
             <img src="~/images/@image">
         </div>
             <div class="leftimagecontent">
-                <form asp-action="Notification" asp-controller="Main" asp-area="" method="post">
+                <form asp-action="Notification" asp-controller="Account" asp-area="" method="post">
                     <h3><b>Bildirim Ayarları:</b></h3>  
                     @{
                         if(Model.Notification.tercih_uygulama == true)

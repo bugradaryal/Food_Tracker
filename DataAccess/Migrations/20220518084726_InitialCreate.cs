@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DataAccess.Migrations
 {
@@ -24,7 +25,8 @@ namespace DataAccess.Migrations
                     potasyum_gr = table.Column<int>(type: "int", nullable: false, defaultValue: 0),
                     kalsiyum_gr = table.Column<int>(type: "int", nullable: false, defaultValue: 0),
                     lif_gr = table.Column<int>(type: "int", nullable: false, defaultValue: 0),
-                    kollestrol_gr = table.Column<int>(type: "int", nullable: false, defaultValue: 0)
+                    kollestrol_gr = table.Column<int>(type: "int", nullable: false, defaultValue: 0),
+                    gün_bozulma_tarihi = table.Column<int>(type: "int", nullable: false, defaultValue: 0)
                 },
                 constraints: table =>
                 {
@@ -99,7 +101,7 @@ namespace DataAccess.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     user_id = table.Column<int>(type: "int", nullable: false),
                     title = table.Column<string>(type: "varchar(500)", nullable: false),
-                    date = table.Column<string>(type: "varchar(30)", nullable: true, defaultValue: "15 . 05 . 2022"),
+                    date = table.Column<string>(type: "varchar(30)", nullable: true, defaultValue: "18.05.2022 11:47:25"),
                     text = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -120,7 +122,9 @@ namespace DataAccess.Migrations
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Fridges_id = table.Column<int>(type: "int", nullable: false),
-                    Foods_id = table.Column<int>(type: "int", nullable: false)
+                    Foods_id = table.Column<int>(type: "int", nullable: false),
+                    eklenme_tarihi = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 5, 18, 11, 47, 25, 994, DateTimeKind.Local).AddTicks(5122)),
+                    bozulma_tarihi = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 5, 18, 11, 47, 25, 993, DateTimeKind.Local).AddTicks(3089))
                 },
                 constraints: table =>
                 {

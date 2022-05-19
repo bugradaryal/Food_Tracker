@@ -47,6 +47,8 @@ namespace DataAccess
             modelBuilder.Entity<My_Food>().HasKey(x => x.id);
             modelBuilder.Entity<My_Food>().Property(x => x.id).ValueGeneratedOnAdd();
             modelBuilder.Entity<My_Food>().Property(x => x.Fridges_id).IsRequired();
+            modelBuilder.Entity<My_Food>().Property(x => x.bozulma_tarihi).HasColumnType("datetime2").HasDefaultValue(DateTime.Now);
+            modelBuilder.Entity<My_Food>().Property(x => x.eklenme_tarihi).HasColumnType("datetime2").HasDefaultValue(DateTime.Now);
 
             /////////////////////Foods
             modelBuilder.Entity<Food>().HasKey(x => x.id);
@@ -71,7 +73,7 @@ namespace DataAccess
             modelBuilder.Entity<User_article>().Property(x => x.id).ValueGeneratedOnAdd();
             modelBuilder.Entity<User_article>().Property(x => x.user_id).IsRequired();
             modelBuilder.Entity<User_article>().Property(x => x.title).HasColumnType("varchar(20)").IsRequired();
-            modelBuilder.Entity<User_article>().Property(x => x.date).HasColumnType("varchar(30)").HasDefaultValue(DateTime.Now.ToString("dd / MM / yyyy"));
+            modelBuilder.Entity<User_article>().Property(x => x.date).HasColumnType("varchar(30)").HasDefaultValue(DateTime.Now.ToString());
             modelBuilder.Entity<User_article>().Property(x => x.title).HasColumnType("varchar(500)").IsRequired();  //max length 500
 
             /////////////////////Notification

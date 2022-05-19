@@ -1,0 +1,106 @@
+﻿@model ViewModels
+
+@{
+    ViewData["Title"] = ViewBag.CurrentView;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <link rel="stylesheet" href="~/css/Foods.css">
+</head>
+
+
+<div class="bodydiv">
+     <div class="content">
+         <b class="başlık">Yemekler Ve Değerleri</b>
+                <div class="search">
+                    <form asp-action="Food_Search" asp-controller="Food" asp-area="" method="post">
+                      <div class="form-group">
+                        <input type="text" class="form-control" name="isim" placeholder="Yemek İsmi..." required>      
+                         <input type="hidden" asp-for="User.id" value=@Model.User.id/>
+                        <button type="submit" class="btn btn-primary">Ara</button>
+                      </div>
+                    </form>
+                    <form asp-action="Foods" asp-controller="Food" asp-area="" method="post">
+                         <input type="hidden" asp-for="User.id" value=@Model.User.id/>
+                        <button type="submit" class="btn btn-secondary">Temizle</button>
+                    </form>
+                </div>
+                <div>
+                    <b style="color:red;">@ViewBag.error</b>
+                 <table> 
+                     <form asp-action="Food_Filter" asp-controller="Food" asp-area="" method="post">
+                      <input type="hidden" asp-for="User.id" value=@Model.User.id/>  
+                      <tr>
+                            <th><b>İsim</b></th> 
+                            <th>
+                                <input type="submit" value="Protein(%)" name="islem"/>                   
+                            </th> 
+                            <th>
+                                <input type="submit" value="Protein(gr)" name="islem"/>   
+                            </th> 
+                            <th>
+                                <input type="submit" value="Yağ(%)" name="islem"/>   
+                            </th> 
+                            <th>
+                                <input type="submit" value="Yağ(gr)" name="islem"/>   
+                            </th>
+                            <th>
+                                <input type="submit" value="Karbonhidrat(%)" name="islem"/>   
+                            </th>
+                            <th>
+                                <input type="submit" value="Karbonhidrat(gr)" name="islem"/>   
+                            </th>
+                            <th>
+                                <input type="submit" value="Kalori" name="islem"/>   
+                            </th>
+                            <th>
+                                <input type="submit" value="Sodyum(gr)" name="islem"/>   
+                            </th>
+                            <th>
+                                <input type="submit" value="Potasyum(gr)" name="islem"/>   
+                            </th>
+                            <th>
+                                <input type="submit" value="Kalsiyum(gr)" name="islem"/>   
+                            </th>
+                            <th>
+                                <input type="submit" value="Lif(gr)" name="islem"/>   
+                            </th>
+                            <th>
+                                <input type="submit" value="Kollestrol(gr)" name="islem"/>   
+                            </th>
+                            <th>
+                                <input type="submit" value="Bozulma Süresi" name="islem"/>   
+                            </th>
+                            <th>İşlemler</th>
+                     </tr>
+                      </form> 
+                    @foreach(var x in Model.Food)
+                    {
+                                <tr> 
+                                    <td><b>@x.yemek_ismi</b></td> 
+                                    <td>@x.protein_yüzde</td> 
+                                    <td>@x.protein_gr</td> 
+                                    <td>@x.yağ_yüzde</td> 
+                                    <td>@x.yağ_gr</td> 
+                                    <td>@x.karbonhidrat_yüzde</td> 
+                                    <td>@x.karbonhidrat_gr</td> 
+                                    <td>@x.kalori</td> 
+                                    <td>@x.sodyum_gr</td> 
+                                    <td>@x.potasyum_gr</td>
+                                    <td>@x.kalsiyum_gr</td> 
+                                    <td>@x.lif_gr</td> 
+                                    <td>@x.kollestrol_gr</td> 
+                                    <td>@x.gün_bozulma_tarihi Gün</td> 
+                                    <td>
+                                            <form asp-action="Food_AddToFridge" asp-controller="Food" asp-area="" method="post">
+                                                        <input type="hidden" asp-for="User.id" value=@Model.User.id/>
+                                                        <input type="hidden" asp-for="Food_id" value=@x.id/>
+                                                        <button type="submit" class="btn btn-secondary">Ekle</button> 
+                                           </form>    
+                                    </td> 
+                                </tr> 
+                     }   
+                     </table>  
+                </div>
+        </div>
+</div>

@@ -29,7 +29,7 @@
             <b style="color:red;">@ViewBag.error</b>
         </div>
         <div class="button">
-            <form asp-action="Account_Edit" asp-controller="Main" asp-area="" method="post">
+            <form asp-action="Account_Edit" asp-controller="Account" asp-area="" method="post">
                 <input type="hidden" asp-for="@Model.User.id" value="@Model.User.id"/>
                 <button type="submit" class="btn btn-secondary">Düzenle</button>
             </form>
@@ -87,7 +87,7 @@
 
               <div class="modalımın-contenti">
                 <span class="close">&times;</span>
-                <form asp-action="Account_Delete" asp-controller="Main" asp-area="" method="post">
+                <form asp-action="Account_Delete" asp-controller="Account" asp-area="" method="post">
                     <div>
                         <h2><b>Hesabı Silmek İstediğine Eminmisin? Bu işlemin geri dönüşü yoktur!!!</b></h2>
                         <input type="hidden" asp-for="@Model.User.id" value="@Model.User.id"/>

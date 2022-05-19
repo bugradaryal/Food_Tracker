@@ -1,0 +1,54 @@
+﻿@model ViewModels
+
+@{
+    ViewData["Title"] = ViewBag.CurrentView;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <link rel="stylesheet" href="~/css/food_add.css">
+</head>
+
+
+
+<div class="flexaddandinfo">
+    <div class="bodydiv">
+     <div class="content">
+                    @foreach(var x in Model.Food)
+                    {
+                        <div>
+                          <div>
+                                <div>
+                                        <b class="başlık">"@x.yemek_ismi" Adlı Yemek Eklensin mi?</b>
+                                </div>
+                                <form asp-action="Food_Add" asp-controller="Food" asp-area="" method="post">
+                                    <p class="fridgeselect">Eklenecek buzdolabı:</p>
+                                    <select asp-for=Fridge_id class="form-select-food" aria-label="Buzdolaplarım."
+                                            asp-items="@(new SelectList(Model.Fridge, nameof(Fridge.id), nameof(Fridge.name)))">
+                                    </select>
+                                    <input type="hidden" asp-for=User.id value=@Model.User.id/>
+                                    <input type="hidden" asp-for=Food_id value=@x.id/>
+                                    <div>
+                                          <button type="submit" id="addbutton" class="btn btn-secondary">Ekle</button> 
+                                    </div>
+                                </form>
+                                <div class="flexinfo">
+                                    <div>
+                                            <p><b>Dikkat!!</b> Yemeğin bozulması @x.gün_bozulma_tarihi gün sürmektedir.</p>
+                                            <p>Eklenen yemek hakkında bilgileri "Buzdolabım" sayfasından takip edebilirsiniz.</p>
+                                            <p>Yemeğinizin tarihinin geçmemiş olmasına dikkat ediniz.</p>
+                                            <p>Mutlu ve sağlıklı günler dileriz!!!</p>
+                                    </div>
+                                    <div>
+                                            <b style="color:red;">@ViewBag.error</b>
+                                    </div>   
+                                </div>
+                            </div>
+                        </div>
+                     }   
+        </div>
+    </div>
+    <div class="image">
+           <img src="~/images/food.jpg">
+    </div>
+</div>
+
