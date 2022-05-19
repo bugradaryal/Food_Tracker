@@ -15,7 +15,7 @@
                 <div class="search">
                     <form asp-action="Food_Search" asp-controller="Food" asp-area="" method="post">
                       <div class="form-group">
-                        <input type="text" class="form-control" name="isim" placeholder="Yemek İsmi..." required>      
+                        <input type="text" class="form-control" name="search" placeholder="Yemek İsmi..." required>      
                          <input type="hidden" asp-for="User.id" value=@Model.User.id/>
                         <button type="submit" class="btn btn-primary">Ara</button>
                       </div>
@@ -74,32 +74,35 @@
                             <th>İşlemler</th>
                      </tr>
                       </form> 
-                    @foreach(var x in Model.Food)
+                    @if(Model.Food != null)
                     {
-                                <tr> 
-                                    <td><b>@x.yemek_ismi</b></td> 
-                                    <td>@x.protein_yüzde</td> 
-                                    <td>@x.protein_gr</td> 
-                                    <td>@x.yağ_yüzde</td> 
-                                    <td>@x.yağ_gr</td> 
-                                    <td>@x.karbonhidrat_yüzde</td> 
-                                    <td>@x.karbonhidrat_gr</td> 
-                                    <td>@x.kalori</td> 
-                                    <td>@x.sodyum_gr</td> 
-                                    <td>@x.potasyum_gr</td>
-                                    <td>@x.kalsiyum_gr</td> 
-                                    <td>@x.lif_gr</td> 
-                                    <td>@x.kollestrol_gr</td> 
-                                    <td>@x.gün_bozulma_tarihi Gün</td> 
-                                    <td>
-                                            <form asp-action="Food_AddToFridge" asp-controller="Food" asp-area="" method="post">
-                                                        <input type="hidden" asp-for="User.id" value=@Model.User.id/>
-                                                        <input type="hidden" asp-for="Food_id" value=@x.id/>
-                                                        <button type="submit" class="btn btn-secondary">Ekle</button> 
-                                           </form>    
-                                    </td> 
-                                </tr> 
-                     }   
+                        @foreach(var x in Model.Food)
+                        {
+                                    <tr> 
+                                        <td><b>@x.yemek_ismi</b></td> 
+                                        <td>@x.protein_yüzde</td> 
+                                        <td>@x.protein_gr</td> 
+                                        <td>@x.yağ_yüzde</td> 
+                                        <td>@x.yağ_gr</td> 
+                                        <td>@x.karbonhidrat_yüzde</td> 
+                                        <td>@x.karbonhidrat_gr</td> 
+                                        <td>@x.kalori</td> 
+                                        <td>@x.sodyum_gr</td> 
+                                        <td>@x.potasyum_gr</td>
+                                        <td>@x.kalsiyum_gr</td> 
+                                        <td>@x.lif_gr</td> 
+                                        <td>@x.kollestrol_gr</td> 
+                                        <td>@x.gün_bozulma_tarihi Gün</td> 
+                                        <td>
+                                                <form asp-action="Food_AddToFridge" asp-controller="Food" asp-area="" method="post">
+                                                            <input type="hidden" asp-for="User.id" value=@Model.User.id/>
+                                                            <input type="hidden" asp-for="Food_id" value=@x.id/>
+                                                            <button type="submit" class="btn btn-secondary">Ekle</button> 
+                                               </form>    
+                                        </td> 
+                                    </tr> 
+                         }   
+                    }
                      </table>  
                 </div>
         </div>

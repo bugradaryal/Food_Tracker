@@ -1,0 +1,57 @@
+﻿@model ViewModels
+
+@{
+    ViewData["Title"] = ViewBag.CurrentView;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <link rel="stylesheet" href="~/css/text.css">
+</head>
+
+
+<div class="bodydiv">
+     <div class="content">
+        @if(ViewData["from"] != null)
+        {
+            string Url = "Text";
+            if(ViewData["from"].ToString() == "My_Text")
+            {
+                Url = "My_Text";
+            }
+            <form id="previouspage" asp-action="@Url" asp-controller="Text" asp-area="" method="post">
+                <input type="hidden" asp-for="User.id" value=@Model.User.id/>
+                <span onclick="document.getElementById('previouspage').submit()" class="close">&times;</span>
+            </form>
+            @foreach(var x in @Model.User_article)
+            {
+                <div>
+                      <div class="author">
+                        <div>
+                        @{
+                           string image = "Belirtilmemis.jpg";
+                           if (Model.User.Cinsiyet == "Erkek")
+                           {
+                              image = "Erkek.jpg";
+                           }
+                           else if (Model.User.Cinsiyet == "Kadın")
+                           {
+                              image = "Kadın.jpg";
+                           }
+                         }
+                           <img class="image" src="~/images/@image">
+                       </div>
+                       <div>
+                           <p>@x.User.Ad @x.User.Soyad</p>
+                       </div>
+                     </div>
+                     <div class="date">
+                        <p>@x.date.ToString("dd/MM/yyyy")</p>
+                     </div>
+                </div>
+                <div>
+                    <p>@x.text</p>
+                </div>
+            }
+         }
+        </div>
+</div>

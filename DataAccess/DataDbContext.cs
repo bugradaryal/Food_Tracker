@@ -73,7 +73,7 @@ namespace DataAccess
             modelBuilder.Entity<User_article>().Property(x => x.id).ValueGeneratedOnAdd();
             modelBuilder.Entity<User_article>().Property(x => x.user_id).IsRequired();
             modelBuilder.Entity<User_article>().Property(x => x.title).HasColumnType("varchar(20)").IsRequired();
-            modelBuilder.Entity<User_article>().Property(x => x.date).HasColumnType("varchar(30)").HasDefaultValue(DateTime.Now.ToString());
+            modelBuilder.Entity<User_article>().Property(x => x.date).HasColumnType("datetime2").HasDefaultValue(DateTime.Now);
             modelBuilder.Entity<User_article>().Property(x => x.title).HasColumnType("varchar(500)").IsRequired();  //max length 500
 
             /////////////////////Notification

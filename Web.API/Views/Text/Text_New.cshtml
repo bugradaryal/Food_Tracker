@@ -1,0 +1,30 @@
+﻿@model ViewModels
+
+@{
+    ViewData["Title"] = ViewBag.CurrentView;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <link rel="stylesheet" href="~/css/text.css">
+</head>
+
+
+<div class="bodydiv">
+     <div class="content">
+         <b class="başlık">Yeni Yazı</b>
+         <form asp-action="Create_New_Text" asp-controller="Text" asp-area="" method="post">
+                <div>
+                    <input type="text" placeholder="Başlık" name="title" maxlength="42" minlength="5" required/>
+                    <textarea rows="30" cols="70" maxlength="3000" minlength="16" placeholder="Metin" name="metin" required></textarea>
+                </div>
+                 <div>
+                     <input type="hidden" asp-for=User.id value=@Model.User.id/>
+                     <button type="submit" class="btn btn-secondary">Paylaş</button>
+                </div>
+         </form>
+         <form asp-action="Text" asp-controller="Text" asp-area="" method="post">
+             <input type="hidden" asp-for=User.id value=@Model.User.id/>
+             <button type="submit" class="btn btn-secondary">İşlem İptal</button>
+         </form>
+        </div>
+</div>

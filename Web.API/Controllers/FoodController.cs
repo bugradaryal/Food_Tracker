@@ -92,13 +92,15 @@ namespace Web.API.Controllers
         }
 
         [HttpPost]
-        public IActionResult Food_Search(ViewModels vm, string isim)
+        public IActionResult Food_Search(ViewModels vm, string search)
         {
             try
             {
                 ViewBag.CurrentView = "Foods Search";
-                vm.Food = _foodService.SearchByname(isim);
-                ViewBag.data = vm.Food;
+                if(_foodService.GetAllFoods().Any() == true)
+                {
+                    vm.Food = _foodService.SearchByname(search);
+                }
                 return View("Foods", vm);
             }
             catch (Exception error)
@@ -114,17 +116,19 @@ namespace Web.API.Controllers
             {
                 var data = _foodService.GetAllFoods();
                 ViewBag.CurrentView = "Foods Search";
-
-                if(TempData["tıklama"] == null || (bool)TempData["tıklama"] == false)
+                if(data != null)
                 {
-                    TempData["tıklama"] = true;
-                    vm.Food = _foodService.Filter(data, islem);
-                }
-                else if((bool)TempData["tıklama"] == true)
-                {
-                    TempData["tıklama"] = false;
-                    List<Food> reverse = _foodService.Filter(data, islem);
-                    vm.Food = Enumerable.Reverse(reverse).ToList();
+                    if (TempData["tıklama"] == null || (bool)TempData["tıklama"] == false)
+                    {
+                        TempData["tıklama"] = true;
+                        vm.Food = _foodService.Filter(data, islem);
+                    }
+                    else if ((bool)TempData["tıklama"] == true)
+                    {
+                        TempData["tıklama"] = false;
+                        List<Food> reverse = _foodService.Filter(data, islem);
+                        vm.Food = Enumerable.Reverse(reverse).ToList();
+                    }
                 }
 
                 return View("Foods", vm);

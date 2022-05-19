@@ -51,5 +51,28 @@ namespace DataAccess.Concrete
                 return User_article;
             }
         }
+
+        public List<User_article> SearchByTitle(string search)
+        {
+            using (var DbContext = new DataDbContext())
+            {
+                return DbContext.User_articles.Where(x => x.title.Contains(search)).ToList();
+            }
+        }
+        public List<User_article> SearchByTitleForMyText(int id, string search)
+        {
+            using (var DbContext = new DataDbContext())
+            {
+                var data = GetUser_ArticleByUserId(id);
+                return data.Where(x => x.title.Contains(search)).ToList();
+            }
+        }
+        public List<User_article> GetUser_ArticleByUserId(int id)
+        {
+            using (var DbContext = new DataDbContext())
+            {
+                return DbContext.User_articles.Where(x => x.user_id == id).ToList();
+            }
+        }
     }
 }

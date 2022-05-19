@@ -138,12 +138,12 @@ namespace DataAccess.Migrations
                     b.Property<DateTime>("bozulma_tarihi")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 5, 18, 11, 47, 25, 993, DateTimeKind.Local).AddTicks(3089));
+                        .HasDefaultValue(new DateTime(2022, 5, 19, 17, 29, 59, 936, DateTimeKind.Local).AddTicks(6620));
 
                     b.Property<DateTime>("eklenme_tarihi")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 5, 18, 11, 47, 25, 994, DateTimeKind.Local).AddTicks(5122));
+                        .HasDefaultValue(new DateTime(2022, 5, 19, 17, 29, 59, 937, DateTimeKind.Local).AddTicks(6760));
 
                     b.HasKey("id");
 
@@ -234,10 +234,10 @@ namespace DataAccess.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("date")
+                    b.Property<DateTime>("date")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("varchar(30)")
-                        .HasDefaultValue("18.05.2022 11:47:25");
+                        .HasColumnType("datetime2")
+                        .HasDefaultValue(new DateTime(2022, 5, 19, 17, 29, 59, 938, DateTimeKind.Local).AddTicks(9119));
 
                     b.Property<string>("text")
                         .HasColumnType("nvarchar(max)");

@@ -14,6 +14,9 @@ namespace Web.API.Models
 
         public IList<Food> Food { get; set; }
 
+        public IList<User_article> User_article { get; set; }
+
+        public int User_article_id { get; set; }
         public int Fridge_id { get; set; }
         public int Myfood_id { get; set; }
         public int Food_id { get; set; }

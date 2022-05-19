@@ -10,5 +10,8 @@ namespace Business.Abstract
         User_article CreateUser_article(User_article User_article);
         User_article UpdateUser_article(User_article User_article);
         void DeleteUser_article(int id);
+        List<User_article> SearchByTitle(string search);
+        List<User_article> GetUser_ArticleByUserId(int id);
+        List<User_article> SearchByTitleForMyText(int id, string search);
     }
 }

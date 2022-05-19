@@ -40,5 +40,18 @@ namespace Business.Concrete
         {
             return _User_articleRepository.UpdateUser_article(User_article);
         }
+
+        public List<User_article> SearchByTitle(string search)
+        {
+            return _User_articleRepository.SearchByTitle(search);
+        }
+        public List<User_article> GetUser_ArticleByUserId(int id)
+        {
+            return _User_articleRepository.GetUser_ArticleByUserId(id);
+        }
+        public List<User_article> SearchByTitleForMyText(int id, string search)
+        {
+            return _User_articleRepository.SearchByTitleForMyText(id, search);
+        }
     }
 }

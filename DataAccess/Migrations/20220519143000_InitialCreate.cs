@@ -101,7 +101,7 @@ namespace DataAccess.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     user_id = table.Column<int>(type: "int", nullable: false),
                     title = table.Column<string>(type: "varchar(500)", nullable: false),
-                    date = table.Column<string>(type: "varchar(30)", nullable: true, defaultValue: "18.05.2022 11:47:25"),
+                    date = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 5, 19, 17, 29, 59, 938, DateTimeKind.Local).AddTicks(9119)),
                     text = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -123,8 +123,8 @@ namespace DataAccess.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Fridges_id = table.Column<int>(type: "int", nullable: false),
                     Foods_id = table.Column<int>(type: "int", nullable: false),
-                    eklenme_tarihi = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 5, 18, 11, 47, 25, 994, DateTimeKind.Local).AddTicks(5122)),
-                    bozulma_tarihi = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 5, 18, 11, 47, 25, 993, DateTimeKind.Local).AddTicks(3089))
+                    eklenme_tarihi = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 5, 19, 17, 29, 59, 937, DateTimeKind.Local).AddTicks(6760)),
+                    bozulma_tarihi = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 5, 19, 17, 29, 59, 936, DateTimeKind.Local).AddTicks(6620))
                 },
                 constraints: table =>
                 {

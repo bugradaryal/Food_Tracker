@@ -172,3 +172,8 @@ C:\Users\bugra\Desktop\Yemek_Takip\Web.API\obj\Debug\netcoreapp3.1\Razor\Views\A
 C:\Users\bugra\Desktop\Yemek_Takip\Web.API\obj\Debug\netcoreapp3.1\Razor\Views\Account\Account_Edit.cshtml.g.cs
 C:\Users\bugra\Desktop\Yemek_Takip\Web.API\obj\Debug\netcoreapp3.1\Razor\Views\Food\Foods.cshtml.g.cs
 C:\Users\bugra\Desktop\Yemek_Takip\Web.API\obj\Debug\netcoreapp3.1\Razor\Views\Food\Food_AddToFridge.cshtml.g.cs
+C:\Users\bugra\Desktop\Yemek_Takip\Web.API\obj\Debug\netcoreapp3.1\Razor\Views\Text\Text.cshtml.g.cs
+C:\Users\bugra\Desktop\Yemek_Takip\Web.API\obj\Debug\netcoreapp3.1\Razor\Views\Text\Text_New.cshtml.g.cs
+C:\Users\bugra\Desktop\Yemek_Takip\Web.API\obj\Debug\netcoreapp3.1\Razor\Views\Text\My_Text.cshtml.g.cs
+C:\Users\bugra\Desktop\Yemek_Takip\Web.API\obj\Debug\netcoreapp3.1\Razor\Views\Text\My_Text_Edit.cshtml.g.cs
+C:\Users\bugra\Desktop\Yemek_Takip\Web.API\obj\Debug\netcoreapp3.1\Razor\Views\Text\Text_Read.cshtml.g.cs
