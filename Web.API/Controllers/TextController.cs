@@ -93,7 +93,7 @@ namespace Web.API.Controllers
             ViewBag.CurrentView = "Create New Text";
             try
             {
-                _user_articleService.CreateUser_article(new User_article { user_id = vm.User.id, title = title, text = metin });
+                _user_articleService.CreateUser_article(new User_article { user_id = vm.User.id, title = title, text = metin, date = DateTime.Now });
                 vm.User_article = _user_articleService.GetAllUser_articles();
                 foreach (var x in vm.User_article)
                 {
@@ -196,7 +196,7 @@ namespace Web.API.Controllers
             try
             {
                 ViewBag.CurrentView = "My Text";
-                _user_articleService.UpdateUser_article(new User_article { id = vm.User_article_id, title = title, text = metin});
+                _user_articleService.UpdateUser_article(new User_article { id = vm.User_article_id, title = title, text = metin, user_id = vm.User.id, date = DateTime.Now});
                 vm.User_article = _user_articleService.GetUser_ArticleByUserId(vm.User.id);
                 ViewBag.error = "Yazınız oluşturulmuştur.";
                 return View("My_Text",vm);

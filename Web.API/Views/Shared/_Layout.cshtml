@@ -1,4 +1,5 @@
-﻿@model ViewModels;
+﻿@using Microsoft.AspNetCore.Mvc.Razor
+@model ViewModels;
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +19,41 @@
 <body id="body-pd">
     <header class="header" id="header">
         <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
-        <div class="header_right"> <i class="bi bi-chat-right-text-fill"></i> </div>
+        @if(@ViewBag.CurrentView == "MainScreen")
+        {
+            <form class="header_right" asp-action="Notifications" asp-controller="Notification" asp-area="" method="post"> 
+            <input type="hidden" asp-for="@Model.User.id" value="@Model.User.id" />
+
+                @{
+                    string color = default;
+                    string text = string.Empty;
+                    int count = 0; 
+                    @if(Model.User.Notification_Count == null || Model.User.Notification_Count.notificationscount == 0)
+                    {
+                                count = @Model.User.Notification.Count();
+                                if(count > 0)
+                                {
+                                    color = "darkred";
+                                    text = count.ToString();
+                                }
+                    }
+                    else
+                    {
+                        if(@Model.User.Notification_Count.notificationscount < @Model.User.Notification.Count())
+                        {
+                                count = @Model.User.Notification.Count() - @Model.User.Notification_Count.notificationscount;
+                                if(count > 0)
+                                {
+                                    color = "darkred";
+                                    text = count.ToString();
+                                }
+                        }
+                    }
+                    <button style="border:none; padding-left:1em; padding-right:1em; background-color:transparent;"><i style="color:@color" class="bi bi-chat-right-text-fill"></i>@text</button>
+               }
+
+        </form>
+        }
     </header>
     <div class="l-navbar" id="nav-bar">
         <nav class="nav">

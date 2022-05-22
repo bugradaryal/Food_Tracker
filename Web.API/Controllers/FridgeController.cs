@@ -104,6 +104,11 @@ namespace Web.API.Controllers
             {
                 ViewData.Clear();
                 ViewBag.CurrentView = "Fridge";
+                var myfoodlist = _my_FoodService.GetMy_FoodByFridgeId(vm.Fridge_id);
+                foreach(var x in myfoodlist)
+                {
+                    BackgroundJobs.Schedules.Notification.deletenotification(x.Jobs_id);
+                }
                 _fridgeService.DeleteFridge(vm.Fridge_id); //silme işlemi
 
                 ViewBag.error = "Silme İşlemi Gerçekleştirildi.   "; // alttaki viewbag çalışırsa üzerine yazacak!!!
@@ -195,7 +200,10 @@ namespace Web.API.Controllers
             {
                 ViewBag.CurrentView = "Delete Food on Fridge";
 
-                _my_FoodService.DeleteMy_Food(vm.Myfood_id);
+                var deletedfood = _my_FoodService.DeleteMy_Food(vm.Myfood_id);
+
+                BackgroundJobs.Schedules.Notification.deletenotification(deletedfood.Jobs_id);
+
                 vm.Fridge = _fridgeService.GetAllFridgesByUserId(vm.User.id);
                 vm.name = _fridgeService.GetFridgeById(vm.Fridge_id).name;
 

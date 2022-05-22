@@ -1,0 +1,5 @@
+C:\Users\bugra\Desktop\Yemek_Takip\BackgroundJob\obj\Debug\netcoreapp3.1\BackgroundJob.csproj.AssemblyReference.cache
+C:\Users\bugra\Desktop\Yemek_Takip\BackgroundJob\obj\Debug\netcoreapp3.1\BackgroundJob.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bugra\Desktop\Yemek_Takip\BackgroundJob\obj\Debug\netcoreapp3.1\BackgroundJob.AssemblyInfoInputs.cache
+C:\Users\bugra\Desktop\Yemek_Takip\BackgroundJob\obj\Debug\netcoreapp3.1\BackgroundJob.AssemblyInfo.cs
+C:\Users\bugra\Desktop\Yemek_Takip\BackgroundJob\obj\Debug\netcoreapp3.1\BackgroundJob.csproj.CoreCompileInputs.cache

@@ -9,6 +9,7 @@ namespace Entities
         public int id { get; set; }
         public int Fridges_id { get; set; }
         public int Foods_id { get; set; }
+        public string Jobs_id { get; set; }
 
         public DateTime eklenme_tarihi { get; set; }
 

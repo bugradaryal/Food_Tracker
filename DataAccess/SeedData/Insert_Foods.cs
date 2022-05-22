@@ -9,7 +9,9 @@ namespace DataAccess.SeedData
         public void Configure(EntityTypeBuilder<Food> entity)
         {
             entity.HasData(new Food[] {
-                //new Food{id=1,yemek_ismi="muzlu kek"},
+                new Food{id=1, yemek_ismi="Elma"},
+                new Food{id=2, yemek_ismi="Erik"},
+                new Food{id=3, yemek_ismi="Kiraz"},
             });
         }
     }

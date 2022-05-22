@@ -6,6 +6,7 @@
 }
 <head>
     <link rel="stylesheet" href="~/css/text.css">
+    <script src="~/js/firstkeynotempty.js"></script>
 </head>
 
 
@@ -16,8 +17,8 @@
              <b class="başlık">Yazı Düzenleme</b>
              <form asp-action="My_Text_Edit_Save" asp-controller="Text" asp-area="" method="post">
                     <div>
-                        <input type="text" Value="@x.title" name="title" maxlength="42" minlength="5" required/>
-                        <textarea rows="30" cols="70" maxlength="3000" minlength="16" name="metin" required>@x.text</textarea>
+                        <input type="text" Value="@x.title" name="title" maxlength="40" minlength="5" required onkeydown="keyDown(event)"/>
+                        <textarea rows="30" cols="70" maxlength="3000" minlength="16" name="metin" required onkeydown="keyDown(event)">@x.text</textarea>
                     </div>
                      <div>
                          <input type="hidden" asp-for=User.id value=@Model.User.id/>

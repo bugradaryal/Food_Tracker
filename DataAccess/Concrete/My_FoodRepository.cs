@@ -17,13 +17,14 @@ namespace DataAccess.Concrete
             }
         }
 
-        public void DeleteMy_Food(int id)
+        public My_Food DeleteMy_Food(int id)
         {
             using (var DbContext = new DataDbContext())
             {
                 var deletedMy_Food = GetMy_FoodById(id);
                 DbContext.My_Foods.Remove(deletedMy_Food);
                 DbContext.SaveChanges();
+                return deletedMy_Food;
             }
         }
 
@@ -50,8 +51,13 @@ namespace DataAccess.Concrete
                 return DbContext.My_Foods.Where(x => x.Fridges_id == fridgeid).ToList().Any(x => x.Foods_id == foodid);
             }
         }
-
-
+        public My_Food GetMy_FoodByFrıdgeIdFoodId(int fridgeid, int foodid)
+        {
+            using (var DbContext = new DataDbContext())
+            {
+                return DbContext.My_Foods.Where(x => x.Fridges_id == fridgeid).ToList().FirstOrDefault(x => x.Foods_id == foodid);
+            }
+        }
 
         public My_Food UpdateMy_Food(My_Food My_Food)
         {
@@ -61,5 +67,12 @@ namespace DataAccess.Concrete
                 return My_Food;
             }
         }
+        public List<My_Food> GetMy_FoodByFridgeId(int fridgeid)
+        {
+            using (var DbContext = new DataDbContext())
+            {
+                return DbContext.My_Foods.Where(x => x.Fridges_id == fridgeid).ToList();
+            }
+        }            
     }
 }

@@ -19,7 +19,9 @@ namespace DataAccess
         public DbSet<My_Food> My_Foods { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<User_article> User_articles { get; set; }
-        public DbSet<Notification> Notification { get; set; }
+        public DbSet<NotificationType> NotificationType { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
+        public DbSet<Notification_Count> Notification_Counts { get; set; }
 
 
 
@@ -41,12 +43,15 @@ namespace DataAccess
             modelBuilder.Entity<Fridge>().HasKey(x => x.id);
             modelBuilder.Entity<Fridge>().Property(x => x.id).ValueGeneratedOnAdd();
             modelBuilder.Entity<Fridge>().Property(x => x.user_id).IsRequired();
-            modelBuilder.Entity<Fridge>().Property(x => x.name).HasColumnType("varchar(15)").HasDefaultValue("Buzdolabım");
+            modelBuilder.Entity<Fridge>().Property(x => x.name).HasColumnType("varchar(20)").HasDefaultValue("Buzdolabım");
 
             /////////////////////My_Foods
             modelBuilder.Entity<My_Food>().HasKey(x => x.id);
             modelBuilder.Entity<My_Food>().Property(x => x.id).ValueGeneratedOnAdd();
             modelBuilder.Entity<My_Food>().Property(x => x.Fridges_id).IsRequired();
+            modelBuilder.Entity<My_Food>().Property(x => x.Foods_id).IsRequired();
+            modelBuilder.Entity<My_Food>().Property(x => x.Jobs_id).HasColumnType("varchar(300)");
+            modelBuilder.Entity<My_Food>().HasIndex(x => x.Foods_id).IsUnique(false);
             modelBuilder.Entity<My_Food>().Property(x => x.bozulma_tarihi).HasColumnType("datetime2").HasDefaultValue(DateTime.Now);
             modelBuilder.Entity<My_Food>().Property(x => x.eklenme_tarihi).HasColumnType("datetime2").HasDefaultValue(DateTime.Now);
 
@@ -72,18 +77,34 @@ namespace DataAccess
             modelBuilder.Entity<User_article>().HasKey(x => x.id);
             modelBuilder.Entity<User_article>().Property(x => x.id).ValueGeneratedOnAdd();
             modelBuilder.Entity<User_article>().Property(x => x.user_id).IsRequired();
-            modelBuilder.Entity<User_article>().Property(x => x.title).HasColumnType("varchar(20)").IsRequired();
+            modelBuilder.Entity<User_article>().Property(x => x.title).HasColumnType("varchar(40)").IsRequired();
             modelBuilder.Entity<User_article>().Property(x => x.date).HasColumnType("datetime2").HasDefaultValue(DateTime.Now);
-            modelBuilder.Entity<User_article>().Property(x => x.title).HasColumnType("varchar(500)").IsRequired();  //max length 500
+            modelBuilder.Entity<User_article>().Property(x => x.title).HasColumnType("varchar(3000)").IsRequired();
+
+            /////////////////////NotificationType
+
+            modelBuilder.Entity<NotificationType>().HasKey(x => x.id);
+            modelBuilder.Entity<NotificationType>().Property(x => x.id).ValueGeneratedOnAdd();
+            modelBuilder.Entity<NotificationType>().Property(x => x.user_id).IsRequired();
+            modelBuilder.Entity<NotificationType>().Property(x => x.tercih_eposta).HasDefaultValue("false");
+            modelBuilder.Entity<NotificationType>().Property(x => x.tercih_sms).HasDefaultValue("false");
+            modelBuilder.Entity<NotificationType>().Property(x => x.tercih_uygulama).HasDefaultValue("true");
 
             /////////////////////Notification
 
             modelBuilder.Entity<Notification>().HasKey(x => x.id);
             modelBuilder.Entity<Notification>().Property(x => x.id).ValueGeneratedOnAdd();
             modelBuilder.Entity<Notification>().Property(x => x.user_id).IsRequired();
-            modelBuilder.Entity<Notification>().Property(x => x.tercih_eposta).HasDefaultValue("false");
-            modelBuilder.Entity<Notification>().Property(x => x.tercih_sms).HasDefaultValue("false");
-            modelBuilder.Entity<Notification>().Property(x => x.tercih_uygulama).HasDefaultValue("true");
+            modelBuilder.Entity<Notification>().Property(x => x.bildirim).HasColumnType("varchar(80)").IsRequired();
+
+
+            /////////////////////Notification_Count
+            modelBuilder.Entity<Notification_Count>().HasKey(x => x.id);
+            modelBuilder.Entity<Notification_Count>().Property(x => x.id).ValueGeneratedOnAdd();
+            modelBuilder.Entity<Notification_Count>().Property(x => x.user_id).IsRequired();
+            modelBuilder.Entity<Notification_Count>().HasIndex(x => x.user_id).IsUnique(false);
+            modelBuilder.Entity<Notification_Count>().Property(x => x.notificationscount).HasDefaultValue(0);
+
 
             //add to database a food items
             modelBuilder.ApplyConfiguration(new Insert_Foods());
@@ -95,7 +116,9 @@ namespace DataAccess
             modelBuilder.Entity<User_article>().HasOne<User>(s => s.User).WithMany(g => g.User_article).HasForeignKey(s => s.user_id).OnDelete(DeleteBehavior.Cascade);
             modelBuilder.Entity<My_Food>().HasOne<Fridge>(s => s.Fridge).WithMany(g => g.My_Food).HasForeignKey(s => s.Fridges_id).OnDelete(DeleteBehavior.Cascade);
             modelBuilder.Entity<My_Food>().HasOne<Food>(s => s.Food).WithOne(g => g.My_Food).HasForeignKey<My_Food>(s => s.Foods_id).OnDelete(DeleteBehavior.Restrict); 
-            modelBuilder.Entity<Notification>().HasOne<User>(s => s.User).WithOne(g => g.Notification).HasForeignKey<Notification>(s => s.user_id).OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<NotificationType>().HasOne<User>(s => s.User).WithOne(g => g.NotificationType).HasForeignKey<NotificationType>(s => s.user_id).OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<Notification>().HasOne<User>(s => s.User).WithMany(g => g.Notification).HasForeignKey(s => s.user_id).OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<Notification_Count>().HasOne<User>(s => s.User).WithOne(g => g.Notification_Count).HasForeignKey<Notification_Count>(s => s.user_id).OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

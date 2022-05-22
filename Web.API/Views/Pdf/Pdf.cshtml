@@ -1,0 +1,73 @@
+﻿@model ViewModels
+
+@{
+    ViewData["Title"] = "DemoViewAsPdf";
+    Layout = null;
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/pdf.css">
+</head>
+
+<b class="başlık">@Model.name</b>
+<div class="bodydiv">
+    <div>
+            <div class="content">
+                <div>
+                            @if(Model.My_Food != null && Model.My_Food.Count != 0)
+                            {
+                                <table> 
+                                <tr>
+                                <th>İsim</th> 
+                                <th>Eklenme</th> 
+                                <th>Son tüketim</th> 
+                                <th>Protein(%)</th>
+                                <th>Protein(gr)</th>
+                                <th>Yağ(%)</th>
+                                <th>Yağ(gr)</th>
+                                <th>Karbonhidrat(%)</th>
+                                <th>Karbonhidrat(gr)</th>
+                                <th>Kalori</th>
+                                <th>Sodyum(gr)</th>
+                                <th>Potasyum(gr)</th>
+                                <th>Kalsiyum(gr)</th>
+                                <th>Lif(gr)</th>
+                                <th>Kollestrol(gr)</th>
+                                </tr>
+                                @foreach(var x in Model.My_Food)
+                                {
+                                <tr> 
+                                    <td>@x.Food.yemek_ismi</td> 
+                                    <td>@x.eklenme_tarihi.ToString("dd/MM/yyyy")</td> 
+                                @{
+                                    DateTime d1 = @x.bozulma_tarihi;
+                                    DateTime d2 = @x.eklenme_tarihi;
+                                    string renk = "black";
+                                    if((d1-d2).Days <=1){
+                                        renk = "darkred";
+                                    }
+                                    else if((d1-d2).Days <=5){
+                                        renk = "#8B8000";
+                                    }
+                                    <td style="color:@renk;">@x.bozulma_tarihi.ToString("dd/MM/yyyy")</td> 
+                                }
+                                        <td>@x.Food.protein_yüzde</td> 
+                                        <td>@x.Food.protein_gr</td> 
+                                        <td>@x.Food.yağ_yüzde</td> 
+                                        <td>@x.Food.yağ_gr</td> 
+                                        <td>@x.Food.karbonhidrat_yüzde</td> 
+                                        <td>@x.Food.karbonhidrat_gr</td> 
+                                        <td>@x.Food.kalori</td> 
+                                        <td>@x.Food.sodyum_gr</td> 
+                                        <td>@x.Food.potasyum_gr</td>
+                                        <td>@x.Food.kalsiyum_gr</td> 
+                                        <td>@x.Food.lif_gr</td> 
+                                        <td>@x.Food.kollestrol_gr</td> 
+                                </tr> 
+                                }
+                                </table> 
+                              }
+                </div>
+            </div>
+    </div>
+</div>

@@ -48,6 +48,7 @@ namespace DataAccess.Concrete
             using (var DbContext = new DataDbContext())
             {
                 DbContext.User_articles.Update(User_article);
+                DbContext.SaveChanges();
                 return User_article;
             }
         }

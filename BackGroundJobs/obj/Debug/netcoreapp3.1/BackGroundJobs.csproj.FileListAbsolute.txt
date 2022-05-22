@@ -1,0 +1,17 @@
+C:\Users\bugra\Desktop\Yemek_Takip\BackGroundJobs\bin\Debug\netcoreapp3.1\BackGroundJobs.deps.json
+C:\Users\bugra\Desktop\Yemek_Takip\BackGroundJobs\bin\Debug\netcoreapp3.1\BackGroundJobs.dll
+C:\Users\bugra\Desktop\Yemek_Takip\BackGroundJobs\bin\Debug\netcoreapp3.1\BackGroundJobs.pdb
+C:\Users\bugra\Desktop\Yemek_Takip\BackGroundJobs\bin\Debug\netcoreapp3.1\Business.dll
+C:\Users\bugra\Desktop\Yemek_Takip\BackGroundJobs\bin\Debug\netcoreapp3.1\DataAccess.dll
+C:\Users\bugra\Desktop\Yemek_Takip\BackGroundJobs\bin\Debug\netcoreapp3.1\Entities.dll
+C:\Users\bugra\Desktop\Yemek_Takip\BackGroundJobs\bin\Debug\netcoreapp3.1\Business.pdb
+C:\Users\bugra\Desktop\Yemek_Takip\BackGroundJobs\bin\Debug\netcoreapp3.1\Entities.pdb
+C:\Users\bugra\Desktop\Yemek_Takip\BackGroundJobs\bin\Debug\netcoreapp3.1\DataAccess.pdb
+C:\Users\bugra\Desktop\Yemek_Takip\BackGroundJobs\obj\Debug\netcoreapp3.1\BackGroundJobs.csproj.AssemblyReference.cache
+C:\Users\bugra\Desktop\Yemek_Takip\BackGroundJobs\obj\Debug\netcoreapp3.1\BackGroundJobs.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bugra\Desktop\Yemek_Takip\BackGroundJobs\obj\Debug\netcoreapp3.1\BackGroundJobs.AssemblyInfoInputs.cache
+C:\Users\bugra\Desktop\Yemek_Takip\BackGroundJobs\obj\Debug\netcoreapp3.1\BackGroundJobs.AssemblyInfo.cs
+C:\Users\bugra\Desktop\Yemek_Takip\BackGroundJobs\obj\Debug\netcoreapp3.1\BackGroundJobs.csproj.CoreCompileInputs.cache
+C:\Users\bugra\Desktop\Yemek_Takip\BackGroundJobs\obj\Debug\netcoreapp3.1\BackGroundJobs.csproj.CopyComplete
+C:\Users\bugra\Desktop\Yemek_Takip\BackGroundJobs\obj\Debug\netcoreapp3.1\BackGroundJobs.dll
+C:\Users\bugra\Desktop\Yemek_Takip\BackGroundJobs\obj\Debug\netcoreapp3.1\BackGroundJobs.pdb

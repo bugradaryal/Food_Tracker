@@ -9,7 +9,9 @@ namespace DataAccess.Abstract
         My_Food GetMy_FoodById(int id);
         My_Food CreateMy_Food(My_Food My_Food);
         My_Food UpdateMy_Food(My_Food My_Food);
-        void DeleteMy_Food(int id);
+        My_Food DeleteMy_Food(int id);
         bool GetMy_FoodByFoodId(int fridgeid, int foodid);
+        My_Food GetMy_FoodByFrıdgeIdFoodId(int fridgeid, int foodid);
+        List<My_Food> GetMy_FoodByFridgeId(int fridgeid);
     }
 }

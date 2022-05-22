@@ -13,9 +13,13 @@ namespace Web.API.Controllers
     public class HomeController : Controller
     {
         private IUserService _userService;
+        private INotificationService _notificationService;
+        private INotification_CountService _notificationCountService;
         public HomeController()
         {
             _userService = new UserManager();
+            _notificationService = new NotificationManager();
+            _notificationCountService = new Notification_CountManager();
             ViewBag.error = string.Empty;
         }
         public IActionResult Index() //homepage
@@ -53,9 +57,10 @@ namespace Web.API.Controllers
                     if (User.Sifre == UserView.Sifre)
                     {
                         ViewBag.CurrentView = "MainScreen";
-                        User mainuser = _userService.GetUserById(User.id); //verileri tam çekiyoruz ve yolluyoruz
                         ViewModels vm = new ViewModels();
-                        vm.User = mainuser;
+                        vm.User = _userService.GetUserById(User.id);
+                        vm.User.Notification = _notificationService.GetNotificationsByUserId(User.id);
+                        vm.User.Notification_Count = _notificationCountService.GetNotificationsCountByUserId(User.id);
                         return View("../Main/MainScreen", vm);
                     }
                     else
@@ -153,6 +158,7 @@ namespace Web.API.Controllers
                 if (verifycode == verifi)
                 {
                     _userService.CreateUser(UserView);
+                    ViewBag.error = "Yeni Hesap Oluşturuldu!";
                     return View("Login");
                 }
                 else

@@ -53,13 +53,13 @@
                                         <td>
                                             <div class="author">
                                                 <div>
-                                                    @{
-                                                        string image = "Belirtilmemis.jpg";
-                                                        if (Model.User.Cinsiyet == "Erkek")
+                                        @{
+                                            string image = "Belirtilmemis.jpg";
+                                            if (@x.User.Cinsiyet == "Erkek")
                                                         {
                                                             image = "Erkek.jpg";
                                                         }
-                                                        else if (Model.User.Cinsiyet == "Kadın")
+                                                        else if (@x.User.Cinsiyet == "Kadın")
                                                         {
                                                             image = "Kadın.jpg";
                                                         }

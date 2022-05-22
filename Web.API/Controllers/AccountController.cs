@@ -10,12 +10,12 @@ namespace Web.API.Controllers
     public class AccountController : Controller
     {
         private IUserService _userService;
-        private INotificationService _notificationService;
+        private INotificationTypeService _notificationTypeService;
 
         public AccountController()
         {
             _userService = new UserManager();
-            _notificationService = new NotificationManager();
+            _notificationTypeService = new NotificationTypeManager();
             ViewBag.error = string.Empty;
         }
 
@@ -27,13 +27,13 @@ namespace Web.API.Controllers
             {
                 ViewBag.CurrentView = "Account";
                 vm.User = _userService.GetUserById(vm.User.id);
-                if (_notificationService.GetUsersNotifications(vm.User.id) == null)
+                if (_notificationTypeService.GetUsersNotification(vm.User.id) == null)
                 {
-                    vm.Notification = _notificationService.CreateNotification(new Notification { user_id = vm.User.id });
+                    vm.NotificationType = _notificationTypeService.CreateNotification(new NotificationType { user_id = vm.User.id });
                 }
                 else
                 {
-                    vm.Notification = _notificationService.GetUsersNotifications(vm.User.id);
+                    vm.NotificationType = _notificationTypeService.GetUsersNotification(vm.User.id);
                 }
                 return View(vm);
             }
@@ -66,7 +66,7 @@ namespace Web.API.Controllers
             {
                 ViewBag.CurrentView = "Account Edit";
                 vm.User = _userService.GetUserById(vm.User.id);
-                vm.Notification = _notificationService.GetUsersNotifications(vm.User.id);
+                vm.NotificationType = _notificationTypeService.GetUsersNotification(vm.User.id);
 
                 return View(vm);
             }
@@ -82,8 +82,8 @@ namespace Web.API.Controllers
             try
             {
                 ViewBag.CurrentView = "Account Edit";
-                vm.Notification = _notificationService.GetUsersNotifications(vm.User.id);
-                if (vm.Notification.tercih_sms == true)
+                vm.NotificationType = _notificationTypeService.GetUsersNotification(vm.User.id);
+                if (vm.NotificationType.tercih_sms == true)
                 {
                     if (vm.User.Telefon == string.Empty || vm.User.Telefon == null)
                     {
@@ -110,19 +110,19 @@ namespace Web.API.Controllers
                 ViewData.Clear();
                 ViewBag.CurrentView = "Notification Edit";
                 vm.User = _userService.GetUserById(vm.User.id);
-                if (vm.Notification.tercih_sms == true)
+                if (vm.NotificationType.tercih_sms == true)
                 {
                     if (vm.User.Telefon == null || vm.User.Telefon == string.Empty)
                     {
-                        vm.Notification.tercih_sms = false;
+                        vm.NotificationType.tercih_sms = false;
 
                         ViewBag.error = "Sms için telefon numaranızı tanımlayınız. ";
                     }
                 }
 
                 ViewBag.error += "Bildirim Güncelleme İşlemi Tamamlandı.";
-                vm.Notification.user_id = vm.User.id;
-                _notificationService.UpdateNotification(vm.Notification);
+                vm.NotificationType.user_id = vm.User.id;
+                _notificationTypeService.UpdateNotification(vm.NotificationType);
                 return View("Account", vm);
             }
             catch (Exception error)

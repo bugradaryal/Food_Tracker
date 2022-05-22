@@ -19,6 +19,8 @@ namespace Entities
         //ref
         public ICollection<Fridge> Fridge { get; set; }
         public ICollection<User_article> User_article { get; set; }
-        public Notification Notification { get; set; }
+        public NotificationType NotificationType { get; set; }
+        public ICollection<Notification> Notification { get; set; }
+        public Notification_Count Notification_Count { get; set; }  
     }
 }

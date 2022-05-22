@@ -6,6 +6,8 @@
 }
 <head>
     <link rel="stylesheet" href="~/css/fridge.css">
+    <script src="~/js/firstkeynotempty.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 </head>
 
 
@@ -95,7 +97,7 @@
                 <span class="close">&times;</span>
                 <form asp-action="Fridge_Rename" asp-controller="Fridge" asp-area="">
                     <div>
-                        <input type="text" asp-for="name" class="rename" />
+                        <input type="text" asp-for="name" class="rename" required maxlength="20" minlength="1" onkeydown="keyDown(event)"/>
                         <input type="hidden" asp-for="Fridge_id" value=@Model.Fridge_id/>
                         <input type="hidden" asp-for="User.id" value=@Model.User.id/>
                     </div>
@@ -105,9 +107,16 @@
                 </form>
               </div>
             </div>
+            @if(Model.My_Food != null && Model.My_Food.Count != 0)
+            {
+                <form asp-action="Pdf" asp-controller="Pdf" target="_blank" method="post">
+                      <input type="hidden" asp-for="Fridge_id" value=@Model.Fridge_id/>
+                      <input type="hidden" asp-for="User.id" value=@Model.User.id/>
+                     <button type="submit"  id="işlem_buton" class="btn btn-secondary">Pdf</button>
+                </form>
+            }      
     </div>
 </div>
-
             <script>
                 var modalım = document.getElementById("modalım");
                 var butonum = document.getElementById("butonum");

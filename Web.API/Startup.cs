@@ -1,13 +1,12 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Rotativa.AspNetCore;
+using Hangfire;
+using DataAccess;
+using BackGroundJobs;
 
 namespace Web.API
 {
@@ -25,6 +24,10 @@ namespace Web.API
         {
             services.AddControllersWithViews();
             services.AddSession();
+
+            services.AddHangfire(x => x.UseSqlServerStorage(Configuration.GetConnectionString("Hangfire")));
+
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,6 +58,13 @@ namespace Web.API
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+            RotativaConfiguration.Setup(env.WebRootPath, "Rotativa");
+
+            app.UseHangfireDashboard("/dashboard", new DashboardOptions
+            {
+                AppPath="Home/Index"
+            });
+            app.UseHangfireServer();
         }
     }
 }

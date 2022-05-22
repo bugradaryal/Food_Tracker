@@ -1,0 +1,58 @@
+﻿body {
+    height: 100%;
+    width: 100%;
+}
+
+.bodydiv {
+    background-color: #eeeeee;
+    position: absolute;
+    margin-top: 4em;
+    width: auto;
+    height: auto;
+    margin-left: 3%;
+    border: 2px #6d6d6d antiquewhite;
+    border-radius: 10px;
+}
+
+.başlık {
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    font-size: 40px;
+    text-decoration: underline;
+    margin-left: 3%;
+}
+
+.content {
+    width: 100%;
+    height:auto;
+}
+
+table {
+    border-collapse: separate !important;
+    border-spacing: 0;
+    font-family: arial, sans-serif;
+    font-size: 0.8em;
+    font-family: arial, sans-serif;
+    width: 100%;
+    table-layout: fixed;
+    page-break-inside: auto
+}
+    table tr {
+        page-break-inside: avoid;
+        page-break-after: auto;
+    }
+    table td, th {
+        border: 1px solid #dddddd;
+        padding-top: 1.4em;
+        padding-bottom: 1.4em;
+    }
+    table td {
+        text-align: center;
+    }
+    table th {
+        text-align: center;
+        text-decoration: underline;
+    }
+
+    table tr:nth-child(even) {
+        background-color: #dddddd;
+    }

@@ -55,21 +55,21 @@
             <h3><b>Bildirim Ayarları:</b></h3>
                
             @{
-                if(Model.Notification != null)
+                if(Model.NotificationType != null)
                 {
-                        if(Model.Notification.tercih_uygulama == true)
+                        if(Model.NotificationType.tercih_uygulama == true)
                         {
                             <p><input  type="checkbox" disabled checked/> Uygulama Bildirimi</p>
                         }
-                        if(Model.Notification.tercih_eposta == true)
+                        if(Model.NotificationType.tercih_eposta == true)
                         {
                             <p><input  type="checkbox" disabled checked/> Eposta Bildirimi</p>
                         }
-                        if(Model.Notification.tercih_sms == true)
+                        if(Model.NotificationType.tercih_sms == true)
                         {
                         <p><input  type="checkbox" disabled checked/> Sms Bildirimi</p>
                     }
-                    if(Model.Notification.tercih_sms == false && Model.Notification.tercih_eposta == false && Model.Notification.tercih_uygulama == false)
+                    if(Model.NotificationType.tercih_sms == false && Model.NotificationType.tercih_eposta == false && Model.NotificationType.tercih_uygulama == false)
                     {
                         <b>Bildirim Seçeneği Seçilmemiş.</b>
                     }

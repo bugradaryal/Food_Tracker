@@ -21,9 +21,9 @@ namespace Business.Concrete
             return _My_FoodRepository.CreateMy_Food(My_Food);
         }
 
-        public void DeleteMy_Food(int id)
+        public My_Food DeleteMy_Food(int id)
         {
-            _My_FoodRepository.DeleteMy_Food(id);
+            return _My_FoodRepository.DeleteMy_Food(id);
         }
 
         public List<My_Food> GetAllMy_Foods(int id)
@@ -41,9 +41,17 @@ namespace Business.Concrete
             return _My_FoodRepository.UpdateMy_Food(My_Food);
         }
 
-        public bool GetMy_FoodByFoodId(int fridgeid, int foodid)
+        public bool GetMy_FoodByFrıdgeIdFoodIdAny(int fridgeid, int foodid)
         {
             return _My_FoodRepository.GetMy_FoodByFoodId(fridgeid, foodid);
+        }
+        public My_Food GetMy_FoodByFrıdgeIdFoodId(int fridgeid, int foodid)
+        {
+            return _My_FoodRepository.GetMy_FoodByFrıdgeIdFoodId(fridgeid, foodid);
+        }
+        public List<My_Food> GetMy_FoodByFridgeId(int fridgeid)
+        {
+            return _My_FoodRepository.GetMy_FoodByFridgeId(fridgeid);
         }
     }
 }

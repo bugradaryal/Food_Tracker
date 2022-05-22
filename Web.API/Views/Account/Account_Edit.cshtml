@@ -73,33 +73,33 @@
                 <form asp-action="Notification" asp-controller="Account" asp-area="" method="post">
                     <h3><b>Bildirim Ayarları:</b></h3>  
                     @{
-                        if(Model.Notification.tercih_uygulama == true)
+                        if(Model.NotificationType.tercih_uygulama == true)
                         {
-                            <p><input asp-for="Notification.tercih_uygulama" type="checkbox" checked="checked"/> Uygulama Bildirimi</p>
+                            <p><input asp-for="NotificationType.tercih_uygulama" type="checkbox" checked="checked"/> Uygulama Bildirimi</p>
                         }
                         else
                         {
-                             <p><input asp-for="Notification.tercih_uygulama" type="checkbox"/> Uygulama Bildirimi</p>
+                             <p><input asp-for="NotificationType.tercih_uygulama" type="checkbox"/> Uygulama Bildirimi</p>
                         }
-                        if(Model.Notification.tercih_eposta == true)
+                        if(Model.NotificationType.tercih_eposta == true)
                         {
-                            <p><input asp-for="Notification.tercih_eposta" type="checkbox" checked="checked"/> Eposta Bildirimi</p>
-                        }
-                        else
-                        {
-                             <p><input asp-for="Notification.tercih_eposta" type="checkbox"/> Eposta Bildirimi</p>
-                        }
-                        if(Model.Notification.tercih_sms == true)
-                        {
-                            <p><input asp-for="Notification.tercih_sms" type="checkbox" checked="checked"/> Sms Bildirimi</p>
+                            <p><input asp-for="NotificationType.tercih_eposta" type="checkbox" checked="checked"/> Eposta Bildirimi</p>
                         }
                         else
                         {
-                             <p><input asp-for="Notification.tercih_sms" type="checkbox"/> Sms Bildirimi</p>
+                             <p><input asp-for="NotificationType.tercih_eposta" type="checkbox"/> Eposta Bildirimi</p>
+                        }
+                        if(Model.NotificationType.tercih_sms == true)
+                        {
+                            <p><input asp-for="NotificationType.tercih_sms" type="checkbox" checked="checked"/> Sms Bildirimi</p>
+                        }
+                        else
+                        {
+                             <p><input asp-for="NotificationType.tercih_sms" type="checkbox"/> Sms Bildirimi</p>
                         }
                     }
                     <input type="hidden" asp-for="User.id" value="@Model.User.id" />
-                    <input type="hidden" asp-for="Notification.id" value="@Model.Notification.id"/>
+                    <input type="hidden" asp-for="NotificationType.id" value="@Model.NotificationType.id"/>
                     <button type="submit" class="btn btn-secondary">Kaydet</button>
                 </form>
             </div>

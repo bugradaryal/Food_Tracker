@@ -8,7 +8,7 @@ namespace Web.API.Models
         public User User { get; set; }
         public IList<Fridge> Fridge { get; set; }
 
-        public Notification Notification { get; set; }
+        public NotificationType NotificationType { get; set; }
 
         public IList<My_Food> My_Food { get; set; }
 
@@ -17,6 +17,7 @@ namespace Web.API.Models
         public IList<User_article> User_article { get; set; }
 
         public int User_article_id { get; set; }
+        public int Notification_id { get; set; }
         public int Fridge_id { get; set; }
         public int Myfood_id { get; set; }
         public int Food_id { get; set; }

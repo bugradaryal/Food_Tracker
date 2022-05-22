@@ -8,14 +8,19 @@ select * from Foods;
 select * from Users;
 select * from Fridges;
 select * from My_Foods; 
-select * from Notification; 
+select * from Notifications; 
+select * from User_articles;
+select * from Notification_Counts;
 
 delete from Foods;
 delete from Users;
 delete from Fridges;
 delete from My_Foods;
-delete from Notification;
+delete from Notifications;
+delete from User_articles
 
-insert into Users(Ad,Soyad,Eposta,Sifre) values ('Buğra','Daryal','oyuasx@gmail.com','123asd')
-insert into My_Foods(Fridges_id,Foods_id,bozulma_tarihi,eklenme_tarihi) values (1,1,'11.11.1111','11.11.1111')
-insert into Foods(yemek_ismi,protein_yüzde) values ('Erik',7)
+insert into Users(Ad,Soyad,Eposta,Sifre,Cinsiyet) values ('Buğra','Daryal','oyuasx@gmail.com','123asd','Erkek')
+insert into Notification_Counts(user_id,notificationscount) values ('1','2')
+
+
+create database "yemek_takip:HangfireJobs"

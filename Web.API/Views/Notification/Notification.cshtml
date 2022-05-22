@@ -1,0 +1,33 @@
+﻿@model ViewModels
+
+@{
+    ViewData["Title"] = ViewBag.CurrentView;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <link rel="stylesheet" href="~/css/Foods.css">
+</head>
+
+
+<div class="bodydiv">
+     <div class="content">
+         <b class="başlık">Bildirimler</b>
+                <div>
+                    @if(Model.User.Notification != null && Model.User.Notification.Count != 0)
+                    {
+                        @foreach(var x in Model.User.Notification)
+                        {
+                            <Form style="padding:2em; margin-top:0.2em;" asp-action="DeleteNotifications" asp-controller="Notification" asp-area="" method="post">
+                                <input type="hidden" asp-for="@Model.User.id" value="@Model.User.id" />
+                                <input type="hidden" asp-for="@Model.Notification_id" value="@x.id" />
+                                <p>@x.bildirim</p> <button type="submit" style="margin-left:1em;">Sil</button>
+                            </Form>
+                        }
+                }
+                else
+                {
+                    <p>Herhangi bir bildiriminiz bulunmuyor.</p>
+                }
+                </div>
+        </div>
+</div>

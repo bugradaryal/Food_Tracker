@@ -4,6 +4,85 @@
     "C:\\Users\\bugra\\Desktop\\Yemek_Takip\\Web.API\\Web.API.csproj": {}
   },
   "projects": {
+    "C:\\Users\\bugra\\Desktop\\Yemek_Takip\\BackGroundJobs\\BackGroundJobs.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\bugra\\Desktop\\Yemek_Takip\\BackGroundJobs\\BackGroundJobs.csproj",
+        "projectName": "BackGroundJobs",
+        "projectPath": "C:\\Users\\bugra\\Desktop\\Yemek_Takip\\BackGroundJobs\\BackGroundJobs.csproj",
+        "packagesPath": "C:\\Users\\bugra\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\bugra\\Desktop\\Yemek_Takip\\BackGroundJobs\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "E:\\Microsoft\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\bugra\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "C:\\Users\\bugra\\Desktop\\Yemek_Takip\\Business\\Business.csproj": {
+                "projectPath": "C:\\Users\\bugra\\Desktop\\Yemek_Takip\\Business\\Business.csproj"
+              },
+              "C:\\Users\\bugra\\Desktop\\Yemek_Takip\\Entities\\Entities.csproj": {
+                "projectPath": "C:\\Users\\bugra\\Desktop\\Yemek_Takip\\Entities\\Entities.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Hangfire": {
+              "target": "Package",
+              "version": "[1.7.0, )"
+            },
+            "MailKit": {
+              "target": "Package",
+              "version": "[3.2.0, )"
+            },
+            "Microsoft.AspNetCore.SignalR.Common": {
+              "target": "Package",
+              "version": "[6.0.5, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "C:\\Users\\bugra\\Desktop\\Yemek_Takip\\Business\\Business.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -233,6 +312,9 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
+              "C:\\Users\\bugra\\Desktop\\Yemek_Takip\\BackGroundJobs\\BackGroundJobs.csproj": {
+                "projectPath": "C:\\Users\\bugra\\Desktop\\Yemek_Takip\\BackGroundJobs\\BackGroundJobs.csproj"
+              },
               "C:\\Users\\bugra\\Desktop\\Yemek_Takip\\Business\\Business.csproj": {
                 "projectPath": "C:\\Users\\bugra\\Desktop\\Yemek_Takip\\Business\\Business.csproj"
               },
@@ -252,6 +334,10 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
+            "Hangfire": {
+              "target": "Package",
+              "version": "[1.7.0, )"
+            },
             "MailKit": {
               "target": "Package",
               "version": "[3.2.0, )"
@@ -259,6 +345,10 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[3.1.5, )"
+            },
+            "Rotativa.AspNetCore": {
+              "target": "Package",
+              "version": "[1.2.0, )"
             }
           },
           "imports": [

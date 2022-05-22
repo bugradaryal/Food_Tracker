@@ -98,6 +98,62 @@ namespace DataAccess.Migrations
                     b.HasKey("id");
 
                     b.ToTable("Foods");
+
+                    b.HasData(
+                        new
+                        {
+                            id = 1,
+                            gün_bozulma_tarihi = 0,
+                            kalori = 0,
+                            kalsiyum_gr = 0,
+                            karbonhidrat_gr = 0,
+                            karbonhidrat_yüzde = 0,
+                            kollestrol_gr = 0,
+                            lif_gr = 0,
+                            potasyum_gr = 0,
+                            protein_gr = 0,
+                            protein_yüzde = 0,
+                            sodyum_gr = 0,
+                            yağ_gr = 0,
+                            yağ_yüzde = 0,
+                            yemek_ismi = "Elma"
+                        },
+                        new
+                        {
+                            id = 2,
+                            gün_bozulma_tarihi = 0,
+                            kalori = 0,
+                            kalsiyum_gr = 0,
+                            karbonhidrat_gr = 0,
+                            karbonhidrat_yüzde = 0,
+                            kollestrol_gr = 0,
+                            lif_gr = 0,
+                            potasyum_gr = 0,
+                            protein_gr = 0,
+                            protein_yüzde = 0,
+                            sodyum_gr = 0,
+                            yağ_gr = 0,
+                            yağ_yüzde = 0,
+                            yemek_ismi = "Erik"
+                        },
+                        new
+                        {
+                            id = 3,
+                            gün_bozulma_tarihi = 0,
+                            kalori = 0,
+                            kalsiyum_gr = 0,
+                            karbonhidrat_gr = 0,
+                            karbonhidrat_yüzde = 0,
+                            kollestrol_gr = 0,
+                            lif_gr = 0,
+                            potasyum_gr = 0,
+                            protein_gr = 0,
+                            protein_yüzde = 0,
+                            sodyum_gr = 0,
+                            yağ_gr = 0,
+                            yağ_yüzde = 0,
+                            yemek_ismi = "Kiraz"
+                        });
                 });
 
             modelBuilder.Entity("Entities.Fridge", b =>
@@ -109,7 +165,7 @@ namespace DataAccess.Migrations
 
                     b.Property<string>("name")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("varchar(15)")
+                        .HasColumnType("varchar(20)")
                         .HasDefaultValue("Buzdolabım");
 
                     b.Property<int>("user_id")
@@ -135,20 +191,22 @@ namespace DataAccess.Migrations
                     b.Property<int>("Fridges_id")
                         .HasColumnType("int");
 
+                    b.Property<string>("Jobs_id")
+                        .HasColumnType("varchar(300)");
+
                     b.Property<DateTime>("bozulma_tarihi")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 5, 19, 17, 29, 59, 936, DateTimeKind.Local).AddTicks(6620));
+                        .HasDefaultValue(new DateTime(2022, 5, 22, 22, 32, 33, 339, DateTimeKind.Local).AddTicks(8206));
 
                     b.Property<DateTime>("eklenme_tarihi")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 5, 19, 17, 29, 59, 937, DateTimeKind.Local).AddTicks(6760));
+                        .HasDefaultValue(new DateTime(2022, 5, 22, 22, 32, 33, 340, DateTimeKind.Local).AddTicks(8466));
 
                     b.HasKey("id");
 
-                    b.HasIndex("Foods_id")
-                        .IsUnique();
+                    b.HasIndex("Foods_id");
 
                     b.HasIndex("Fridges_id");
 
@@ -156,6 +214,27 @@ namespace DataAccess.Migrations
                 });
 
             modelBuilder.Entity("Entities.Notification", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("bildirim")
+                        .IsRequired()
+                        .HasColumnType("varchar(80)");
+
+                    b.Property<int>("user_id")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("user_id");
+
+                    b.ToTable("Notifications");
+                });
+
+            modelBuilder.Entity("Entities.NotificationType", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()
@@ -185,7 +264,29 @@ namespace DataAccess.Migrations
                     b.HasIndex("user_id")
                         .IsUnique();
 
-                    b.ToTable("Notification");
+                    b.ToTable("NotificationType");
+                });
+
+            modelBuilder.Entity("Entities.Notification_Count", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("notificationscount")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0);
+
+                    b.Property<int>("user_id")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("user_id");
+
+                    b.ToTable("Notification_Counts");
                 });
 
             modelBuilder.Entity("Entities.User", b =>
@@ -237,14 +338,14 @@ namespace DataAccess.Migrations
                     b.Property<DateTime>("date")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 5, 19, 17, 29, 59, 938, DateTimeKind.Local).AddTicks(9119));
+                        .HasDefaultValue(new DateTime(2022, 5, 22, 22, 32, 33, 342, DateTimeKind.Local).AddTicks(1376));
 
                     b.Property<string>("text")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("title")
                         .IsRequired()
-                        .HasColumnType("varchar(500)");
+                        .HasColumnType("varchar(3000)");
 
                     b.Property<int>("user_id")
                         .HasColumnType("int");
@@ -289,8 +390,30 @@ namespace DataAccess.Migrations
             modelBuilder.Entity("Entities.Notification", b =>
                 {
                     b.HasOne("Entities.User", "User")
-                        .WithOne("Notification")
-                        .HasForeignKey("Entities.Notification", "user_id")
+                        .WithMany("Notification")
+                        .HasForeignKey("user_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Entities.NotificationType", b =>
+                {
+                    b.HasOne("Entities.User", "User")
+                        .WithOne("NotificationType")
+                        .HasForeignKey("Entities.NotificationType", "user_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Entities.Notification_Count", b =>
+                {
+                    b.HasOne("Entities.User", "User")
+                        .WithOne("Notification_Count")
+                        .HasForeignKey("Entities.Notification_Count", "user_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -323,6 +446,10 @@ namespace DataAccess.Migrations
                     b.Navigation("Fridge");
 
                     b.Navigation("Notification");
+
+                    b.Navigation("Notification_Count");
+
+                    b.Navigation("NotificationType");
 
                     b.Navigation("User_article");
                 });
