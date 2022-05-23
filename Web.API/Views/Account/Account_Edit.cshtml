@@ -16,9 +16,9 @@
     <form class="inner" asp-action="Account_Edit_Post" asp-controller="Account" asp-area="" method="post">
         <div class="flexx">
             <b>Ad:</b>
-            <input class="account" type="text" placeholder="@Model.User.Ad" asp-for="@Model.User.Ad" maxlength="30" minlength="1" onkeydown="keyDown(event)"/>
+            <input class="account" type="text" placeholder="@Model.User.Ad" asp-for="@Model.User.Ad" required="required" maxlength="30" minlength="2" onkeydown="keyDown(event)"/>
             <b>Soyad:</b>
-            <input class="account" type="text" placeholder="@Model.User.Soyad" asp-for="@Model.User.Soyad" maxlength="30" minlength="1" onkeydown="keyDown(event)"/>
+            <input class="account" type="text" placeholder="@Model.User.Soyad" asp-for="@Model.User.Soyad" required="required" maxlength="30" minlength="2" onkeydown="keyDown(event)"/>
             <b>Cinsiyet:</b>
               <select class="selecttab" asp-for="@Model.User.Cinsiyet">
                 <option value="@Model.User.Cinsiyet" selected="selected">@Model.User.Cinsiyet</option>
@@ -40,7 +40,7 @@
             <b>Espota: (Değiştirilemez)</b>
             <input class="account" type="text" placeholder="@Model.User.Eposta" disabled/>
             <b>Şifre:</b>
-            <input class="account" type="text" placeholder="@Model.User.Sifre" asp-for="@Model.User.Sifre" maxlength="30" minlength="4" onkeydown="keyDown(event)"/>
+            <input class="account" type="text" placeholder="@Model.User.Sifre" required="required" asp-for="@Model.User.Sifre" maxlength="30" minlength="4" onkeydown="keyDown(event)"/>
             <b>Telefon Numarası:</b>
             <input class="account" type="text" placeholder="@Model.User.Telefon" asp-for="@Model.User.Telefon" maxlength="10" minlength="10" onkeydown="keyDown(event)"/>
         </div>

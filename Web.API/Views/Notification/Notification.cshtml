@@ -12,15 +12,15 @@
 <div class="bodydiv">
      <div class="content">
          <b class="başlık">Bildirimler</b>
-                <div>
+                <div style="margin-top:1em;">
                     @if(Model.User.Notification != null && Model.User.Notification.Count != 0)
                     {
                         @foreach(var x in Model.User.Notification)
                         {
-                            <Form style="padding:2em; margin-top:0.2em;" asp-action="DeleteNotifications" asp-controller="Notification" asp-area="" method="post">
+                            <Form style="padding:2em; margin-top:0.2em; display:flex; background-color:white; border-radius:15px; width:40em; justify-content:space-between" asp-action="DeleteNotifications" asp-controller="Notification" asp-area="" method="post">
                                 <input type="hidden" asp-for="@Model.User.id" value="@Model.User.id" />
                                 <input type="hidden" asp-for="@Model.Notification_id" value="@x.id" />
-                                <p>@x.bildirim</p> <button type="submit" style="margin-left:1em;">Sil</button>
+                                <p>@x.bildirim</p> <button type="submit" style="margin-left:1em; height:auto; width:5em; background-color:white; border-radius:5px;">Sil</button>
                             </Form>
                         }
                 }

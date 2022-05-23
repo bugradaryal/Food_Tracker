@@ -17,7 +17,7 @@
                       <div class="form-group">
                         <input type="text" class="form-control" name="search" placeholder="Yazı Başlığı..." required>      
                          <input type="hidden" asp-for="User.id" value=@Model.User.id/>
-                        <button type="submit" class="btn btn-primary">Ara</button>
+                         <button type="submit" class="btn btn-primary">Ara</button>
                       </div>
                     </form>
                     <form asp-action="Text_Search_Clear" asp-controller="Text" asp-area="" method="post">
@@ -35,21 +35,20 @@
                         <button type="submit" class="btn btn-secondary">Yeni Yazı</button>
                     </form>
                 </div>
-                <div>
-                    <b style="color:red;">@ViewBag.error</b>
+                <b style="color:red;">@ViewBag.error</b>
+                <div class="table">
                  <table> 
                       <tr>
                             <th><b>Yazar</b></th> 
                             <th>Başlık</th> 
                             <th>Tarih</th> 
-                            <th>İçerik</th> 
                             <th>İşlemler</th>
                      </tr>
                     @if(Model.User_article != null)
                     {
                                         @foreach(var x in Model.User_article)
                         {
-                                    <tr> 
+                                    <tr class="bordernone"> 
                                         <td>
                                             <div class="author">
                                                 <div>
@@ -73,7 +72,6 @@
                                         </td> 
                                         <td>@x.title</td> 
                                         <td>@x.date.ToString("dd/MM/yyyy")</td> 
-                                        <td>@x.text.ToString().Substring(0,50)...</td> <!--Yazıın içeriğini birazda olsa göemek için-->
                                         <td>
                                                 <form asp-action="Text_Read" asp-controller="Text" asp-area="" method="post">
                                                             <input type="hidden" asp-for="User.id" value=@Model.User.id/>
@@ -83,6 +81,16 @@
                                                </form>    
                                         </td> 
                                     </tr> 
+                                    <tfoot>
+                                        <tr class="bordernone">
+                                            <th colspan="4"><b>İçeriği:</b></th>
+                                        </tr>
+                                       <tr>
+                                           <td colspan="4">
+                                                 @x.text.ToString().Substring(0,70)... <!--Yazının içeriğini birazda olsa görmek için-->
+                                           </td>
+                                       </tr>
+                                    </tfoot>
                          }   
                     }
                      </table>  

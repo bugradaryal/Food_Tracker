@@ -14,18 +14,20 @@
      <div class="content">
          <b class="başlık">Yeni Yazı</b>
          <form asp-action="Create_New_Text" asp-controller="Text" asp-area="" method="post">
-                <div>
-                    <input type="text" placeholder="Başlık" name="title" maxlength="40" minlength="5" required onkeydown="keyDown(event)"/>
-                    <textarea rows="30" cols="70" maxlength="3000" minlength="16" placeholder="Metin" name="metin" required onkeydown="keyDown(event)"></textarea>
+                <div class="textboxs">
+                    <input type="text" placeholder="Başlık" name="title" maxlength="60" minlength="5" required onkeydown="keyDown(event)"/>
+                    <textarea rows="10" cols="30" maxlength="3000" minlength="16" placeholder="Metin" name="metin" required onkeydown="keyDown(event)"></textarea>
                 </div>
                  <div>
                      <input type="hidden" asp-for=User.id value=@Model.User.id/>
-                     <button type="submit" class="btn btn-secondary">Paylaş</button>
+                     <div style="display:flex; margin-top:1em;">
+                            <button type="submit" id="işlem_buton" class="btn btn-warning">Paylaş</button>
+                            <button type="button" style="margin-left:1em;" onclick="document.getElementById('islemiptal').submit()" id="işlem_buton" class="btn btn-secondary">İşlem İptal</button>
+                     </div>
                 </div>
          </form>
-         <form asp-action="Text" asp-controller="Text" asp-area="" method="post">
+         <form asp-action="Text" asp-controller="Text" asp-area="" method="post" id="islemiptal">
              <input type="hidden" asp-for=User.id value=@Model.User.id/>
-             <button type="submit" class="btn btn-secondary">İşlem İptal</button>
          </form>
         </div>
 </div>

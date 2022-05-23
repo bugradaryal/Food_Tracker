@@ -22,7 +22,7 @@
 .close {
     color: #aaaaaa;
     float: right;
-    font-size: 50px;
+    font-size: 60px;
     font-weight: bold;
 }
 
@@ -32,116 +32,20 @@
         text-decoration: none;
         cursor: pointer;
     }
-
-
-
-
-
-
-
-
-.flexible {
-    display: flex;
-}
-
-.image img {
-    width: 30vw;
-    height: 60vh;
-}
-
-.button {
-    display: block;
-    margin-top: 2vh;
-    margin-bottom: 2vh;
-    margin-left: 2vw;
-    margin-right: 2vw;
-}
-
-    .button form-select {
-        height: auto;
-        width: 3vw;
-    }
-
-
 .başlık {
     font-family: "Comic Sans MS", "Comic Sans", cursive;
-    font-size: 24px;
+    font-size: 30px;
     margin-bottom: 3vh;
+    margin-left:1em;
     text-decoration: underline;
 }
 
 .content {
-    margin-top: 4vh;
+    padding: 3.5em;
     display: inline-block;
+    width:100%;
 }
 
-.button form {
-    display: inline;
-}
-
-#işlem_buton {
-    margin-top: 1vh;
-    height: auto;
-    width: 10vw;
-    font-size: 1vw;
-}
-
-
-
-#butonum {
-    margin-top: 1vh;
-    height: auto;
-    width: 10vw;
-    font-size: 1vw;
-}
-
-
-
-.benimodalım {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    padding-top: 100px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.4);
-}
-
-
-.modalımın-contenti {
-    width: 40%;
-    background-color: #fefefe;
-    margin: auto;
-    padding: 50px;
-    border: 1px solid #888;
-}
-
-
-.close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 50px;
-    font-weight: bold;
-}
-
-    .close:hover,
-    .close:focus {
-        color: #000;
-        text-decoration: none;
-        cursor: pointer;
-    }
-
-
-.rename {
-    margin-bottom: 2vh;
-    height: auto;
-    width: 25vw;
-    float: left;
-}
 
 table {
     margin-top: 2vh;
@@ -150,25 +54,136 @@ table {
     width: 100%;
 }
 
-    table td, th {
-        border: 1px solid #dddddd;
-        text-align: left;
-        padding: 5px;
-    }
-
-    table th {
-        text-decoration: underline;
-        width: 10vw;
-    }
-
-    table tr:nth-child(even) {
-        background-color: #dddddd;
-    }
-
-.flexform {
-    display: flex;
+.table {
+    height: auto;
+    width: 100%;
+    border-top-left-radius:1.5em;
+    border-top-right-radius:1.5em;
+    background-color: white;  
+}
+table td, th {
+    font-size: 1em;
 }
 
-.secondbutton {
-    margin-left: 0.3vw;
+table th {
+    text-decoration: underline;
+    text-align: left;
+    padding: 1em;
+}
+.bordernone{
+    border:none;
+}
+
+table td {
+    padding: 1em;
+    text-align: left;
+}
+
+.author img {
+    width: 5em;
+    height: 5em;
+}
+.author{
+    display:flex;
+}
+    .author p{
+        margin-top:1.7em
+    }
+
+
+    .button {
+        display: block;
+        margin-top: 2vh;
+        margin-bottom: 2vh;
+        margin-left: 2vw;
+        margin-right: 2vw;
+    }
+
+    .button form-select {
+        height: auto;
+        width: 3vw;
+    }
+
+#işlem_buton {
+    margin-top: 1vh;
+    height: auto;
+    width: 8em;
+    font-size: 1vw;
+}
+
+
+.search{
+    float:right;
+    height:auto;
+    display:flex;
+    position:relative;
+}
+.form-group{
+    display:flex;
+}
+.form-control{
+    width:20em;
+}
+.mytext {
+    display: flex;
+    margin-top: 2em;
+    margin-left: 0.7em;
+}
+.mytext form{
+    margin-left:0.4em;
+}
+.headercontent{
+    display:flex;
+    width:100%;
+    height:auto;
+    position:relative;
+    justify-content:space-between
+}
+.exit{
+    float:right;
+}
+.headers{
+    display:flex;
+    flex-direction:column;
+}
+.textboxs {
+    display:flex; 
+    flex-direction:column;
+}
+.textboxs input{
+    width:40%;
+    margin-top:2em;
+    background-color:white;
+    border:none;
+    border: 2px solid black;
+    border-bottom-left-radius:10px;
+    border-top-left-radius:3px;
+    border-top-right-radius:10px;
+    padding-left:1em;
+}
+    .textboxs textarea {
+        margin-top: 1.2em;
+        resize: none;
+        border: 2px solid black;
+        border-radius:10px;
+    }
+.islembuton{
+    display:flex;
+}
+.whitecolor{
+    background-color:white;
+    border-radius:10px;
+    padding:1em;
+}
+.titleanddate{
+    width:60%;
+    margin-top:1em;
+    display:flex;
+    border-bottom: 1px solid black;
+}
+.date{
+    margin-left:16em;
+}
+.iceriktext{
+    margin-top:2em;
 }

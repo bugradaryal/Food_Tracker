@@ -77,7 +77,7 @@ namespace DataAccess
             modelBuilder.Entity<User_article>().HasKey(x => x.id);
             modelBuilder.Entity<User_article>().Property(x => x.id).ValueGeneratedOnAdd();
             modelBuilder.Entity<User_article>().Property(x => x.user_id).IsRequired();
-            modelBuilder.Entity<User_article>().Property(x => x.title).HasColumnType("varchar(40)").IsRequired();
+            modelBuilder.Entity<User_article>().Property(x => x.title).HasColumnType("varchar(60)").IsRequired();
             modelBuilder.Entity<User_article>().Property(x => x.date).HasColumnType("datetime2").HasDefaultValue(DateTime.Now);
             modelBuilder.Entity<User_article>().Property(x => x.title).HasColumnType("varchar(3000)").IsRequired();
 

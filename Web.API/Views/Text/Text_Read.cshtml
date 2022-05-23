@@ -11,8 +11,9 @@
 
 <div class="bodydiv">
      <div class="content">
-        @if(ViewData["from"] != null)
-        {
+         <div class=whitecolor>
+            @if(ViewData["from"] != null)
+             {
             string Url = "Text";
             if(ViewData["from"].ToString() == "My_Text")
             {
@@ -44,14 +45,20 @@
                            <p>@x.User.Ad @x.User.Soyad</p>
                        </div>
                      </div>
-                     <div class="date">
-                        <p>@x.date.ToString("dd/MM/yyyy")</p>
+                     <div class="titleanddate">
+                         <div>
+                             <b>@x.title.ToString()</b>
+                         </div>
+                          <div class="date">
+                            <p>@x.date.ToString("dd/MM/yyyy")</p>
+                         </div>
                      </div>
                 </div>
-                <div>
+                <div class="iceriktext">
                     <p>@x.text</p>
                 </div>
             }
          }
-        </div>
+         </div>
+     </div>
 </div>

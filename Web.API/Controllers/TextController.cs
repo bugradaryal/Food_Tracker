@@ -198,7 +198,7 @@ namespace Web.API.Controllers
                 ViewBag.CurrentView = "My Text";
                 _user_articleService.UpdateUser_article(new User_article { id = vm.User_article_id, title = title, text = metin, user_id = vm.User.id, date = DateTime.Now});
                 vm.User_article = _user_articleService.GetUser_ArticleByUserId(vm.User.id);
-                ViewBag.error = "Yazınız oluşturulmuştur.";
+                ViewBag.error = "Yazınız düzenlenmiştir.";
                 return View("My_Text",vm);
             }
             catch (Exception error)

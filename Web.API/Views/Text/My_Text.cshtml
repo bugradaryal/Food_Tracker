@@ -11,14 +11,20 @@
 
 <div class="bodydiv">
      <div class="content">
-         <b class="başlık">Yazılarım</b>
-                <div>
+         <div cleass="headers">
+           <div class="headercontent">
+             <div>
+                  <b class="başlık">Yazılarım</b>
+             </div>
+                <div class="exit">
                      <form id="previouspage" asp-action="Text" asp-controller="Text" asp-area="" method="post">
                         <input type="hidden" asp-for="User.id" value=@Model.User.id/>
                         <span onclick="document.getElementById('previouspage').submit()" class="close">&times;</span>
                     </form>
                 </div>
-                <div class="search">
+         </div>
+
+                <div class="search" style="float:unset;">
                     <form asp-action="My_Text_Search" asp-controller="Text" asp-area="" method="post">
                       <div class="form-group">
                         <input type="text" class="form-control" name="search" placeholder="Yazı Başlığı..." required>      
@@ -31,42 +37,51 @@
                         <button type="submit" class="btn btn-secondary">Temizle</button>
                     </form>
                 </div>
-                <div>
-                    <b style="color:red;">@ViewBag.error</b>
+         </div>
+                             <b style="color:red;">@ViewBag.error</b>
+                <div class="table">
                  <table> 
                       <tr>
                             <th>Başlık</th> 
                             <th>Tarih</th> 
-                            <th>İçerik</th> 
                             <th>İşlemler</th>
                      </tr>
                     @if(Model.User_article != null)
                     {
                         @foreach(var x in Model.User_article)
                         {
-                                    <tr> 
+                                    <tr class="bordernone"> 
                                         <td>@x.title</td> 
                                         <td>@x.date.ToString("dd/MM/yyyy")</td> 
-                                        <td>@x.text.ToString().Substring(0,50)...</td> <!--Yazıın içeriğini birazda olsa göemek için-->
-                                        <td>
+                                        <td class="islembuton">
                                                 <form asp-action="Text_Read" asp-controller="Text" asp-area="" method="post">
                                                             <input type="hidden" asp-for="User.id" value=@Model.User.id/>
                                                             <input type="hidden" asp-for="User_article_id" value=@x.id/>
                                                             <input type="hidden" name="from" value="My_Text"/>
-                                                            <button type="submit" class="btn btn-secondary">Oku</button> 
-                                               </form>    
+                                                            <button type="submit" style="width:4em;" class="btn btn-primary">Oku</button> 
+                                               </form>   
+                                                <form asp-action="My_Text_Delete" asp-controller="Text" asp-area="" method="post">
+                                                            <input type="hidden" asp-for="User.id" value=@Model.User.id/>
+                                                            <input type="hidden" asp-for="User_article_id" value=@x.id/>
+                                                            <button type="submit" style="width:4em; margin-left:0.1em;" class="btn btn-danger">Sil</button> 
+                                               </form>   
                                                <form asp-action="My_Text_Edit" asp-controller="Text" asp-area="" method="post">
                                                             <input type="hidden" asp-for="User.id" value=@Model.User.id/>
                                                             <input type="hidden" asp-for="User_article_id" value=@x.id/>
-                                                            <button type="submit" class="btn btn-secondary">Düzenle</button> 
-                                               </form>   
-                                               <form asp-action="My_Text_Delete" asp-controller="Text" asp-area="" method="post">
-                                                            <input type="hidden" asp-for="User.id" value=@Model.User.id/>
-                                                            <input type="hidden" asp-for="User_article_id" value=@x.id/>
-                                                            <button type="submit" class="btn btn-secondary">Sil</button> 
+                                                            <button type="submit" style="width:8em; margin-left:0.1em;" class="btn btn-secondary">Düzenle</button> 
                                                </form>   
                                         </td> 
                                     </tr> 
+                                    <tfoot>
+                                        <tr class="bordernone">
+                                            <th colspan="3"><b>İçeriği:</b></th>
+                                        </tr>
+                                       <tr>
+                                           <td colspan="3">
+                                                 @x.text.ToString().Substring(0,70)... <!--Yazının içeriğini birazda olsa görmek için-->
+                                           </td>
+                                       </tr>
+                                    </tfoot>
                          }   
                     }
                      </table>  

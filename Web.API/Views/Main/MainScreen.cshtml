@@ -7,19 +7,40 @@
 
 <head>
     <link rel="stylesheet" href="~/css/mainscreen.css">
+    <link rel="stylesheet" href="ttps://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
 </head>
 
 <body>
     <div class="centeredtext">
-        <div class="wrapper">
-            <div class="static-txt">Bu bir</div>
-            <ul class="dynamic-txts">
-                <li><span>Deneme1</span></li>
-                <li><span>Deneme2</span></li>
-                <li><span>Deneme3</span></li>
-                <li><span>Deneme4</span></li>
-            </ul>
+        <div class="word">
+          <span>YEMEK</span>
+          <span>TA</span>
+          <span>K</span>
+          <span>I</span>
+          <span>P</span>
         </div>
-        <p>@Model.User.Eposta.ToString()</p>
+        <div style="margin-top:14em;">
+          <h2><b>Hoşgeldin:</b></h2>
+          <p>@Model.User.Ad @Model.User.Soyad</p>
+        </div>
     </div>
+
 </body>
+
+<script>
+    const spans = document.querySelectorAll('.word span');
+
+spans.forEach((span, idx) => {
+  span.addEventListener('click', (e) => {
+    e.target.classList.add('active');
+  });
+  span.addEventListener('animationend', (e) => {
+    e.target.classList.remove('active');
+  });
+  
+  // Initial animation
+  setTimeout(() => {
+    span.classList.add('active');
+  }, 750 * (idx+1))
+});
+</script>

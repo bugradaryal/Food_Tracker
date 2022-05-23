@@ -197,12 +197,12 @@ namespace DataAccess.Migrations
                     b.Property<DateTime>("bozulma_tarihi")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 5, 22, 22, 32, 33, 339, DateTimeKind.Local).AddTicks(8206));
+                        .HasDefaultValue(new DateTime(2022, 5, 23, 14, 58, 19, 497, DateTimeKind.Local).AddTicks(3521));
 
                     b.Property<DateTime>("eklenme_tarihi")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 5, 22, 22, 32, 33, 340, DateTimeKind.Local).AddTicks(8466));
+                        .HasDefaultValue(new DateTime(2022, 5, 23, 14, 58, 19, 498, DateTimeKind.Local).AddTicks(2979));
 
                     b.HasKey("id");
 
@@ -338,7 +338,7 @@ namespace DataAccess.Migrations
                     b.Property<DateTime>("date")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 5, 22, 22, 32, 33, 342, DateTimeKind.Local).AddTicks(1376));
+                        .HasDefaultValue(new DateTime(2022, 5, 23, 14, 58, 19, 499, DateTimeKind.Local).AddTicks(4415));
 
                     b.Property<string>("text")
                         .HasColumnType("nvarchar(max)");
