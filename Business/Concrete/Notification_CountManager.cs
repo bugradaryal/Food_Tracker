@@ -20,10 +20,6 @@ namespace Business.Concrete
         {
             return notification_CountRepository.GetNotificationsCountByUserId(id);
         }
-        public bool AnyNotificationsCountByUserId(int id)
-        {
-            return notification_CountRepository.AnyNotificationsCountByUserId(id);
-        }
         public Notification_Count UpdateNotificationByNotifi(Notification_Count notifi)
         {
             return notification_CountRepository.UpdateNotificationByNotifi(notifi);

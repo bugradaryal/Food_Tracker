@@ -14,13 +14,6 @@ namespace DataAccess.Concrete
                return DbContext.Notification_Counts.Where(x => x.user_id == id).FirstOrDefault();
             }
         }
-        public bool AnyNotificationsCountByUserId(int id)
-        {
-            using (var DbContext = new DataDbContext())
-            {
-                return DbContext.Notification_Counts.Where(x => x.user_id == id).Any();
-            }
-        }
         public Notification_Count UpdateNotificationByNotifi(Notification_Count notifi)
         {
             using (var DbContext = new DataDbContext())

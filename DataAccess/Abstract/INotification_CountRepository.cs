@@ -8,7 +8,6 @@ namespace DataAccess.Abstract
     public interface INotification_CountRepository
     {
         Notification_Count GetNotificationsCountByUserId(int id);
-        bool AnyNotificationsCountByUserId(int id);
         Notification_Count UpdateNotificationByNotifi(Notification_Count notifi);
         Notification_Count CreateNotificationCount(Notification_Count notifi);
     }

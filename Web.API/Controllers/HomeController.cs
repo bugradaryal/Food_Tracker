@@ -58,7 +58,7 @@ namespace Web.API.Controllers
                     {
                         ViewBag.CurrentView = "MainScreen";
                         ViewModels vm = new ViewModels();
-                        vm.User = _userService.GetUserById(User.id);
+                        vm.User = User;
                         vm.User.Notification = _notificationService.GetNotificationsByUserId(User.id);
                         vm.User.Notification_Count = _notificationCountService.GetNotificationsCountByUserId(User.id);
                         return View("../Main/MainScreen", vm);
@@ -77,14 +77,14 @@ namespace Web.API.Controllers
             }
             catch (Exception ht) { return Content("Http Get 404 Error!!! Code: "+ht.ToString().Substring(0,600)); }
         }
+        #endregion
+
+        #region üye olma işlemleri
 
         public IActionResult Register()
         {
             return View();
         }
-        #endregion
-
-        #region üye olma işlemleri
 
         public int Random_fonksiyon()
         {

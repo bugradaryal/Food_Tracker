@@ -62,15 +62,15 @@ namespace DataAccess
             modelBuilder.Entity<Food>().Property(x => x.protein_yüzde).HasDefaultValue(0);
             modelBuilder.Entity<Food>().Property(x => x.yağ_yüzde).HasDefaultValue(0);
             modelBuilder.Entity<Food>().Property(x => x.karbonhidrat_yüzde).HasDefaultValue(0);
-            modelBuilder.Entity<Food>().Property(x => x.kalori).HasDefaultValue(0);
-            modelBuilder.Entity<Food>().Property(x => x.protein_gr).HasDefaultValue(0);
-            modelBuilder.Entity<Food>().Property(x => x.yağ_gr).HasDefaultValue(0);
-            modelBuilder.Entity<Food>().Property(x => x.karbonhidrat_gr).HasDefaultValue(0);
-            modelBuilder.Entity<Food>().Property(x => x.sodyum_gr).HasDefaultValue(0);
-            modelBuilder.Entity<Food>().Property(x => x.potasyum_gr).HasDefaultValue(0);
-            modelBuilder.Entity<Food>().Property(x => x.kalsiyum_gr).HasDefaultValue(0);
-            modelBuilder.Entity<Food>().Property(x => x.lif_gr).HasDefaultValue(0);
-            modelBuilder.Entity<Food>().Property(x => x.kollestrol_gr).HasDefaultValue(0);
+            modelBuilder.Entity<Food>().Property(x => x.kalori).HasColumnType("float").HasDefaultValue(0);
+            modelBuilder.Entity<Food>().Property(x => x.protein_gr).HasColumnType("float").HasDefaultValue(0);
+            modelBuilder.Entity<Food>().Property(x => x.yağ_gr).HasColumnType("float").HasDefaultValue(0);
+            modelBuilder.Entity<Food>().Property(x => x.karbonhidrat_gr).HasColumnType("float").HasDefaultValue(0);
+            modelBuilder.Entity<Food>().Property(x => x.sodyum_gr).HasColumnType("float").HasDefaultValue(0);
+            modelBuilder.Entity<Food>().Property(x => x.potasyum_gr).HasColumnType("float").HasDefaultValue(0);
+            modelBuilder.Entity<Food>().Property(x => x.kalsiyum_gr).HasColumnType("float").HasDefaultValue(0);
+            modelBuilder.Entity<Food>().Property(x => x.lif_gr).HasColumnType("float").HasDefaultValue(0);
+            modelBuilder.Entity<Food>().Property(x => x.kollestrol_gr).HasColumnType("float").HasDefaultValue(0);
             modelBuilder.Entity<Food>().Property(x => x.gün_bozulma_tarihi).HasDefaultValue(0);
 
             /////////////////////User_article

@@ -14,7 +14,7 @@ namespace BackgroundJobs.Schedules
         public static string addnotification(User user, DateTime bozulma_tarihi, Food myfood, DateTime eklenme_tarihi) 
         {
             DateTime tarih;
-            if (bozulma_tarihi == eklenme_tarihi || bozulma_tarihi == eklenme_tarihi.AddDays(1))
+            if (bozulma_tarihi == eklenme_tarihi || bozulma_tarihi <= eklenme_tarihi.AddDays(1))
             {
                 tarih = bozulma_tarihi.AddMinutes(5);
             }
@@ -32,7 +32,7 @@ namespace BackgroundJobs.Schedules
         public static string updatenotification(User user, string jobid, DateTime bozulma_tarihi, Food myfood, DateTime eklenme_tarihi)
         {
             DateTime tarih;
-            if (bozulma_tarihi == eklenme_tarihi || bozulma_tarihi == eklenme_tarihi.AddDays(1))
+            if (bozulma_tarihi == eklenme_tarihi || bozulma_tarihi <= eklenme_tarihi.AddDays(1))
             {
                 tarih = bozulma_tarihi.AddMinutes(5);
             }

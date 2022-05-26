@@ -27,14 +27,6 @@ namespace DataAccess.Concrete
             }
         }
 
-        public List<User> GetAllUsers()
-        {
-            using (var DbContext = new DataDbContext())
-            {
-                return DbContext.Users.ToList();
-            }
-        }
-
         public User GetUserById(int id)
         {
             using (var DbContext = new DataDbContext())

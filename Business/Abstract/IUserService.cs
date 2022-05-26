@@ -5,7 +5,6 @@ namespace Business.Abstract
 {
     public interface IUserService
     {
-        List<User> GetAllUsers();
         User GetUserById(int id);
         User CreateUser(User User);
         User UpdateUser(User User);

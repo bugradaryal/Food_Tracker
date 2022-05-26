@@ -21,19 +21,31 @@ namespace BackGroundJobs
         {
             var notifi = _notificationTypeService.GetUsersNotification(user.id);
             
-            if(notifi.tercih_eposta == true)
+            if(notifi != null)
             {
-                Email.SendEmail(user,myfood);
+                if (notifi.tercih_eposta == true)
+                {
+                    Email.SendEmail(user, myfood);
+                }
+                if (notifi.tercih_uygulama == true)
+                {
+                    Application app = new Application();
+                    app.sendApplicationNotification(user, myfood);
+                }
+                if (notifi.tercih_sms == true)
+                {
+                    Sms sms = new Sms();
+                    sms.smsbody(user, myfood);
+                }
             }
-            if(notifi.tercih_uygulama == true)
+            else
             {
-                Application app = new Application();
-                app.sendApplicationNotification(user,myfood);
-            }
-            if(notifi.tercih_sms == true)
-            {
-                Sms sms = new Sms();
-                sms.smsbody(user,myfood);
+                try
+                {
+                    Application app = new Application();
+                    app.sendApplicationNotification(user, myfood);
+                }
+                catch (Exception) { }
             }
         }
     }

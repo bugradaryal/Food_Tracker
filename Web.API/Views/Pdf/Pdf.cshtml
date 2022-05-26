@@ -41,7 +41,7 @@
                                     <td>@x.eklenme_tarihi.ToString("dd/MM/yyyy")</td> 
                                 @{
                                     DateTime d1 = @x.bozulma_tarihi;
-                                    DateTime d2 = @x.eklenme_tarihi;
+                                    DateTime d2 = DateTime.Now;
                                     string renk = "black";
                                     if((d1-d2).Days <=1){
                                         renk = "darkred";

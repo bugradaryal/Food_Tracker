@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using Entities;
 using Web.API.Models;
+using System.Linq;
 
 namespace Web.API.Controllers
 {
@@ -11,9 +12,13 @@ namespace Web.API.Controllers
     {
         private IUserService _userService;
         private INotificationTypeService _notificationTypeService;
+        private IFridgeService _fridgeService;
+        private IMy_FoodService _my_foodService;
 
         public AccountController()
         {
+            _my_foodService = new My_FoodManager();
+            _fridgeService = new FridgeManager();
             _userService = new UserManager();
             _notificationTypeService = new NotificationTypeManager();
             ViewBag.error = string.Empty;
@@ -49,7 +54,21 @@ namespace Web.API.Controllers
             try
             {
                 ViewBag.CurrentView = "Account Delete";
+
+                var fridge_list = _fridgeService.GetAllFridgesByUserId(vm.User.id);
+                foreach (var x in fridge_list)
+                {
+                    if (_my_foodService.GetMy_FoodByFridgeId(x.id).Any() == true)
+                    {
+                        foreach (var y in _my_foodService.GetMy_FoodByFridgeId(x.id))
+                        {
+                            BackgroundJobs.Schedules.Notification.deletenotification(y.Jobs_id);
+                        }
+                    }
+                }
+
                 _userService.DeleteUser(vm.User.id);
+
                 ViewBag.error = "Kullanıcı hesabı silindi.";
                 return View("../Home/Login");
             }

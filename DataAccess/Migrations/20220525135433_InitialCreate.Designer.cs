@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(DataDbContext))]
-    [Migration("20220523115819_InitialCreate")]
+    [Migration("20220525135433_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,60 +33,60 @@ namespace DataAccess.Migrations
                         .HasColumnType("int")
                         .HasDefaultValue(0);
 
-                    b.Property<int>("kalori")
+                    b.Property<double>("kalori")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasDefaultValue(0);
+                        .HasColumnType("float")
+                        .HasDefaultValue(0.0);
 
-                    b.Property<int>("kalsiyum_gr")
+                    b.Property<double>("kalsiyum_gr")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasDefaultValue(0);
+                        .HasColumnType("float")
+                        .HasDefaultValue(0.0);
 
-                    b.Property<int>("karbonhidrat_gr")
+                    b.Property<double>("karbonhidrat_gr")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasDefaultValue(0);
+                        .HasColumnType("float")
+                        .HasDefaultValue(0.0);
 
                     b.Property<int>("karbonhidrat_yüzde")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasDefaultValue(0);
 
-                    b.Property<int>("kollestrol_gr")
+                    b.Property<double>("kollestrol_gr")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasDefaultValue(0);
+                        .HasColumnType("float")
+                        .HasDefaultValue(0.0);
 
-                    b.Property<int>("lif_gr")
+                    b.Property<double>("lif_gr")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasDefaultValue(0);
+                        .HasColumnType("float")
+                        .HasDefaultValue(0.0);
 
-                    b.Property<int>("potasyum_gr")
+                    b.Property<double>("potasyum_gr")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasDefaultValue(0);
+                        .HasColumnType("float")
+                        .HasDefaultValue(0.0);
 
-                    b.Property<int>("protein_gr")
+                    b.Property<double>("protein_gr")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasDefaultValue(0);
+                        .HasColumnType("float")
+                        .HasDefaultValue(0.0);
 
                     b.Property<int>("protein_yüzde")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasDefaultValue(0);
 
-                    b.Property<int>("sodyum_gr")
+                    b.Property<double>("sodyum_gr")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasDefaultValue(0);
+                        .HasColumnType("float")
+                        .HasDefaultValue(0.0);
 
-                    b.Property<int>("yağ_gr")
+                    b.Property<double>("yağ_gr")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasDefaultValue(0);
+                        .HasColumnType("float")
+                        .HasDefaultValue(0.0);
 
                     b.Property<int>("yağ_yüzde")
                         .ValueGeneratedOnAdd()
@@ -105,55 +105,55 @@ namespace DataAccess.Migrations
                         new
                         {
                             id = 1,
-                            gün_bozulma_tarihi = 0,
-                            kalori = 0,
-                            kalsiyum_gr = 0,
-                            karbonhidrat_gr = 0,
-                            karbonhidrat_yüzde = 0,
-                            kollestrol_gr = 0,
-                            lif_gr = 0,
-                            potasyum_gr = 0,
-                            protein_gr = 0,
-                            protein_yüzde = 0,
-                            sodyum_gr = 0,
-                            yağ_gr = 0,
+                            gün_bozulma_tarihi = 15,
+                            kalori = 40.0,
+                            kalsiyum_gr = 0.0,
+                            karbonhidrat_gr = 20.800000000000001,
+                            karbonhidrat_yüzde = 1,
+                            kollestrol_gr = 0.0,
+                            lif_gr = 9.0,
+                            potasyum_gr = 4.0,
+                            protein_gr = 30.0,
+                            protein_yüzde = 3,
+                            sodyum_gr = 0.0,
+                            yağ_gr = 0.0,
                             yağ_yüzde = 0,
                             yemek_ismi = "Elma"
                         },
                         new
                         {
                             id = 2,
-                            gün_bozulma_tarihi = 0,
-                            kalori = 0,
-                            kalsiyum_gr = 0,
-                            karbonhidrat_gr = 0,
-                            karbonhidrat_yüzde = 0,
-                            kollestrol_gr = 0,
-                            lif_gr = 0,
-                            potasyum_gr = 0,
-                            protein_gr = 0,
-                            protein_yüzde = 0,
-                            sodyum_gr = 0,
-                            yağ_gr = 0,
+                            gün_bozulma_tarihi = 10,
+                            kalori = 50.0,
+                            kalsiyum_gr = 0.0,
+                            karbonhidrat_gr = 30.199999999999999,
+                            karbonhidrat_yüzde = 2,
+                            kollestrol_gr = 4.0,
+                            lif_gr = 3.0,
+                            potasyum_gr = 4.0,
+                            protein_gr = 10.5,
+                            protein_yüzde = 2,
+                            sodyum_gr = 0.0,
+                            yağ_gr = 0.0,
                             yağ_yüzde = 0,
                             yemek_ismi = "Erik"
                         },
                         new
                         {
                             id = 3,
-                            gün_bozulma_tarihi = 0,
-                            kalori = 0,
-                            kalsiyum_gr = 0,
-                            karbonhidrat_gr = 0,
-                            karbonhidrat_yüzde = 0,
-                            kollestrol_gr = 0,
-                            lif_gr = 0,
-                            potasyum_gr = 0,
-                            protein_gr = 0,
-                            protein_yüzde = 0,
-                            sodyum_gr = 0,
-                            yağ_gr = 0,
-                            yağ_yüzde = 0,
+                            gün_bozulma_tarihi = 5,
+                            kalori = 20.0,
+                            kalsiyum_gr = 0.0,
+                            karbonhidrat_gr = 5.0,
+                            karbonhidrat_yüzde = 1,
+                            kollestrol_gr = 0.0,
+                            lif_gr = 1.0,
+                            potasyum_gr = 3.0,
+                            protein_gr = 15.0,
+                            protein_yüzde = 10,
+                            sodyum_gr = 1.0,
+                            yağ_gr = 5.0999999999999996,
+                            yağ_yüzde = 1,
                             yemek_ismi = "Kiraz"
                         });
                 });
@@ -199,12 +199,12 @@ namespace DataAccess.Migrations
                     b.Property<DateTime>("bozulma_tarihi")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 5, 23, 14, 58, 19, 497, DateTimeKind.Local).AddTicks(3521));
+                        .HasDefaultValue(new DateTime(2022, 5, 25, 16, 54, 33, 38, DateTimeKind.Local).AddTicks(195));
 
                     b.Property<DateTime>("eklenme_tarihi")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 5, 23, 14, 58, 19, 498, DateTimeKind.Local).AddTicks(2979));
+                        .HasDefaultValue(new DateTime(2022, 5, 25, 16, 54, 33, 38, DateTimeKind.Local).AddTicks(9548));
 
                     b.HasKey("id");
 
@@ -340,7 +340,7 @@ namespace DataAccess.Migrations
                     b.Property<DateTime>("date")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 5, 23, 14, 58, 19, 499, DateTimeKind.Local).AddTicks(4415));
+                        .HasDefaultValue(new DateTime(2022, 5, 25, 16, 54, 33, 40, DateTimeKind.Local).AddTicks(4368));
 
                     b.Property<string>("text")
                         .HasColumnType("nvarchar(max)");

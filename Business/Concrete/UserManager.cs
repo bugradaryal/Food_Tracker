@@ -25,11 +25,6 @@ namespace Business.Concrete
             _userRepository.DeleteUser(id);
         }
 
-        public List<User> GetAllUsers()
-        {
-            return _userRepository.GetAllUsers();
-        }
-
         public User GetUserById(int id)
         {
             return _userRepository.GetUserById(id);

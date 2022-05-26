@@ -17,15 +17,15 @@ namespace DataAccess.Migrations
                     protein_yüzde = table.Column<int>(type: "int", nullable: false, defaultValue: 0),
                     yağ_yüzde = table.Column<int>(type: "int", nullable: false, defaultValue: 0),
                     karbonhidrat_yüzde = table.Column<int>(type: "int", nullable: false, defaultValue: 0),
-                    kalori = table.Column<int>(type: "int", nullable: false, defaultValue: 0),
-                    protein_gr = table.Column<int>(type: "int", nullable: false, defaultValue: 0),
-                    yağ_gr = table.Column<int>(type: "int", nullable: false, defaultValue: 0),
-                    karbonhidrat_gr = table.Column<int>(type: "int", nullable: false, defaultValue: 0),
-                    sodyum_gr = table.Column<int>(type: "int", nullable: false, defaultValue: 0),
-                    potasyum_gr = table.Column<int>(type: "int", nullable: false, defaultValue: 0),
-                    kalsiyum_gr = table.Column<int>(type: "int", nullable: false, defaultValue: 0),
-                    lif_gr = table.Column<int>(type: "int", nullable: false, defaultValue: 0),
-                    kollestrol_gr = table.Column<int>(type: "int", nullable: false, defaultValue: 0),
+                    kalori = table.Column<double>(type: "float", nullable: false, defaultValue: 0.0),
+                    protein_gr = table.Column<double>(type: "float", nullable: false, defaultValue: 0.0),
+                    yağ_gr = table.Column<double>(type: "float", nullable: false, defaultValue: 0.0),
+                    karbonhidrat_gr = table.Column<double>(type: "float", nullable: false, defaultValue: 0.0),
+                    sodyum_gr = table.Column<double>(type: "float", nullable: false, defaultValue: 0.0),
+                    potasyum_gr = table.Column<double>(type: "float", nullable: false, defaultValue: 0.0),
+                    kalsiyum_gr = table.Column<double>(type: "float", nullable: false, defaultValue: 0.0),
+                    lif_gr = table.Column<double>(type: "float", nullable: false, defaultValue: 0.0),
+                    kollestrol_gr = table.Column<double>(type: "float", nullable: false, defaultValue: 0.0),
                     gün_bozulma_tarihi = table.Column<int>(type: "int", nullable: false, defaultValue: 0)
                 },
                 constraints: table =>
@@ -141,7 +141,7 @@ namespace DataAccess.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     user_id = table.Column<int>(type: "int", nullable: false),
                     title = table.Column<string>(type: "varchar(3000)", nullable: false),
-                    date = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 5, 23, 14, 58, 19, 499, DateTimeKind.Local).AddTicks(4415)),
+                    date = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 5, 25, 16, 54, 33, 40, DateTimeKind.Local).AddTicks(4368)),
                     text = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -164,8 +164,8 @@ namespace DataAccess.Migrations
                     Fridges_id = table.Column<int>(type: "int", nullable: false),
                     Foods_id = table.Column<int>(type: "int", nullable: false),
                     Jobs_id = table.Column<string>(type: "varchar(300)", nullable: true),
-                    eklenme_tarihi = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 5, 23, 14, 58, 19, 498, DateTimeKind.Local).AddTicks(2979)),
-                    bozulma_tarihi = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 5, 23, 14, 58, 19, 497, DateTimeKind.Local).AddTicks(3521))
+                    eklenme_tarihi = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 5, 25, 16, 54, 33, 38, DateTimeKind.Local).AddTicks(9548)),
+                    bozulma_tarihi = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 5, 25, 16, 54, 33, 38, DateTimeKind.Local).AddTicks(195))
                 },
                 constraints: table =>
                 {
@@ -186,18 +186,18 @@ namespace DataAccess.Migrations
 
             migrationBuilder.InsertData(
                 table: "Foods",
-                columns: new[] { "id", "yemek_ismi" },
-                values: new object[] { 1, "Elma" });
+                columns: new[] { "id", "gün_bozulma_tarihi", "kalori", "karbonhidrat_gr", "karbonhidrat_yüzde", "lif_gr", "potasyum_gr", "protein_gr", "protein_yüzde", "yemek_ismi" },
+                values: new object[] { 1, 15, 40.0, 20.800000000000001, 1, 9.0, 4.0, 30.0, 3, "Elma" });
 
             migrationBuilder.InsertData(
                 table: "Foods",
-                columns: new[] { "id", "yemek_ismi" },
-                values: new object[] { 2, "Erik" });
+                columns: new[] { "id", "gün_bozulma_tarihi", "kalori", "karbonhidrat_gr", "karbonhidrat_yüzde", "kollestrol_gr", "lif_gr", "potasyum_gr", "protein_gr", "protein_yüzde", "yemek_ismi" },
+                values: new object[] { 2, 10, 50.0, 30.199999999999999, 2, 4.0, 3.0, 4.0, 10.5, 2, "Erik" });
 
             migrationBuilder.InsertData(
                 table: "Foods",
-                columns: new[] { "id", "yemek_ismi" },
-                values: new object[] { 3, "Kiraz" });
+                columns: new[] { "id", "gün_bozulma_tarihi", "kalori", "karbonhidrat_gr", "karbonhidrat_yüzde", "lif_gr", "potasyum_gr", "protein_gr", "protein_yüzde", "sodyum_gr", "yağ_gr", "yağ_yüzde", "yemek_ismi" },
+                values: new object[] { 3, 5, 20.0, 5.0, 1, 1.0, 3.0, 15.0, 10, 1.0, 5.0999999999999996, 1, "Kiraz" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Fridges_user_id",

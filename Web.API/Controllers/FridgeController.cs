@@ -55,7 +55,6 @@ namespace Web.API.Controllers
                     {
                         x.Food = _foodService.GetFoodById(x.Foods_id);
                     }
-
                 }
 
                 return View(vm);
@@ -132,7 +131,6 @@ namespace Web.API.Controllers
                     {
                         x.Food = _foodService.GetFoodById(x.Foods_id);
                     }
-
                 }
 
                 return View("Fridge", vm);

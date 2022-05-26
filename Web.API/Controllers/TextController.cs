@@ -214,7 +214,7 @@ namespace Web.API.Controllers
             {
                 ViewBag.CurrentView = "Text Read";
                 ViewData["from"] = from;
-                 List<User_article> userart = new List<User_article>();
+                List<User_article> userart = new List<User_article>();
                 userart.Add(_user_articleService.GetUser_articleById(vm.User_article_id));
                 vm.User_article = userart;
                 foreach(var x in vm.User_article)
