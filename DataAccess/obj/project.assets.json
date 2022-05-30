@@ -5848,11 +5848,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\bugra\\Desktop\\Yemek_Takip\\DataAccess\\DataAccess.csproj",
+      "projectUniqueName": "C:\\Users\\bugra\\Documents\\Uygulamalarım\\Yemek_Takip\\DataAccess\\DataAccess.csproj",
       "projectName": "DataAccess",
-      "projectPath": "C:\\Users\\bugra\\Desktop\\Yemek_Takip\\DataAccess\\DataAccess.csproj",
+      "projectPath": "C:\\Users\\bugra\\Documents\\Uygulamalarım\\Yemek_Takip\\DataAccess\\DataAccess.csproj",
       "packagesPath": "C:\\Users\\bugra\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\bugra\\Desktop\\Yemek_Takip\\DataAccess\\obj\\",
+      "outputPath": "C:\\Users\\bugra\\Documents\\Uygulamalarım\\Yemek_Takip\\DataAccess\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "E:\\Microsoft\\Shared\\NuGetPackages"
@@ -5873,8 +5873,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\bugra\\Desktop\\Yemek_Takip\\Entities\\Entities.csproj": {
-              "projectPath": "C:\\Users\\bugra\\Desktop\\Yemek_Takip\\Entities\\Entities.csproj"
+            "C:\\Users\\bugra\\Documents\\Uygulamalarım\\Yemek_Takip\\Entities\\Entities.csproj": {
+              "projectPath": "C:\\Users\\bugra\\Documents\\Uygulamalarım\\Yemek_Takip\\Entities\\Entities.csproj"
             }
           }
         }

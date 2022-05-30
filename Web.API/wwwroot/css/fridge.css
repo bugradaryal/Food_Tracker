@@ -122,11 +122,23 @@ table {
         padding: 5px;
     }
     table th{
-        text-decoration:underline;
         width:10vw;
     }
     table tr:nth-child(even) {
         background-color: #dddddd;
+    }
+th input {
+    font-weight: bold;
+    border: 0;
+    outline: 0;
+}
+
+    th input:hover {
+        text-decoration: underline;
+    }
+
+    th input:focus {
+        color: dimgray;
     }
 
 .flexform {

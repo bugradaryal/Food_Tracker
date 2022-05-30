@@ -73,6 +73,19 @@ namespace DataAccess.Concrete
             {
                 return DbContext.My_Foods.Where(x => x.Fridges_id == fridgeid).ToList();
             }
-        }            
+        }
+        public List<My_Food> Filter(List<My_Food> My_Food, string islem)
+        {
+            using (var DbContext = new DataDbContext())
+            {
+                switch (islem)
+                {
+                    case "İsim": return My_Food.OrderBy(x => x.Food.yemek_ismi).ToList();
+                    case "Eklenme": return My_Food.OrderBy(x => x.eklenme_tarihi).ToList();
+                    case "Son tüketim": return My_Food.OrderBy(x => x.bozulma_tarihi).ToList();
+                    default: return My_Food;
+                }
+            }
+        }
     }
 }

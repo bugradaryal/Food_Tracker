@@ -130,7 +130,7 @@ namespace Web.API.Controllers
             try
             {
                 var data = _foodService.GetAllFoods();
-                ViewBag.CurrentView = "Foods Search";
+                ViewBag.CurrentView = "Foods Filter";
                 if(data != null)
                 {
                     if (TempData["tıklama"] == null || (bool)TempData["tıklama"] == false)

@@ -5,6 +5,7 @@ using System;
 using Entities;
 using Web.API.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Web.API.Controllers
 {
@@ -13,8 +14,8 @@ namespace Web.API.Controllers
         private IFridgeService _fridgeService;
         private IMy_FoodService _my_FoodService;
         private IFoodService _foodService;
-        public FridgeController() 
-        {  
+        public FridgeController()
+        {
             _fridgeService = new FridgeManager();
             _my_FoodService = new My_FoodManager();
             _foodService = new FoodManager();
@@ -104,7 +105,7 @@ namespace Web.API.Controllers
                 ViewData.Clear();
                 ViewBag.CurrentView = "Fridge";
                 var myfoodlist = _my_FoodService.GetMy_FoodByFridgeId(vm.Fridge_id);
-                foreach(var x in myfoodlist)
+                foreach (var x in myfoodlist)
                 {
                     BackgroundJobs.Schedules.Notification.deletenotification(x.Jobs_id);
                 }
@@ -271,6 +272,52 @@ namespace Web.API.Controllers
             catch (Exception error)
             {
                 return Content("Yemek detay pdf dosyası indirilirken bir hata ile karşılaşıldı.. \n\n Hata:  " + error.ToString());
+            }
+        }
+
+        [HttpPost]
+        public IActionResult Fridge_Filter(ViewModels vm, string islem)
+        {
+            try
+            {
+                vm.Fridge = _fridgeService.GetAllFridgesByUserId(vm.User.id);
+
+                Fridge fr = _fridgeService.GetFridgeById(vm.Fridge_id);
+
+                vm.Fridge_id = fr.id;
+                vm.name = fr.name;
+                List<My_Food> data;
+                if (vm.My_Food == null)
+                {
+                    ViewBag.CurrentView = "Fridge Filter";
+                    data = _my_FoodService.GetAllMy_Foods(fr.id);
+                    foreach (var x in data)
+                    {
+                        x.Food = _foodService.GetFoodById(x.Foods_id);
+                    }
+                    if (data != null)
+                    {
+                        if (TempData["tıklama"] == null || (bool)TempData["tıklama"] == false)
+                        {
+                            TempData["tıklama"] = true;
+                            vm.My_Food = _my_FoodService.Filter(data, islem);
+                        }
+                        else if ((bool)TempData["tıklama"] == true)
+                        {
+                            TempData["tıklama"] = false;
+                            List<My_Food> reverse = _my_FoodService.Filter(data, islem);
+                            vm.My_Food = Enumerable.Reverse(reverse).ToList();
+                        }
+                    }
+
+                }
+
+                ViewBag.error = "Yiyecekler Filtrelendi.";
+                return View("Fridge", vm);
+            }
+            catch (Exception error)
+            {
+                return Content("Buzdolabında değişiklik yapılırken hata ile karşılaşıldı...\n\n Hata:  " + error.ToString());
             }
         }
     }

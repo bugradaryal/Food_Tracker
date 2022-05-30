@@ -13,5 +13,6 @@ namespace DataAccess.Abstract
         bool GetMy_FoodByFoodId(int fridgeid, int foodid);
         My_Food GetMy_FoodByFrıdgeIdFoodId(int fridgeid, int foodid);
         List<My_Food> GetMy_FoodByFridgeId(int fridgeid);
+        List<My_Food> Filter(List<My_Food> My_Food, string islem);
     }
 }

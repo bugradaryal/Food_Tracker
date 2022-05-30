@@ -53,5 +53,9 @@ namespace Business.Concrete
         {
             return _My_FoodRepository.GetMy_FoodByFridgeId(fridgeid);
         }
+        public List<My_Food> Filter(List<My_Food> My_Food, string islem)
+        {
+            return _My_FoodRepository.Filter(My_Food, islem);
+        }
     }
 }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\bugra\\Desktop\\Yemek_Takip\\Business\\Business.csproj": {}
+    "C:\\Users\\bugra\\Documents\\Uygulamalarım\\Yemek_Takip\\Business\\Business.csproj": {}
   },
   "projects": {
-    "C:\\Users\\bugra\\Desktop\\Yemek_Takip\\Business\\Business.csproj": {
+    "C:\\Users\\bugra\\Documents\\Uygulamalarım\\Yemek_Takip\\Business\\Business.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\bugra\\Desktop\\Yemek_Takip\\Business\\Business.csproj",
+        "projectUniqueName": "C:\\Users\\bugra\\Documents\\Uygulamalarım\\Yemek_Takip\\Business\\Business.csproj",
         "projectName": "Business",
-        "projectPath": "C:\\Users\\bugra\\Desktop\\Yemek_Takip\\Business\\Business.csproj",
+        "projectPath": "C:\\Users\\bugra\\Documents\\Uygulamalarım\\Yemek_Takip\\Business\\Business.csproj",
         "packagesPath": "C:\\Users\\bugra\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\bugra\\Desktop\\Yemek_Takip\\Business\\obj\\",
+        "outputPath": "C:\\Users\\bugra\\Documents\\Uygulamalarım\\Yemek_Takip\\Business\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "E:\\Microsoft\\Shared\\NuGetPackages"
@@ -32,11 +32,11 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\bugra\\Desktop\\Yemek_Takip\\DataAccess\\DataAccess.csproj": {
-                "projectPath": "C:\\Users\\bugra\\Desktop\\Yemek_Takip\\DataAccess\\DataAccess.csproj"
+              "C:\\Users\\bugra\\Documents\\Uygulamalarım\\Yemek_Takip\\DataAccess\\DataAccess.csproj": {
+                "projectPath": "C:\\Users\\bugra\\Documents\\Uygulamalarım\\Yemek_Takip\\DataAccess\\DataAccess.csproj"
               },
-              "C:\\Users\\bugra\\Desktop\\Yemek_Takip\\Entities\\Entities.csproj": {
-                "projectPath": "C:\\Users\\bugra\\Desktop\\Yemek_Takip\\Entities\\Entities.csproj"
+              "C:\\Users\\bugra\\Documents\\Uygulamalarım\\Yemek_Takip\\Entities\\Entities.csproj": {
+                "projectPath": "C:\\Users\\bugra\\Documents\\Uygulamalarım\\Yemek_Takip\\Entities\\Entities.csproj"
               }
             }
           }
@@ -69,14 +69,14 @@
         }
       }
     },
-    "C:\\Users\\bugra\\Desktop\\Yemek_Takip\\DataAccess\\DataAccess.csproj": {
+    "C:\\Users\\bugra\\Documents\\Uygulamalarım\\Yemek_Takip\\DataAccess\\DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\bugra\\Desktop\\Yemek_Takip\\DataAccess\\DataAccess.csproj",
+        "projectUniqueName": "C:\\Users\\bugra\\Documents\\Uygulamalarım\\Yemek_Takip\\DataAccess\\DataAccess.csproj",
         "projectName": "DataAccess",
-        "projectPath": "C:\\Users\\bugra\\Desktop\\Yemek_Takip\\DataAccess\\DataAccess.csproj",
+        "projectPath": "C:\\Users\\bugra\\Documents\\Uygulamalarım\\Yemek_Takip\\DataAccess\\DataAccess.csproj",
         "packagesPath": "C:\\Users\\bugra\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\bugra\\Desktop\\Yemek_Takip\\DataAccess\\obj\\",
+        "outputPath": "C:\\Users\\bugra\\Documents\\Uygulamalarım\\Yemek_Takip\\DataAccess\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "E:\\Microsoft\\Shared\\NuGetPackages"
@@ -97,8 +97,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\bugra\\Desktop\\Yemek_Takip\\Entities\\Entities.csproj": {
-                "projectPath": "C:\\Users\\bugra\\Desktop\\Yemek_Takip\\Entities\\Entities.csproj"
+              "C:\\Users\\bugra\\Documents\\Uygulamalarım\\Yemek_Takip\\Entities\\Entities.csproj": {
+                "projectPath": "C:\\Users\\bugra\\Documents\\Uygulamalarım\\Yemek_Takip\\Entities\\Entities.csproj"
               }
             }
           }
@@ -147,14 +147,14 @@
         }
       }
     },
-    "C:\\Users\\bugra\\Desktop\\Yemek_Takip\\Entities\\Entities.csproj": {
+    "C:\\Users\\bugra\\Documents\\Uygulamalarım\\Yemek_Takip\\Entities\\Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\bugra\\Desktop\\Yemek_Takip\\Entities\\Entities.csproj",
+        "projectUniqueName": "C:\\Users\\bugra\\Documents\\Uygulamalarım\\Yemek_Takip\\Entities\\Entities.csproj",
         "projectName": "Entities",
-        "projectPath": "C:\\Users\\bugra\\Desktop\\Yemek_Takip\\Entities\\Entities.csproj",
+        "projectPath": "C:\\Users\\bugra\\Documents\\Uygulamalarım\\Yemek_Takip\\Entities\\Entities.csproj",
         "packagesPath": "C:\\Users\\bugra\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\bugra\\Desktop\\Yemek_Takip\\Entities\\obj\\",
+        "outputPath": "C:\\Users\\bugra\\Documents\\Uygulamalarım\\Yemek_Takip\\Entities\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "E:\\Microsoft\\Shared\\NuGetPackages"

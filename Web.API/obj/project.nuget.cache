@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "NaCoDEkjEoFImBXayNuvBVHS5XMQKLlsT4AeUx3J9GJisAUBmgPXFLM2OG615CbzuJJGvSF2k4iQFGMNKesJAQ==",
+  "dgSpecHash": "PJuLCzTpOoWZZVouVKweJcolF8B1KEqq0CjUi2lJYSlaUOBj2Rq/133JP1x3kAT35HtymDL/UO2yx+zONcOQ0g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\bugra\\Desktop\\Yemek_Takip\\Web.API\\Web.API.csproj",
+  "projectFilePath": "C:\\Users\\bugra\\Documents\\Uygulamalarım\\Yemek_Takip\\Web.API\\Web.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\bugra\\.nuget\\packages\\hangfire\\1.7.0\\hangfire.1.7.0.nupkg.sha512",
     "C:\\Users\\bugra\\.nuget\\packages\\hangfire.aspnetcore\\1.7.0\\hangfire.aspnetcore.1.7.0.nupkg.sha512",

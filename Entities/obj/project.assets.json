@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\bugra\\Desktop\\Yemek_Takip\\Entities\\Entities.csproj",
+      "projectUniqueName": "C:\\Users\\bugra\\Documents\\Uygulamalarım\\Yemek_Takip\\Entities\\Entities.csproj",
       "projectName": "Entities",
-      "projectPath": "C:\\Users\\bugra\\Desktop\\Yemek_Takip\\Entities\\Entities.csproj",
+      "projectPath": "C:\\Users\\bugra\\Documents\\Uygulamalarım\\Yemek_Takip\\Entities\\Entities.csproj",
       "packagesPath": "C:\\Users\\bugra\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\bugra\\Desktop\\Yemek_Takip\\Entities\\obj\\",
+      "outputPath": "C:\\Users\\bugra\\Documents\\Uygulamalarım\\Yemek_Takip\\Entities\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "E:\\Microsoft\\Shared\\NuGetPackages"

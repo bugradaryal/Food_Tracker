@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "GW6+Zo/C3wsbexydEk3peD77iita/DwlhCK28uAZgFOQE+QMJuJ9ZrO5H7fYUg45D+Tir4UyeoZGhQSTorLaNg==",
+  "dgSpecHash": "XOc6j0+4F/XBRAqE9HfM0ryWkCfrSiIKHMgmZBvYdKo6m4Ai2E3LmoXydcAfx43nfW+FUQyZT8rjtQZqU7X0dA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\bugra\\Desktop\\Yemek_Takip\\BackGroundJobs\\BackGroundJobs.csproj",
+  "projectFilePath": "C:\\Users\\bugra\\Documents\\Uygulamalarım\\Yemek_Takip\\BackGroundJobs\\BackGroundJobs.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\bugra\\.nuget\\packages\\hangfire\\1.7.0\\hangfire.1.7.0.nupkg.sha512",
     "C:\\Users\\bugra\\.nuget\\packages\\hangfire.aspnetcore\\1.7.0\\hangfire.aspnetcore.1.7.0.nupkg.sha512",

@@ -44,10 +44,10 @@
                                     DateTime d2 = DateTime.Now;
                                     string renk = "black";
                                     if((d1-d2).Days <=1){
-                                        renk = "darkred";
+                                        renk = "red";
                                     }
                                     else if((d1-d2).Days <=5){
-                                        renk = "#8B8000";
+                                        renk = "#DAA520";
                                     }
                                     <td style="color:@renk;">@x.bozulma_tarihi.ToString("dd/MM/yyyy")</td> 
                                 }

@@ -23,12 +23,22 @@
                             @if(Model.My_Food != null && Model.My_Food.Count != 0)
                             {
                                 <table> 
+                                <form asp-action="Fridge_Filter" asp-controller="Fridge" asp-area="" method="post">
+                                 <input type="hidden" asp-for="User.id" value=@Model.User.id/>  
+                                 <input type="hidden" asp-for="Fridge_id" value=@Model.Fridge_id/>  
                                 <tr>
-                                <th>İsim</th> 
-                                <th>Eklenme</th> 
-                                <th>Son tüketim</th> 
+                                <th>
+                                    <input type="submit" value="İsim" name="islem"/>  
+                                </th> 
+                                <th>
+                                    <input type="submit" value="Eklenme" name="islem"/>  
+                                </th> 
+                                <th>
+                                    <input type="submit" value="Son tüketim" name="islem"/>  
+                                </th> 
                                 <th>İşlemler</th>
                                 </tr>
+                                 </form> 
                                 @foreach(var x in Model.My_Food)
                                 {
                                 <tr> 
@@ -39,10 +49,10 @@
                                     DateTime d2 = DateTime.Now;
                                     string renk = "black";
                                     if((d1-d2).Days <=1){
-                                        renk = "darkred";
+                                        renk = "red";
                                     }
                                     else if((d1-d2).Days <=5){
-                                        renk = "#8B8000";
+                                        renk = "#DAA520";
                                     }
                                     <td style="color:@renk;">@x.bozulma_tarihi.ToString("dd/MM/yyyy")</td> 
                                 }
