@@ -22,9 +22,7 @@ namespace DataAccess.Migrations
             modelBuilder.Entity("Entities.Food", b =>
                 {
                     b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<int>("gün_bozulma_tarihi")
                         .ValueGeneratedOnAdd()
@@ -197,12 +195,12 @@ namespace DataAccess.Migrations
                     b.Property<DateTime>("bozulma_tarihi")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 5, 25, 16, 54, 33, 38, DateTimeKind.Local).AddTicks(195));
+                        .HasDefaultValue(new DateTime(2022, 5, 30, 17, 53, 53, 58, DateTimeKind.Local).AddTicks(8398));
 
                     b.Property<DateTime>("eklenme_tarihi")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 5, 25, 16, 54, 33, 38, DateTimeKind.Local).AddTicks(9548));
+                        .HasDefaultValue(new DateTime(2022, 5, 30, 17, 53, 53, 59, DateTimeKind.Local).AddTicks(7709));
 
                     b.HasKey("id");
 
@@ -338,7 +336,7 @@ namespace DataAccess.Migrations
                     b.Property<DateTime>("date")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 5, 25, 16, 54, 33, 40, DateTimeKind.Local).AddTicks(4368));
+                        .HasDefaultValue(new DateTime(2022, 5, 30, 17, 53, 53, 61, DateTimeKind.Local).AddTicks(3463));
 
                     b.Property<string>("text")
                         .HasColumnType("nvarchar(max)");

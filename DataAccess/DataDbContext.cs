@@ -57,7 +57,7 @@ namespace DataAccess
 
             /////////////////////Foods
             modelBuilder.Entity<Food>().HasKey(x => x.id);
-            modelBuilder.Entity<Food>().Property(x => x.id).ValueGeneratedOnAdd();
+            modelBuilder.Entity<Food>().Property(x => x.id).ValueGeneratedNever();
             modelBuilder.Entity<Food>().Property(x => x.yemek_ismi).HasColumnType("varchar(40)").IsRequired();
             modelBuilder.Entity<Food>().Property(x => x.protein_yüzde).HasDefaultValue(0);
             modelBuilder.Entity<Food>().Property(x => x.yağ_yüzde).HasDefaultValue(0);
@@ -104,7 +104,6 @@ namespace DataAccess
             modelBuilder.Entity<Notification_Count>().Property(x => x.user_id).IsRequired();
             modelBuilder.Entity<Notification_Count>().HasIndex(x => x.user_id).IsUnique(false);
             modelBuilder.Entity<Notification_Count>().Property(x => x.notificationscount).HasDefaultValue(0);
-
 
             //add to database a food items
             modelBuilder.ApplyConfiguration(new Insert_Foods());

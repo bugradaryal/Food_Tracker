@@ -5,8 +5,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Rotativa.AspNetCore;
 using Hangfire;
-using DataAccess;
-using BackGroundJobs;
+using System.Threading.Tasks;
+using DataAccess.SeedData;
 
 namespace Web.API
 {
@@ -26,7 +26,10 @@ namespace Web.API
             services.AddSession();
 
             services.AddHangfire(x => x.UseSqlServerStorage(Configuration.GetConnectionString("Hangfire")));
+
+            Create_Food_OnStart.create();
         }
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

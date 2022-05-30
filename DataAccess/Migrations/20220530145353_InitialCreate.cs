@@ -11,8 +11,7 @@ namespace DataAccess.Migrations
                 name: "Foods",
                 columns: table => new
                 {
-                    id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    id = table.Column<int>(type: "int", nullable: false),
                     yemek_ismi = table.Column<string>(type: "varchar(40)", nullable: false),
                     protein_yüzde = table.Column<int>(type: "int", nullable: false, defaultValue: 0),
                     yağ_yüzde = table.Column<int>(type: "int", nullable: false, defaultValue: 0),
@@ -141,7 +140,7 @@ namespace DataAccess.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     user_id = table.Column<int>(type: "int", nullable: false),
                     title = table.Column<string>(type: "varchar(3000)", nullable: false),
-                    date = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 5, 25, 16, 54, 33, 40, DateTimeKind.Local).AddTicks(4368)),
+                    date = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 5, 30, 17, 53, 53, 61, DateTimeKind.Local).AddTicks(3463)),
                     text = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -164,8 +163,8 @@ namespace DataAccess.Migrations
                     Fridges_id = table.Column<int>(type: "int", nullable: false),
                     Foods_id = table.Column<int>(type: "int", nullable: false),
                     Jobs_id = table.Column<string>(type: "varchar(300)", nullable: true),
-                    eklenme_tarihi = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 5, 25, 16, 54, 33, 38, DateTimeKind.Local).AddTicks(9548)),
-                    bozulma_tarihi = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 5, 25, 16, 54, 33, 38, DateTimeKind.Local).AddTicks(195))
+                    eklenme_tarihi = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 5, 30, 17, 53, 53, 59, DateTimeKind.Local).AddTicks(7709)),
+                    bozulma_tarihi = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 5, 30, 17, 53, 53, 58, DateTimeKind.Local).AddTicks(8398))
                 },
                 constraints: table =>
                 {
