@@ -75,7 +75,7 @@ namespace Web.API.Controllers
                     return View("Login");
                 }
             }
-            catch (Exception ht) { return Content("Http Get 404 Error!!! Code: "+ht.ToString().Substring(0,600)); }
+            catch (Exception ht) { return Content("Http Get 404 Error!!! Code: "+ht.ToString().Substring(1,600)); }
         }
         #endregion
 
@@ -141,7 +141,7 @@ namespace Web.API.Controllers
                     return View("Register");
                 }
             }
-            catch (Exception ht) { return Content("Http Get 404 Error!!! Code: " + ht.ToString().Substring(0, 600)); }
+            catch (Exception ht) { return Content("Http Get 404 Error!!! Code: " + ht.ToString().Substring(1, 600)); }
         }
 
         [HttpPost]
@@ -168,7 +168,7 @@ namespace Web.API.Controllers
                     return View(UserView);
                 }
             }
-            catch (Exception ht) { return Content("Http Get 404 Error!!! Code: " + ht.ToString().Substring(0, 600)); }
+            catch (Exception ht) { return Content("Http Get 404 Error!!! Code: " + ht.ToString().Substring(1, 600)); }
         }
         #endregion
 
@@ -226,7 +226,7 @@ namespace Web.API.Controllers
                     return View("ForgotPass");
                 }
             }
-            catch (Exception ht) { return Content("Http Get 404 Error!!! Code: " + ht.ToString().Substring(0, 600)); }
+            catch (Exception ht) { return Content("Http Get 404 Error!!! Code: " + ht.ToString().Substring(1, 600)); }
         }
         #endregion
     }

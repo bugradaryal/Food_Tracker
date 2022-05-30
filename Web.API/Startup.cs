@@ -5,7 +5,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Rotativa.AspNetCore;
 using Hangfire;
-using System.Threading.Tasks;
 using DataAccess.SeedData;
 
 namespace Web.API

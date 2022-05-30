@@ -140,7 +140,7 @@ namespace DataAccess.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     user_id = table.Column<int>(type: "int", nullable: false),
                     title = table.Column<string>(type: "varchar(3000)", nullable: false),
-                    date = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 5, 30, 17, 53, 53, 61, DateTimeKind.Local).AddTicks(3463)),
+                    date = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 5, 30, 18, 50, 41, 299, DateTimeKind.Local).AddTicks(9780)),
                     text = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -163,8 +163,8 @@ namespace DataAccess.Migrations
                     Fridges_id = table.Column<int>(type: "int", nullable: false),
                     Foods_id = table.Column<int>(type: "int", nullable: false),
                     Jobs_id = table.Column<string>(type: "varchar(300)", nullable: true),
-                    eklenme_tarihi = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 5, 30, 17, 53, 53, 59, DateTimeKind.Local).AddTicks(7709)),
-                    bozulma_tarihi = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 5, 30, 17, 53, 53, 58, DateTimeKind.Local).AddTicks(8398))
+                    eklenme_tarihi = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 5, 30, 18, 50, 41, 298, DateTimeKind.Local).AddTicks(3447)),
+                    bozulma_tarihi = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2022, 5, 30, 18, 50, 41, 297, DateTimeKind.Local).AddTicks(3891))
                 },
                 constraints: table =>
                 {
@@ -197,6 +197,11 @@ namespace DataAccess.Migrations
                 table: "Foods",
                 columns: new[] { "id", "gün_bozulma_tarihi", "kalori", "karbonhidrat_gr", "karbonhidrat_yüzde", "lif_gr", "potasyum_gr", "protein_gr", "protein_yüzde", "sodyum_gr", "yağ_gr", "yağ_yüzde", "yemek_ismi" },
                 values: new object[] { 3, 5, 20.0, 5.0, 1, 1.0, 3.0, 15.0, 10, 1.0, 5.0999999999999996, 1, "Kiraz" });
+
+            migrationBuilder.InsertData(
+                table: "Foods",
+                columns: new[] { "id", "kalori", "karbonhidrat_gr", "karbonhidrat_yüzde", "lif_gr", "potasyum_gr", "protein_gr", "protein_yüzde", "sodyum_gr", "yemek_ismi" },
+                values: new object[] { 4, 15.0, 5.0, 1, 4.0, 0.10000000000000001, 35.0, 15, 0.40000000000000002, "Portakal" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Fridges_user_id",

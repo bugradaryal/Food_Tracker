@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(DataDbContext))]
-    [Migration("20220530145353_InitialCreate")]
+    [Migration("20220530155041_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -153,6 +153,24 @@ namespace DataAccess.Migrations
                             yağ_gr = 5.0999999999999996,
                             yağ_yüzde = 1,
                             yemek_ismi = "Kiraz"
+                        },
+                        new
+                        {
+                            id = 4,
+                            gün_bozulma_tarihi = 0,
+                            kalori = 15.0,
+                            kalsiyum_gr = 0.0,
+                            karbonhidrat_gr = 5.0,
+                            karbonhidrat_yüzde = 1,
+                            kollestrol_gr = 0.0,
+                            lif_gr = 4.0,
+                            potasyum_gr = 0.10000000000000001,
+                            protein_gr = 35.0,
+                            protein_yüzde = 15,
+                            sodyum_gr = 0.40000000000000002,
+                            yağ_gr = 0.0,
+                            yağ_yüzde = 0,
+                            yemek_ismi = "Portakal"
                         });
                 });
 
@@ -197,12 +215,12 @@ namespace DataAccess.Migrations
                     b.Property<DateTime>("bozulma_tarihi")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 5, 30, 17, 53, 53, 58, DateTimeKind.Local).AddTicks(8398));
+                        .HasDefaultValue(new DateTime(2022, 5, 30, 18, 50, 41, 297, DateTimeKind.Local).AddTicks(3891));
 
                     b.Property<DateTime>("eklenme_tarihi")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 5, 30, 17, 53, 53, 59, DateTimeKind.Local).AddTicks(7709));
+                        .HasDefaultValue(new DateTime(2022, 5, 30, 18, 50, 41, 298, DateTimeKind.Local).AddTicks(3447));
 
                     b.HasKey("id");
 
@@ -338,7 +356,7 @@ namespace DataAccess.Migrations
                     b.Property<DateTime>("date")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 5, 30, 17, 53, 53, 61, DateTimeKind.Local).AddTicks(3463));
+                        .HasDefaultValue(new DateTime(2022, 5, 30, 18, 50, 41, 299, DateTimeKind.Local).AddTicks(9780));
 
                     b.Property<string>("text")
                         .HasColumnType("nvarchar(max)");
