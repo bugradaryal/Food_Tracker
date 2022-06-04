@@ -438,6 +438,18 @@
           "lib/netstandard1.3/Newtonsoft.Json.dll": {}
         }
       },
+      "ObjectsComparer/1.4.1": {
+        "type": "package",
+        "dependencies": {
+          "System.Dynamic.Runtime": "4.3.0"
+        },
+        "compile": {
+          "lib/netstandard2.1/ObjectsComparer.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/ObjectsComparer.dll": {}
+        }
+      },
       "runtime.native.System/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -1498,7 +1510,8 @@
         "dependencies": {
           "Entities": "1.0.0",
           "Microsoft.AspNetCore.Metadata": "5.0.5",
-          "Microsoft.EntityFrameworkCore.SqlServer": "5.0.10"
+          "Microsoft.EntityFrameworkCore.SqlServer": "5.0.10",
+          "ObjectsComparer": "1.4.1"
         },
         "compile": {
           "bin/placeholder/DataAccess.dll": {}
@@ -2226,6 +2239,22 @@
         "newtonsoft.json.10.0.1.nupkg.sha512",
         "newtonsoft.json.nuspec",
         "tools/install.ps1"
+      ]
+    },
+    "ObjectsComparer/1.4.1": {
+      "sha512": "qRqHqgI4EDlc+knhhua3oNFOhZEwUCHEl019Y0HoYAaSchk/zoBOvwC0RyTONUN4EnkfCN/D3G9gxbyNkCFV7g==",
+      "type": "package",
+      "path": "objectscomparer/1.4.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "lib/net45/ObjectsComparer.dll",
+        "lib/netstandard1.6/ObjectsComparer.dll",
+        "lib/netstandard2.0/ObjectsComparer.dll",
+        "lib/netstandard2.1/ObjectsComparer.dll",
+        "objectscomparer.1.4.1.nupkg.sha512",
+        "objectscomparer.nuspec"
       ]
     },
     "runtime.native.System/4.3.0": {

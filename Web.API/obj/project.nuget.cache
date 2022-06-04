@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "PJuLCzTpOoWZZVouVKweJcolF8B1KEqq0CjUi2lJYSlaUOBj2Rq/133JP1x3kAT35HtymDL/UO2yx+zONcOQ0g==",
+  "dgSpecHash": "gevoC3TF+nVjb86NpPbwoVyUM5CYYoPMZ3/NDIDJL1cdORCkkk/YWDdf/2a5Y8iRcmeFYJK86ujxB9iYyBiDfg==",
   "success": true,
   "projectFilePath": "C:\\Users\\bugra\\Documents\\Uygulamalarım\\Yemek_Takip\\Web.API\\Web.API.csproj",
   "expectedPackageFiles": [
@@ -110,6 +110,7 @@
     "C:\\Users\\bugra\\.nuget\\packages\\newtonsoft.json\\11.0.2\\newtonsoft.json.11.0.2.nupkg.sha512",
     "C:\\Users\\bugra\\.nuget\\packages\\newtonsoft.json.bson\\1.0.1\\newtonsoft.json.bson.1.0.1.nupkg.sha512",
     "C:\\Users\\bugra\\.nuget\\packages\\nuget.frameworks\\4.7.0\\nuget.frameworks.4.7.0.nupkg.sha512",
+    "C:\\Users\\bugra\\.nuget\\packages\\objectscomparer\\1.4.1\\objectscomparer.1.4.1.nupkg.sha512",
     "C:\\Users\\bugra\\.nuget\\packages\\portable.bouncycastle\\1.9.0\\portable.bouncycastle.1.9.0.nupkg.sha512",
     "C:\\Users\\bugra\\.nuget\\packages\\rotativa.aspnetcore\\1.2.0\\rotativa.aspnetcore.1.2.0.nupkg.sha512",
     "C:\\Users\\bugra\\.nuget\\packages\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
@@ -157,7 +158,7 @@
     "C:\\Users\\bugra\\.nuget\\packages\\system.diagnostics.tools\\4.3.0\\system.diagnostics.tools.4.3.0.nupkg.sha512",
     "C:\\Users\\bugra\\.nuget\\packages\\system.diagnostics.tracing\\4.3.0\\system.diagnostics.tracing.4.3.0.nupkg.sha512",
     "C:\\Users\\bugra\\.nuget\\packages\\system.drawing.common\\4.7.0\\system.drawing.common.4.7.0.nupkg.sha512",
-    "C:\\Users\\bugra\\.nuget\\packages\\system.dynamic.runtime\\4.0.11\\system.dynamic.runtime.4.0.11.nupkg.sha512",
+    "C:\\Users\\bugra\\.nuget\\packages\\system.dynamic.runtime\\4.3.0\\system.dynamic.runtime.4.3.0.nupkg.sha512",
     "C:\\Users\\bugra\\.nuget\\packages\\system.globalization\\4.3.0\\system.globalization.4.3.0.nupkg.sha512",
     "C:\\Users\\bugra\\.nuget\\packages\\system.globalization.calendars\\4.3.0\\system.globalization.calendars.4.3.0.nupkg.sha512",
     "C:\\Users\\bugra\\.nuget\\packages\\system.globalization.extensions\\4.3.0\\system.globalization.extensions.4.3.0.nupkg.sha512",

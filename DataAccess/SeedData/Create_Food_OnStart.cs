@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Linq;
+using ObjectsComparer;
+using Entities;
+
 
 namespace DataAccess.SeedData
 {
@@ -12,35 +15,36 @@ namespace DataAccess.SeedData
                 using (var DbContext = new DataDbContext())
                 {
                     Insert_Foods ınsert = new Insert_Foods();
-                    int dbfoodcount = DbContext.Foods.Count();
-                    if (dbfoodcount != 0)
+                    if (DbContext.Foods.Count() != 0)
                     {
-                        if (ınsert.Food_Data() != null)
+                        foreach (var dbfood in DbContext.Foods.ToList())
                         {
-                            var i = ınsert.Food_Data().Count();
-                            if (dbfoodcount < ınsert.Food_Data().Count)
+                            if (ınsert.Food_Data().Any(x => x.id == dbfood.id) == false)
                             {
-                                foreach (var dbfood in ınsert.Food_Data())
-                                {
-                                    if (DbContext.Foods.Any(x => x.id == dbfood.id) == false)
-                                    {
-                                        DbContext.Foods.Add(dbfood);
-                                    }
-                                }
-                                DbContext.SaveChanges();
+                                DbContext.Foods.Remove(dbfood);
                             }
-                            else if (dbfoodcount > ınsert.Food_Data().Count)
+                            else
                             {
-                                foreach (var dbfood in DbContext.Foods.ToList())
+                                Food data = ınsert.Food_Data().FirstOrDefault(x => x.id == dbfood.id);
+                                var compare = new Comparer();
+                                if (compare.Compare(data, dbfood) != true)
                                 {
-                                    if (ınsert.Food_Data().Any(x => x.id == dbfood.id) == false)
+                                    using (var DbUpdate = new DataDbContext())
                                     {
-                                        DbContext.Foods.Remove(dbfood);
+                                        DbUpdate.Foods.Update(data);
+                                        DbUpdate.SaveChanges();
                                     }
                                 }
-                                DbContext.SaveChanges();
                             }
                         }
+                        foreach (var dbfood in ınsert.Food_Data())
+                        {
+                            if (DbContext.Foods.Any(x => x.id == dbfood.id) == false)
+                            {
+                                DbContext.Foods.Add(dbfood);
+                            }
+                        }
+                        DbContext.SaveChanges();
                     }
                     else
                     {

@@ -416,3 +416,4 @@ C:\Users\bugra\Documents\Uygulamalarım\Yemek_Takip\Web.API\obj\Debug\netcoreapp
 C:\Users\bugra\Documents\Uygulamalarım\Yemek_Takip\Web.API\obj\Debug\netcoreapp3.1\Web.API.dll
 C:\Users\bugra\Documents\Uygulamalarım\Yemek_Takip\Web.API\obj\Debug\netcoreapp3.1\Web.API.pdb
 C:\Users\bugra\Documents\Uygulamalarım\Yemek_Takip\Web.API\obj\Debug\netcoreapp3.1\Web.API.genruntimeconfig.cache
+C:\Users\bugra\Documents\Uygulamalarım\Yemek_Takip\Web.API\bin\Debug\netcoreapp3.1\ObjectsComparer.dll

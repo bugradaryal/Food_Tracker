@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "WHiqozMO/gJKYjD4NqPely98DDLKD0+CP1bjC2Dn+T2pKXn26f+WSP34+ZmrBcBzA7j9vSmb1/5Zj+FZ94pk1A==",
+  "dgSpecHash": "aZLRharW5PbjXWcKoIfw8aSFXBS/SMS72H4vmP5QWZysuOqu64cC2TJ/fVkGzYGKsQnOOsakxtWdur41kQNzBw==",
   "success": true,
   "projectFilePath": "C:\\Users\\bugra\\Documents\\Uygulamalarım\\Yemek_Takip\\DataAccess\\DataAccess.csproj",
   "expectedPackageFiles": [
@@ -36,6 +36,7 @@
     "C:\\Users\\bugra\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\bugra\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\bugra\\.nuget\\packages\\newtonsoft.json\\10.0.1\\newtonsoft.json.10.0.1.nupkg.sha512",
+    "C:\\Users\\bugra\\.nuget\\packages\\objectscomparer\\1.4.1\\objectscomparer.1.4.1.nupkg.sha512",
     "C:\\Users\\bugra\\.nuget\\packages\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
     "C:\\Users\\bugra\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",
     "C:\\Users\\bugra\\.nuget\\packages\\system.collections.concurrent\\4.3.0\\system.collections.concurrent.4.3.0.nupkg.sha512",
