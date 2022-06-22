@@ -12,7 +12,7 @@ namespace DataAccess
         {
             base.OnConfiguring(optionsBuilder);
             //Database connection string - connection bağlantısı
-            optionsBuilder.UseSqlServer("Server=.\\SQLExpress; Database=yemek_takip; uid=sa; pwd=12345678;");
+            optionsBuilder.UseSqlServer("Server=.\\SQLExpress; Database=yemek_takip; Trusted_Connection=True; MultipleActiveResultSets=true;");
         }
         public DbSet<Food> Foods { get; set; }
         public DbSet<Fridge> Fridges { get; set; }

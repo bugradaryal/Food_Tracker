@@ -30,7 +30,7 @@ namespace BackGroundJobs.Managers
             {
                 client.ServerCertificateValidationCallback = (s, c, h, e) => true;
                 client.Connect("smtp.gmail.com", 465, SecureSocketOptions.SslOnConnect);
-                client.Authenticate("bugraverify@gmail.com", "31082000B");
+                client.Authenticate("bugraverify@gmail.com", "zsjiwsyvetnnrwrg");
 
                 client.Send(message);
                 client.Disconnect(true);
