@@ -57,8 +57,8 @@ namespace BackGroundJobs.Managers
         {
             String testXml = "<request>";
             testXml += "<authentication>";
-            testXml += "<username>5313375881</username>";
-            testXml += "<password>31082000bugra12</password>";
+            testXml += "<username>your_phone_numer</username>";
+            testXml += "<password>your_password</password>";
             testXml += "</authentication>";
             testXml += "<order>";
             testXml += "<sender>APITEST</sender>";
